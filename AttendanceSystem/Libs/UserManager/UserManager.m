@@ -49,15 +49,14 @@ static NSString *kSourceHost = @"XSourceHost";
 }
 
 - (NSString *)getCurrentUserToken {
-    NSString *token = [self getCurrentUser].token;
+    NSString *token = [[NSUserDefaults standardUserDefaults] stringForKey:kEnvoyUserToken];
     
     return token;
 }
 
 - (void)setCurrentUserToken:(NSString *)token {
-    UserModel* user = [self getCurrentUser];
-    user.token = token;
-    [self setCurrentUser:user];
+    [[NSUserDefaults standardUserDefaults] setObject:token forKey:kEnvoyUserToken];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)setLoginStatus:(BOOL)status {
@@ -99,7 +98,7 @@ static NSString *kSourceHost = @"XSourceHost";
     [defaults setObject:userModel.userId forKey:kUserId];
      [defaults setObject:userModel.role_id forKey:kUserRoleId];
      [defaults setObject:userModel.email forKey:kUserEmail];
-     [defaults setObject:userModel.token forKey:kUserToken];
+     [defaults setObject:userModel.avatar forKey:kUserAvatar];
      [defaults setObject:userModel.first_name forKey:kUserFirstName];
      [defaults setObject:userModel.last_name forKey:kUserLastName];
      [defaults setObject:userModel.phone forKey:kUserPhone];
@@ -114,7 +113,7 @@ static NSString *kSourceHost = @"XSourceHost";
     
     [user setUserId:[defaults objectForKey:kUserId]];
       [user setEmail:[defaults objectForKey:kUserEmail]];
-      [user setToken:[defaults objectForKey:kUserToken]];
+        [user setAvatar:[defaults objectForKey:kUserAvatar]];
       [user setFirst_name:[defaults objectForKey:kUserFirstName]];
       [user setLast_name:[defaults objectForKey:kUserLastName]];
       [user setPhone:[defaults objectForKey:kUserPhone]];
@@ -141,6 +140,11 @@ static NSString *kSourceHost = @"XSourceHost";
 
 - (void)setFirstUpdateProfile:(BOOL)type {
     self.isFirstUpdateProfile = type;
+}
+
+- (NSString*)getProfileName {
+    UserModel* user = [self getCurrentUser];
+    return [NSString stringWithFormat:@"%@ %@",user.last_name,user.first_name];
 }
 
 @end

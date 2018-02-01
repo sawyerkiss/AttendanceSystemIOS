@@ -64,4 +64,6 @@ typedef enum
 - (void)setFirstUpdateProfile:(BOOL)type ;
 - (BOOL)getFirstUpdateProfile;
 
+- (NSString*) getProfileName;
+
 @end

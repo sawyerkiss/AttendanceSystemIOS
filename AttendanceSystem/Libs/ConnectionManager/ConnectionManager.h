@@ -27,5 +27,8 @@ typedef void(^ConnectionFailure)(ErrorType errorType, NSString * _Nonnull errorM
    andSuccess:(ConnectionComplete _Nullable)success
    andFailure:(ConnectionFailure _Nullable)failure;
 
+- (void)logout:(ConnectionComplete _Nullable)success
+   andFailure:(ConnectionFailure _Nullable)failure;
+
 @end
 OS_ASSUME_NONNULL_END

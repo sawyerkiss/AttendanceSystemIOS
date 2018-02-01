@@ -171,7 +171,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XRc-0x-CA3">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="176.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="177"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MYa-C7-Vk1">
                                         <rect key="frame" x="30" y="15" width="90" height="90"/>
@@ -185,24 +185,31 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Label Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MpG-IV-cPf">
-                                        <rect key="frame" x="15" y="125" width="166.5" height="26.5"/>
+                                        <rect key="frame" x="15" y="125" width="167" height="27"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_user" translatesAutoresizingMaskIntoConstraints="NO" id="RQO-NE-QK9" customClass="UIImageViewLoading">
+                                        <rect key="frame" x="30" y="15" width="90" height="90"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="RQO-NE-QK9" firstAttribute="top" secondItem="MYa-C7-Vk1" secondAttribute="top" id="0Xd-A5-Qsm"/>
+                                    <constraint firstItem="RQO-NE-QK9" firstAttribute="height" secondItem="MYa-C7-Vk1" secondAttribute="height" id="1vB-IN-0Zq"/>
+                                    <constraint firstItem="RQO-NE-QK9" firstAttribute="width" secondItem="MYa-C7-Vk1" secondAttribute="width" id="ReX-D3-29R"/>
                                     <constraint firstAttribute="bottom" secondItem="MpG-IV-cPf" secondAttribute="bottom" constant="25" id="SHJ-d6-qMe"/>
                                     <constraint firstItem="MpG-IV-cPf" firstAttribute="leading" secondItem="XRc-0x-CA3" secondAttribute="leading" constant="15" id="XIQ-lZ-hzU"/>
                                     <constraint firstItem="MYa-C7-Vk1" firstAttribute="top" secondItem="XRc-0x-CA3" secondAttribute="top" constant="15" id="YFu-JY-mcU"/>
                                     <constraint firstItem="MYa-C7-Vk1" firstAttribute="leading" secondItem="XRc-0x-CA3" secondAttribute="leading" constant="30" id="dUb-hf-e3X"/>
+                                    <constraint firstItem="RQO-NE-QK9" firstAttribute="leading" secondItem="MYa-C7-Vk1" secondAttribute="leading" id="iZk-ZV-epN"/>
                                     <constraint firstItem="MpG-IV-cPf" firstAttribute="top" secondItem="MYa-C7-Vk1" secondAttribute="bottom" constant="20" id="pw3-jF-pU8"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MpG-IV-cPf" secondAttribute="trailing" constant="20" symbolic="YES" id="z2n-od-j1a"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Etr-Bu-1Fr">
-                                <rect key="frame" x="0.0" y="176.5" width="375" height="490.5"/>
+                                <rect key="frame" x="0.0" y="177" width="375" height="490"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
@@ -220,6 +227,7 @@
                     </view>
                     <connections>
                         <outlet property="btnProfile" destination="MYa-C7-Vk1" id="DmD-1x-Otv"/>
+                        <outlet property="imgProfile" destination="RQO-NE-QK9" id="t7a-MO-xcx"/>
                         <outlet property="lblProfileName" destination="MpG-IV-cPf" id="aUT-fF-ffO"/>
                         <outlet property="tableMenu" destination="Etr-Bu-1Fr" id="9P6-eY-d5w"/>
                     </connections>

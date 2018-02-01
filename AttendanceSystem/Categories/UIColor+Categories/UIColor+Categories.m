@@ -2,7 +2,7 @@
 //  UIColor+Categories.m
 //  tomycar
 //
-//  Created by TamTran on 8/10/17.
+//  Created by TrungTruc on 8/10/17.
 //  Copyright © 2017 KEAZ. All rights reserved.
 //
 

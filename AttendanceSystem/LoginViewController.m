@@ -2,7 +2,7 @@
 //  LoginViewController.m
 //  AttendanceSystem
 //
-//  Created by TamTran on 1/24/18.
+//  Created by TrungTruc on 1/24/18.
 //  Copyright © 2018 TrungTruc. All rights reserved.
 //
 
@@ -35,6 +35,8 @@
 //    textField.floatingLabel = true;
 //    [self.tfEmail addSubview:textField];
 //    [self.tfEmail layoutIfNeeded];
+    self.tfEmail.text = @"dbtien";
+    self.tfPassword.text = @"dbtien";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,7 +55,9 @@
     [[ConnectionManager connectionDefault] login:userName password:password andSuccess:^(id  _Nonnull responseObject) {
         [LoadingManager hideLoadingViewForView:self.view];
         
-        UserModel* user = [[UserModel alloc] initWithDictionary:responseObject error:nil];
+        NSString* token = responseObject[@"token"];
+        [[UserManager userCenter] setCurrentUserToken:token];
+        UserModel* user = [[UserModel alloc] initWithDictionary:responseObject[@"user"] error:nil];
         [[UserManager userCenter] setCurrentUser:user];
         
         [_tfEmail setErrorMessage:@"Email is empty"];

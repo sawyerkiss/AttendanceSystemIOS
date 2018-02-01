@@ -241,4 +241,25 @@ NSString *linkService(NSString *subLink) {
      }];
 }
 
+- (void)logout:(ConnectionComplete)success andFailure:(ConnectionFailure)failure {
+    NSString* token = [[UserManager userCenter] getCurrentUserToken];
+    NSDictionary *parameter = @{@"token": token ? token : @""};
+    
+    NSString* url = linkService(kLogout);
+    NSLog(@"url : %@" ,url);
+    NSLog(@"parameter : %@" , parameter);
+    
+    [self.sessionManager POST:url
+                   parameters:parameter
+                     progress:nil
+                      success:
+     ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         [self handleResponseData:responseObject andSuccess:success];
+     }
+                      failure:
+     ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         [self handleResponseError:error andFailure:failure];
+     }];
+}
+
 @end

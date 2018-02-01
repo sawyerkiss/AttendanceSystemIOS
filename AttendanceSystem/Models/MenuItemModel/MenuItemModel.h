@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSUInteger, MenuItemType) {
+    MenuItemType_Attendance,
+    MenuItemType_SendAbsenceRequest,
     MenuItemType_CourseList,
     MenuItemType_SendFeedback,
     MenuItemType_Schedules,

@@ -18,6 +18,19 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    
+    UIViewController* vc ;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    if([[UserManager userCenter] getCurrentUserToken].length > 0)
+        vc = [storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+    else
+        vc = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = vc;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

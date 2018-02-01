@@ -62,7 +62,7 @@
         self.activityIndicatorView = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeBallClipRotatePulse tintColor:[UIColor whiteColor] size:37.0f];
         [self.activityIndicatorView startAnimating];
         
-        MBProgressHUD *hub = [[MBProgressHUD alloc] initWithView:view.window];
+        MBProgressHUD *hub = [[MBProgressHUD alloc] initWithView:view];
         hub.mode = MBProgressHUDModeCustomView;
         [hub setCustomView:self.activityIndicatorView];
         hub.bezelView.color = [UIColor darkGrayColor];

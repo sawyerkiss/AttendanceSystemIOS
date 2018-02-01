@@ -21,5 +21,7 @@ typedef void(^AlertCompletion)(NSInteger buttonIndex);
                           completion:(AlertCompletion _Nullable)completion
                    cancelButtonTitle:(NSString* _Nullable)cancelTitle
                     otherButtonTitle:(NSString* _Nullable)otherTitle;
+- (void)showLoadingView;
+- (void)hideLoadingView;
 @end
 

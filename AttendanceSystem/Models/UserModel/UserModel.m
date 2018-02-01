@@ -33,7 +33,7 @@
 - (void)encodeWithCoder:(NSCoder *)encoder {
     [encoder encodeObject:self.userId forKey:kUserId];
     [encoder encodeObject:self.role_id forKey:kUserRoleId];
-    [encoder encodeObject:self.token forKey:kUserToken];
+    [encoder encodeObject:self.avatar forKey:kUserAvatar];
     [encoder encodeObject:self.first_name forKey:kUserFirstName];
     [encoder encodeObject:self.last_name forKey:kUserLastName];
     [encoder encodeObject:self.phone forKey:kUserPhone];
@@ -48,7 +48,7 @@
         self.first_name = [decoder decodeObjectForKey:kUserFirstName];
         self.last_name = [decoder decodeObjectForKey:kUserLastName];
         self.phone = [decoder decodeObjectForKey:kUserPhone];
-        self.token = [decoder decodeObjectForKey:kUserToken];
+        self.avatar = [decoder decodeObjectForKey:kUserAvatar];
     }
     return self;
 }

@@ -2,7 +2,7 @@
 //  MenuViewController.m
 //  AttendanceSystem
 //
-//  Created by TamTran on 1/24/18.
+//  Created by TrungTruc on 1/24/18.
 //  Copyright © 2018 TrungTruc. All rights reserved.
 //
 
@@ -10,6 +10,10 @@
 #import "MenuItemModel.h"
 #import <REFrostedViewController.h>
 #import "UIColor+Categories.h"
+#import "ConnectionManager.h"
+#import "LoadingManager.h"
+#import "LoginViewController.h"
+#import "UIImageViewLoading.h"
 
 static CGFloat const kCellHeightRatio = 60.0f/667.0f;
 static CGFloat kCellHeight;
@@ -19,9 +23,11 @@ static CGFloat kCellHeight;
 @property (weak, nonatomic) IBOutlet UIButton *btnProfile;
 @property (weak, nonatomic) IBOutlet UILabel *lblProfileName;
 @property (weak, nonatomic) IBOutlet UITableView *tableMenu;
+@property (weak, nonatomic) IBOutlet UIImageViewLoading *imgProfile;
 
 @property (nonatomic) NSArray *items;
 @property (nonatomic) NSInteger itemIndexSelected;
+@property (nonatomic) REFrostedViewController* homeController;
 
 @end
 
@@ -41,7 +47,14 @@ static CGFloat kCellHeight;
     
     kCellHeight = SCREEN_HEIGHT * kCellHeightRatio;
     
-    self.lblProfileName.text = @"";
+    self.lblProfileName.text = [[UserManager userCenter] getProfileName];
+    
+    self.imgProfile.layer.masksToBounds = YES;
+    self.imgProfile.layer.cornerRadius = self.imgProfile.bounds.size.width/2;
+    
+    UserModel* user = [[UserManager userCenter] getCurrentUser];
+    [self.imgProfile setImageWithImageLink:user.avatar andPlaceholderImageName:@"icon_user"];
+    
     self.tableMenu.rowHeight = UITableViewAutomaticDimension;
     self.tableMenu.estimatedRowHeight = 100;
     self.tableMenu.backgroundColor = [UIColor colorWithHexString:MAIN_BLUE_COLOR];
@@ -50,13 +63,13 @@ static CGFloat kCellHeight;
     self.tableMenu.dataSource = self;
     
     MenuItemModel *courselist = [[MenuItemModel alloc] initWithName:@"Course List"
-                                                                 type:MenuItemType_CourseList
-                                                    imageNameSelected:@"icon_nav_menu"
-                                                  imageNameUnselected:@"icon_nav_menu"];
+                                                               type:MenuItemType_CourseList
+                                                  imageNameSelected:@"icon_nav_menu"
+                                                imageNameUnselected:@"icon_nav_menu"];
     MenuItemModel *sendFeeback = [[MenuItemModel alloc] initWithName:@"Send Feedback"
-                                                                    type:MenuItemType_SendFeedback
-                                                       imageNameSelected:@"icon_nav_menu"
-                                                     imageNameUnselected:@"icon_nav_menu"];
+                                                                type:MenuItemType_SendFeedback
+                                                   imageNameSelected:@"icon_nav_menu"
+                                                 imageNameUnselected:@"icon_nav_menu"];
     MenuItemModel *schedules = [[MenuItemModel alloc] initWithName:@"Schedules"
                                                               type:MenuItemType_Schedules
                                                  imageNameSelected:@"icon_nav_menu"
@@ -66,20 +79,41 @@ static CGFloat kCellHeight;
                                                imageNameSelected:@"icon_nav_menu"
                                              imageNameUnselected:@"icon_nav_menu"];
     MenuItemModel *about = [[MenuItemModel alloc] initWithName:@"About"
-                                                                   type:MenuItemType_About
-                                                      imageNameSelected:@"icon_nav_menu"
-                                                    imageNameUnselected:@"icon_nav_menu"];
+                                                          type:MenuItemType_About
+                                             imageNameSelected:@"icon_nav_menu"
+                                           imageNameUnselected:@"icon_nav_menu"];
     MenuItemModel *logout = [[MenuItemModel alloc] initWithName:@"Logout"
-                                                                   type:MenuItemType_Logout
-                                                      imageNameSelected:@"icon_nav_menu"
-                                                    imageNameUnselected:@"icon_nav_menu"];
+                                                           type:MenuItemType_Logout
+                                              imageNameSelected:@"icon_nav_menu"
+                                            imageNameUnselected:@"icon_nav_menu"];
     
-    self.items = @[courselist,
-                   sendFeeback,
-                   schedules,
-                   account,
-                   about,
-                   logout];
+    MenuItemModel *attendance = [[MenuItemModel alloc] initWithName:@"Attendance"
+                                                               type:MenuItemType_Attendance
+                                                  imageNameSelected:@"icon_nav_menu"
+                                                imageNameUnselected:@"icon_nav_menu"];
+    
+    MenuItemModel *sendAbsenceRequest = [[MenuItemModel alloc] initWithName:@"Send Absence Request"
+                                                                       type:MenuItemType_SendAbsenceRequest
+                                                          imageNameSelected:@"icon_nav_menu"
+                                                        imageNameUnselected:@"icon_nav_menu"];
+    
+    if([[[UserManager userCenter] getCurrentUser].role_id integerValue] == STUDENT) {
+        self.items = @[attendance,
+                       sendFeeback,
+                       sendAbsenceRequest,
+                       schedules,
+                       account,
+                       about,
+                       logout];
+    }
+    else {
+        self.items = @[courselist,
+                       sendFeeback,
+                       schedules,
+                       account,
+                       about,
+                       logout];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -124,16 +158,21 @@ static CGFloat kCellHeight;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.frostedViewController hideMenuViewController];
+    self.homeController = self.frostedViewController;
     self.itemIndexSelected = indexPath.row;
     [tableView reloadData];
     MenuItemModel *item = [self.items objectAtIndex:indexPath.row];
     switch (item.type) {
+        case MenuItemType_Attendance :
+            break;
+        case MenuItemType_SendAbsenceRequest:
+            break ;
         case MenuItemType_CourseList:
             
             break;
             
         case MenuItemType_SendFeedback:
-           
+            
             break;
             
         case MenuItemType_Schedules:
@@ -144,11 +183,43 @@ static CGFloat kCellHeight;
         case MenuItemType_About:
             break ;
         case MenuItemType_Logout:
+            [self showLogoutAlert];
             break;
         default:
             break;
     }
     self.itemIndexSelected = 0;
+}
+
+-(void)showLogoutAlert {
+    [self showAlertQuestionWithMessage:@"Would you like to logout of your account?"
+                            completion:
+     ^(NSInteger buttonIndex) {
+         if (buttonIndex == 1) {
+             //             [self showLoadingView];
+             [[ConnectionManager connectionDefault] logout:
+              ^(id  _Nonnull responseObject) {
+                  //                  [self hideLoadingView];
+                  [[UserManager userCenter] setCurrentUserToken:@""];
+                  [self gotoSignInScreen];
+                  
+              }
+                                                andFailure:
+              ^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject) {
+                  [self hideLoadingView];
+                  if ([errorMessage length] > 0) {
+                      [self showAlertNoticeWithMessage:errorMessage completion:nil];
+                  }
+              }];
+         }
+     }];
+}
+
+- (void)gotoSignInScreen {
+    [self.homeController hideMenuViewController];
+    [(UINavigationController*)self.homeController.contentViewController dismissViewControllerAnimated:FALSE completion:nil];
+    LoginViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    [UIApplication sharedApplication].keyWindow.rootViewController = vc;
 }
 
 @end

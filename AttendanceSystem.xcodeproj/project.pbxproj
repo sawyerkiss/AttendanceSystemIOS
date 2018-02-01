@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3764ED98996BC49C2ECBFC46 /* libPods-AttendanceSystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7402B97F04A6EA96585AFF2A /* libPods-AttendanceSystem.a */; };
 		611C31AE94B29395C3D05933 /* libPods-AttendanceSystemUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0BC18639B8DCFEEC977D258 /* libPods-AttendanceSystemUITests.a */; };
+		F81B932C2023551400FC99D8 /* UIImageViewLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = F81B932B2023551400FC99D8 /* UIImageViewLoading.m */; };
 		F82BBCC42018785E00CA4E72 /* LoadingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F82BBCBB2018785E00CA4E72 /* LoadingManager.m */; };
 		F82BBCC52018785E00CA4E72 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F82BBCBE2018785E00CA4E72 /* TPKeyboardAvoidingScrollView.m */; };
 		F82BBCC62018785E00CA4E72 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F82BBCC02018785E00CA4E72 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
@@ -64,6 +65,8 @@
 		D0BC18639B8DCFEEC977D258 /* libPods-AttendanceSystemUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AttendanceSystemUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E88A195514A27DEBB6B03A8C /* Pods-AttendanceSystemTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AttendanceSystemTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AttendanceSystemTests/Pods-AttendanceSystemTests.release.xcconfig"; sourceTree = "<group>"; };
 		F28F35D568B759961A6E7842 /* Pods-AttendanceSystemUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AttendanceSystemUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AttendanceSystemUITests/Pods-AttendanceSystemUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F81B932A2023551400FC99D8 /* UIImageViewLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageViewLoading.h; sourceTree = "<group>"; };
+		F81B932B2023551400FC99D8 /* UIImageViewLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageViewLoading.m; sourceTree = "<group>"; };
 		F82BBCBA2018785E00CA4E72 /* LoadingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingManager.h; sourceTree = "<group>"; };
 		F82BBCBB2018785E00CA4E72 /* LoadingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingManager.m; sourceTree = "<group>"; };
 		F82BBCBD2018785E00CA4E72 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
@@ -170,6 +173,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F81B93292023551400FC99D8 /* UIImageViewLoading */ = {
+			isa = PBXGroup;
+			children = (
+				F81B932A2023551400FC99D8 /* UIImageViewLoading.h */,
+				F81B932B2023551400FC99D8 /* UIImageViewLoading.m */,
+			);
+			path = UIImageViewLoading;
+			sourceTree = "<group>";
+		};
 		F82BBCB82018785E00CA4E72 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +235,7 @@
 		F892F5F3201AD5B400092EA3 /* UICustom */ = {
 			isa = PBXGroup;
 			children = (
+				F81B93292023551400FC99D8 /* UIImageViewLoading */,
 				F892F5F4201AD5B400092EA3 /* CustomAlertView */,
 			);
 			path = UICustom;
@@ -455,7 +468,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0920;
-				ORGANIZATIONNAME = TamTran;
+				ORGANIZATIONNAME = TrungTruc;
 				TargetAttributes = {
 					F8FA796B20183BAA005D8677 = {
 						CreatedOnToolsVersion = 9.2;
@@ -690,6 +703,7 @@
 				F892F607201AE48200092EA3 /* UILabel+Categorites.m in Sources */,
 				F8C271CC2018E367002DA646 /* MenuViewController.m in Sources */,
 				F892F5F1201AD08700092EA3 /* ConnectionManager.m in Sources */,
+				F81B932C2023551400FC99D8 /* UIImageViewLoading.m in Sources */,
 				F8FA797120183BAA005D8677 /* AppDelegate.m in Sources */,
 				F89B06102019C7D000CAC8FF /* MenuItemModel.m in Sources */,
 			);

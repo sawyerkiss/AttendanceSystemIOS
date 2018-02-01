@@ -31,4 +31,10 @@ typedef enum {
 } ErrorType;
 
 
+typedef enum {
+    STUDENT = 1,
+    TEACHER = 2,
+    STAFF = 3
+} UserRole;
+
 #endif /* Enums_h */
