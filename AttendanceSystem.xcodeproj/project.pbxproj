@@ -15,6 +15,8 @@
 		F82BBCC62018785E00CA4E72 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F82BBCC02018785E00CA4E72 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
 		F82BBCC72018785E00CA4E72 /* UIAlertController+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = F82BBCC32018785E00CA4E72 /* UIAlertController+Blocks.m */; };
 		F82BBCCA20188D5D00CA4E72 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F82BBCC920188D5D00CA4E72 /* LoginViewController.m */; };
+		F849A203202359080042A422 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F849A202202359080042A422 /* ProfileViewController.m */; };
+		F849A2062023593C0042A422 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F849A2052023593C0042A422 /* AboutViewController.m */; };
 		F892F5F1201AD08700092EA3 /* ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F892F5F0201AD08600092EA3 /* ConnectionManager.m */; };
 		F892F5F7201AD5B500092EA3 /* CustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F892F5F6201AD5B400092EA3 /* CustomAlertView.m */; };
 		F892F5FB201AD93700092EA3 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F892F5FA201AD93700092EA3 /* UserManager.m */; };
@@ -77,6 +79,10 @@
 		F82BBCC32018785E00CA4E72 /* UIAlertController+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Blocks.m"; sourceTree = "<group>"; };
 		F82BBCC820188D5D00CA4E72 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		F82BBCC920188D5D00CA4E72 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		F849A201202359080042A422 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		F849A202202359080042A422 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		F849A2042023593C0042A422 /* AboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		F849A2052023593C0042A422 /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		F892F5EF201AD08600092EA3 /* ConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionManager.h; sourceTree = "<group>"; };
 		F892F5F0201AD08600092EA3 /* ConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionManager.m; sourceTree = "<group>"; };
 		F892F5F2201AD17700092EA3 /* Enums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enums.h; sourceTree = "<group>"; };
@@ -374,6 +380,10 @@
 				F89B060820198E6100CAC8FF /* PrefixHeader.pch */,
 				F89B06092019946800CAC8FF /* CustomNavigationController.h */,
 				F89B060A2019946800CAC8FF /* CustomNavigationController.m */,
+				F849A201202359080042A422 /* ProfileViewController.h */,
+				F849A202202359080042A422 /* ProfileViewController.m */,
+				F849A2042023593C0042A422 /* AboutViewController.h */,
+				F849A2052023593C0042A422 /* AboutViewController.m */,
 			);
 			path = AttendanceSystem;
 			sourceTree = "<group>";
@@ -693,6 +703,7 @@
 				F82BBCC62018785E00CA4E72 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				F89B060620198D6000CAC8FF /* UIColor+Categories.m in Sources */,
 				F82BBCC52018785E00CA4E72 /* TPKeyboardAvoidingScrollView.m in Sources */,
+				F849A203202359080042A422 /* ProfileViewController.m in Sources */,
 				F892F5FF201AD93E00092EA3 /* UserModel.m in Sources */,
 				F8C271C62018E29D002DA646 /* HomeViewController.m in Sources */,
 				F892F603201AE04000092EA3 /* JsonBaseModel.m in Sources */,
@@ -706,6 +717,7 @@
 				F81B932C2023551400FC99D8 /* UIImageViewLoading.m in Sources */,
 				F8FA797120183BAA005D8677 /* AppDelegate.m in Sources */,
 				F89B06102019C7D000CAC8FF /* MenuItemModel.m in Sources */,
+				F849A2062023593C0042A422 /* AboutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -875,6 +887,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = AttendanceSystem/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.trungtruc.AttendanceSystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -894,6 +907,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = AttendanceSystem/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.trungtruc.AttendanceSystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";

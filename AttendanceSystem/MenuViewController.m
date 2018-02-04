@@ -14,6 +14,8 @@
 #import "LoadingManager.h"
 #import "LoginViewController.h"
 #import "UIImageViewLoading.h"
+#import "ProfileViewController.h"
+#import "AboutViewController.h"
 
 static CGFloat const kCellHeightRatio = 60.0f/667.0f;
 static CGFloat kCellHeight;
@@ -178,9 +180,16 @@ static CGFloat kCellHeight;
         case MenuItemType_Schedules:
             break;
             
-        case MenuItemType_Account:
+        case MenuItemType_Account: {
+            ProfileViewController* profile = [self.storyboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
+            [(UINavigationController*)self.frostedViewController.contentViewController pushViewController:profile animated:TRUE];
+        }
             break;
         case MenuItemType_About:
+        {
+            AboutViewController* profile = [self.storyboard instantiateViewControllerWithIdentifier:@"AboutViewController"];
+            [(UINavigationController*)self.frostedViewController.contentViewController pushViewController:profile animated:TRUE];
+        }
             break ;
         case MenuItemType_Logout:
             [self showLogoutAlert];
