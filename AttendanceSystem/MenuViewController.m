@@ -8,7 +8,7 @@
 
 #import "MenuViewController.h"
 #import "MenuItemModel.h"
-#import <REFrostedViewController.h>
+#import "REFrostedViewController.h"
 #import "UIColor+Categories.h"
 #import "ConnectionManager.h"
 #import "LoadingManager.h"
@@ -16,6 +16,8 @@
 #import "UIImageViewLoading.h"
 #import "ProfileViewController.h"
 #import "AboutViewController.h"
+#import "CourseListViewController.h"
+#import "AttendanceViewController.h"
 
 static CGFloat const kCellHeightRatio = 60.0f/667.0f;
 static CGFloat kCellHeight;
@@ -165,14 +167,18 @@ static CGFloat kCellHeight;
     [tableView reloadData];
     MenuItemModel *item = [self.items objectAtIndex:indexPath.row];
     switch (item.type) {
-        case MenuItemType_Attendance :
+        case MenuItemType_Attendance :{
+            AttendanceViewController* attendance = [self.storyboard instantiateViewControllerWithIdentifier:@"AttendanceViewController"];
+            [(UINavigationController*)self.frostedViewController.contentViewController pushViewController:attendance animated:TRUE];
             break;
+        }
         case MenuItemType_SendAbsenceRequest:
             break ;
-        case MenuItemType_CourseList:
-            
+        case MenuItemType_CourseList:{
+            CourseListViewController* courseList = [self.storyboard instantiateViewControllerWithIdentifier:@"CourseListViewController"];
+            [(UINavigationController*)self.frostedViewController.contentViewController pushViewController:courseList animated:TRUE];
             break;
-            
+        }
         case MenuItemType_SendFeedback:
             
             break;

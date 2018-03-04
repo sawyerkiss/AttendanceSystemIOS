@@ -7,7 +7,9 @@
 //
 
 #import "CustomNavigationController.h"
-#import <REFrostedViewController.h>
+#import "REFrostedViewController.h"
+#import "CourseListViewController.h"
+#import "AttendanceViewController.h"
 
 @interface CustomNavigationController ()
 
@@ -23,6 +25,17 @@
     [pan setEdges:UIRectEdgeLeft];
     [pan setDelegate:self];
     [self.view addGestureRecognizer:pan];
+    
+    NSInteger role = [[[UserManager userCenter] getCurrentUser].role_id integerValue];
+    
+    if(role == TEACHER) {
+         CourseListViewController* courseList = [self.storyboard instantiateViewControllerWithIdentifier:@"CourseListViewController"];
+        self.viewControllers = @[courseList];
+    }
+    else {
+        AttendanceViewController* attendance = [self.storyboard instantiateViewControllerWithIdentifier:@"AttendanceViewController"];
+        self.viewControllers = @[attendance];
+    }
 }
 
 #pragma mark Gesture recognizer

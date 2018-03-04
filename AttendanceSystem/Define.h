@@ -24,4 +24,6 @@
 #define TOKEN_INVALIE_MSG @"The token is invalid or expired";
 #define SERVER_ERROR_MSG @"Internal server error";
 
+#define HOST @"https://iteccyle8.herokuapp.com/";
+
 #endif /* Define_h */

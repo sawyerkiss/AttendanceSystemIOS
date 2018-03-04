@@ -13,6 +13,14 @@
 static NSString *const kLogin = @"authenticate/login";
 static NSString *const kLogout = @"authenticate/logout";
 static NSString *const kRegister = @"user";
+static NSString *const kTeachingCourseList = @"api/course/teaching";
+static NSString *const kStudyingCourseList = @"api/course/studying";
+static NSString *const kOpeningCourseListByTeacher = @"api/attendance/opening-by-teacher";
+static NSString *const kOpeningCourseListForStudent = @"api/attendance/opening-for-student";
+static NSString *const kRetrieveStudent = @"api/attendance/check-attendance";
+static NSString *const kAttendanceChecklist = @"api/check-attendance/check-list";
+static NSString *const kCheckDelegateCode = @"api/attendance/check-delegate-code";
+static NSString *const kGetDelegateCode = @"api/attendance/generate-delegate-code";
 
 //Header
 static NSString *kHeaderSourceHostKey = @"X-SOURCE-HOST";
@@ -246,6 +254,170 @@ NSString *linkService(NSString *subLink) {
     NSDictionary *parameter = @{@"token": token ? token : @""};
     
     NSString* url = linkService(kLogout);
+    NSLog(@"url : %@" ,url);
+    NSLog(@"parameter : %@" , parameter);
+    
+    [self.sessionManager POST:url
+                   parameters:parameter
+                     progress:nil
+                      success:
+     ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         [self handleResponseData:responseObject andSuccess:success];
+     }
+                      failure:
+     ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         [self handleResponseError:error andFailure:failure];
+     }];
+}
+
+- (void)getTeachingCourseList:(ConnectionComplete)success andFailure:(ConnectionFailure)failure {
+    NSString* token = [[UserManager userCenter] getCurrentUserToken];
+    NSDictionary *parameter = @{@"token": token ? token : @""};
+    
+    NSString* url = linkService(kTeachingCourseList);
+    NSLog(@"url : %@" ,url);
+    NSLog(@"parameter : %@" , parameter);
+    
+    [self.sessionManager POST:url
+                   parameters:parameter
+                     progress:nil
+                      success:
+     ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         [self handleResponseData:responseObject andSuccess:success];
+     }
+                      failure:
+     ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         [self handleResponseError:error andFailure:failure];
+     }];
+}
+
+- (void)getStudyingCourseList:(ConnectionComplete)success andFailure:(ConnectionFailure)failure {
+    NSString* token = [[UserManager userCenter] getCurrentUserToken];
+    NSDictionary *parameter = @{@"token": token ? token : @""};
+    
+    NSString* url = linkService(kStudyingCourseList);
+    NSLog(@"url : %@" ,url);
+    NSLog(@"parameter : %@" , parameter);
+    
+    [self.sessionManager POST:url
+                   parameters:parameter
+                     progress:nil
+                      success:
+     ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         [self handleResponseData:responseObject andSuccess:success];
+     }
+                      failure:
+     ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         [self handleResponseError:error andFailure:failure];
+     }];
+}
+
+- (void)getOpeningCourseByTeacher:(ConnectionComplete)success andFailure:(ConnectionFailure)failure {
+    NSString* token = [[UserManager userCenter] getCurrentUserToken];
+    NSString* userId = [[UserManager userCenter] getCurrentUser].userId;
+    NSDictionary *parameter = @{@"token": token ? token : @"",
+                                @"teacher_id": userId,
+                                @"isMobile":@1
+                                };
+    
+    NSString* url = linkService(kOpeningCourseListByTeacher);
+    NSLog(@"url : %@" ,url);
+    NSLog(@"parameter : %@" , parameter);
+    
+    [self.sessionManager POST:url
+                   parameters:parameter
+                     progress:nil
+                      success:
+     ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         [self handleResponseData:responseObject andSuccess:success];
+     }
+                      failure:
+     ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         [self handleResponseError:error andFailure:failure];
+     }];
+}
+
+- (void)getStudentCourseWithAttendance:(NSString *)attendanceId success:(ConnectionComplete)success andFailure:(ConnectionFailure)failure {
+    NSString* token = [[UserManager userCenter] getCurrentUserToken];
+    NSDictionary *parameter = @{@"token": token ? token : @"",
+                                @"attendance_id": attendanceId
+                                };
+    
+    NSString* url = linkService(kRetrieveStudent);
+    NSLog(@"url : %@" ,url);
+    NSLog(@"parameter : %@" , parameter);
+    
+    [self.sessionManager POST:url
+                   parameters:parameter
+                     progress:nil
+                      success:
+     ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         [self handleResponseData:responseObject andSuccess:success];
+     }
+                      failure:
+     ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         [self handleResponseError:error andFailure:failure];
+     }];
+}
+
+- (void)syncAttendanceChecklistWithStudentId:(NSString *)studenId
+                                attendanceId:(NSString *)attendanceId
+                              attendanceType:(NSString *)attendanceType
+                                     success:(ConnectionComplete)success
+                                  andFailure:(ConnectionFailure)failure {
+    NSString* token = [[UserManager userCenter] getCurrentUserToken];
+    NSDictionary *parameter = @{@"token": token ? token : @"",
+                                @"student_id":studenId,
+                                @"attendance_id": attendanceId,
+                                @"attendance_type":attendanceType
+                                };
+    
+    NSString* url = linkService(kAttendanceChecklist);
+    NSLog(@"url : %@" ,url);
+    NSLog(@"parameter : %@" , parameter);
+    
+    [self.sessionManager POST:url
+                   parameters:parameter
+                     progress:nil
+                      success:
+     ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         [self handleResponseData:responseObject andSuccess:success];
+     }
+                      failure:
+     ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         [self handleResponseError:error andFailure:failure];
+     }];
+}
+
+- (void)submitDelegateCodeWithCode:(NSString *)code success:(ConnectionComplete)success andFailure:(ConnectionFailure)failure {
+    NSString* token = [[UserManager userCenter] getCurrentUserToken];
+    NSDictionary *parameter = @{@"token": token ? token : @"",
+                                @"code": code
+                                };
+    
+    NSString* url = linkService(kCheckDelegateCode);
+    NSLog(@"url : %@" ,url);
+    NSLog(@"parameter : %@" , parameter);
+    
+    [self.sessionManager POST:url
+                   parameters:parameter
+                     progress:nil
+                      success:
+     ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         [self handleResponseData:responseObject andSuccess:success];
+     }
+                      failure:
+     ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         [self handleResponseError:error andFailure:failure];
+     }];
+}
+
+- (void)getDelegateCode:(ConnectionComplete)success andFailure:(ConnectionFailure)failure {
+    NSString* token = [[UserManager userCenter] getCurrentUserToken];
+    NSDictionary *parameter = @{@"token": token ? token : @""
+                                };
+    
+    NSString* url = linkService(kGetDelegateCode);
     NSLog(@"url : %@" ,url);
     NSLog(@"parameter : %@" , parameter);
     

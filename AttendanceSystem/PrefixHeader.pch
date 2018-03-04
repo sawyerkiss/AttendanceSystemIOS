@@ -17,4 +17,5 @@
 #import "UserModel.h"
 #import "UserManager.h"
 #import "ConnectionManager.h"
+#import "DBManager.h"
 #endif /* PrefixHeader_pch */

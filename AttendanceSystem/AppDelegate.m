@@ -31,6 +31,8 @@
     self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
     
+    [DBManager getSharedInstance];
+    
     return YES;
 }
 

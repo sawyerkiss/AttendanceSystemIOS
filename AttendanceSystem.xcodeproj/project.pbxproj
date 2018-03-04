@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3764ED98996BC49C2ECBFC46 /* libPods-AttendanceSystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7402B97F04A6EA96585AFF2A /* libPods-AttendanceSystem.a */; };
-		611C31AE94B29395C3D05933 /* libPods-AttendanceSystemUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0BC18639B8DCFEEC977D258 /* libPods-AttendanceSystemUITests.a */; };
+		0FECE49D307B68A64C2FD2C4 /* Pods_AttendanceSystemUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69081173C1EFFE53FF71640C /* Pods_AttendanceSystemUITests.framework */; };
+		13CE545DB2A9FCADFC58BA65 /* Pods_AttendanceSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0E52018084815B1C98759B4 /* Pods_AttendanceSystem.framework */; };
+		BB0F8F6CE7DAAB46FF81AA43 /* Pods_AttendanceSystemTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3841E73DCC1615074B2D20E1 /* Pods_AttendanceSystemTests.framework */; };
 		F81B932C2023551400FC99D8 /* UIImageViewLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = F81B932B2023551400FC99D8 /* UIImageViewLoading.m */; };
 		F82BBCC42018785E00CA4E72 /* LoadingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F82BBCBB2018785E00CA4E72 /* LoadingManager.m */; };
 		F82BBCC52018785E00CA4E72 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F82BBCBE2018785E00CA4E72 /* TPKeyboardAvoidingScrollView.m */; };
@@ -17,6 +18,9 @@
 		F82BBCCA20188D5D00CA4E72 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F82BBCC920188D5D00CA4E72 /* LoginViewController.m */; };
 		F849A203202359080042A422 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F849A202202359080042A422 /* ProfileViewController.m */; };
 		F849A2062023593C0042A422 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F849A2052023593C0042A422 /* AboutViewController.m */; };
+		F85B6C42204848AD0098D64A /* SessionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F85B6C40204848AD0098D64A /* SessionViewCell.m */; };
+		F85B6C43204848AD0098D64A /* SessionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F85B6C41204848AD0098D64A /* SessionViewCell.xib */; };
+		F871ACAC204652BB009E04BB /* AttendanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F871ACAB204652BB009E04BB /* AttendanceViewController.m */; };
 		F892F5F1201AD08700092EA3 /* ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F892F5F0201AD08600092EA3 /* ConnectionManager.m */; };
 		F892F5F7201AD5B500092EA3 /* CustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F892F5F6201AD5B400092EA3 /* CustomAlertView.m */; };
 		F892F5FB201AD93700092EA3 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F892F5FA201AD93700092EA3 /* UserManager.m */; };
@@ -26,9 +30,16 @@
 		F89B060620198D6000CAC8FF /* UIColor+Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = F89B060520198D5F00CAC8FF /* UIColor+Categories.m */; };
 		F89B060B2019946800CAC8FF /* CustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F89B060A2019946800CAC8FF /* CustomNavigationController.m */; };
 		F89B06102019C7D000CAC8FF /* MenuItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F89B060F2019C7CF00CAC8FF /* MenuItemModel.m */; };
+		F89B477C204A56A100B73447 /* StudentSessionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F89B477B204A56A100B73447 /* StudentSessionCell.m */; };
+		F89B477F204A5A0300B73447 /* StudentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F89B477E204A5A0200B73447 /* StudentModel.m */; };
+		F8B5B695204956ED00F3A960 /* SessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5B694204956ED00F3A960 /* SessionViewController.m */; };
 		F8C271C62018E29D002DA646 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C271C52018E29D002DA646 /* HomeViewController.m */; };
 		F8C271C92018E322002DA646 /* CourseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C271C82018E322002DA646 /* CourseListViewController.m */; };
 		F8C271CC2018E367002DA646 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C271CB2018E367002DA646 /* MenuViewController.m */; };
+		F8DC6D25203D1A670031C923 /* CourseViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8DC6D24203D1A670031C923 /* CourseViewCell.m */; };
+		F8DC6D28203D4CF50031C923 /* CourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F8DC6D27203D4CF50031C923 /* CourseModel.m */; };
+		F8DC6D2A203D697C0031C923 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F8DC6D29203D697C0031C923 /* libsqlite3.tbd */; };
+		F8DC6D2D203D69A70031C923 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F8DC6D2C203D69A70031C923 /* DBManager.m */; };
 		F8FA797120183BAA005D8677 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F8FA797020183BAA005D8677 /* AppDelegate.m */; };
 		F8FA797420183BAA005D8677 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8FA797320183BAA005D8677 /* BaseViewController.m */; };
 		F8FA797720183BAA005D8677 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8FA797520183BAA005D8677 /* Main.storyboard */; };
@@ -37,7 +48,6 @@
 		F8FA797F20183BAA005D8677 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F8FA797E20183BAA005D8677 /* main.m */; };
 		F8FA798920183BAA005D8677 /* AttendanceSystemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F8FA798820183BAA005D8677 /* AttendanceSystemTests.m */; };
 		F8FA799420183BAA005D8677 /* AttendanceSystemUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F8FA799320183BAA005D8677 /* AttendanceSystemUITests.m */; };
-		FD0B1EF16D588051908CCCE7 /* libPods-AttendanceSystemTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83217C5A802AE1EC54EECC7B /* libPods-AttendanceSystemTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,12 +69,12 @@
 
 /* Begin PBXFileReference section */
 		12EF94E8FD5AD95141A90C4F /* Pods-AttendanceSystemTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AttendanceSystemTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AttendanceSystemTests/Pods-AttendanceSystemTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3841E73DCC1615074B2D20E1 /* Pods_AttendanceSystemTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AttendanceSystemTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AE03AF5901E47C18FFA0DEB /* Pods-AttendanceSystemUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AttendanceSystemUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AttendanceSystemUITests/Pods-AttendanceSystemUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		7402B97F04A6EA96585AFF2A /* libPods-AttendanceSystem.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AttendanceSystem.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		83217C5A802AE1EC54EECC7B /* libPods-AttendanceSystemTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AttendanceSystemTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		69081173C1EFFE53FF71640C /* Pods_AttendanceSystemUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AttendanceSystemUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		835046C900977DD4F5051CCC /* Pods-AttendanceSystem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AttendanceSystem.release.xcconfig"; path = "Pods/Target Support Files/Pods-AttendanceSystem/Pods-AttendanceSystem.release.xcconfig"; sourceTree = "<group>"; };
+		A0E52018084815B1C98759B4 /* Pods_AttendanceSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AttendanceSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D05C975D5E6AC62E746AF308 /* Pods-AttendanceSystem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AttendanceSystem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AttendanceSystem/Pods-AttendanceSystem.debug.xcconfig"; sourceTree = "<group>"; };
-		D0BC18639B8DCFEEC977D258 /* libPods-AttendanceSystemUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AttendanceSystemUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E88A195514A27DEBB6B03A8C /* Pods-AttendanceSystemTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AttendanceSystemTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AttendanceSystemTests/Pods-AttendanceSystemTests.release.xcconfig"; sourceTree = "<group>"; };
 		F28F35D568B759961A6E7842 /* Pods-AttendanceSystemUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AttendanceSystemUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AttendanceSystemUITests/Pods-AttendanceSystemUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F81B932A2023551400FC99D8 /* UIImageViewLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageViewLoading.h; sourceTree = "<group>"; };
@@ -83,6 +93,11 @@
 		F849A202202359080042A422 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		F849A2042023593C0042A422 /* AboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		F849A2052023593C0042A422 /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		F85B6C3F204848AD0098D64A /* SessionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SessionViewCell.h; sourceTree = "<group>"; };
+		F85B6C40204848AD0098D64A /* SessionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionViewCell.m; sourceTree = "<group>"; };
+		F85B6C41204848AD0098D64A /* SessionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionViewCell.xib; sourceTree = "<group>"; };
+		F871ACAA204652BB009E04BB /* AttendanceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttendanceViewController.h; sourceTree = "<group>"; };
+		F871ACAB204652BB009E04BB /* AttendanceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AttendanceViewController.m; sourceTree = "<group>"; };
 		F892F5EF201AD08600092EA3 /* ConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionManager.h; sourceTree = "<group>"; };
 		F892F5F0201AD08600092EA3 /* ConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionManager.m; sourceTree = "<group>"; };
 		F892F5F2201AD17700092EA3 /* Enums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enums.h; sourceTree = "<group>"; };
@@ -104,12 +119,25 @@
 		F89B060A2019946800CAC8FF /* CustomNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationController.m; sourceTree = "<group>"; };
 		F89B060E2019C7CF00CAC8FF /* MenuItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItemModel.h; sourceTree = "<group>"; };
 		F89B060F2019C7CF00CAC8FF /* MenuItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItemModel.m; sourceTree = "<group>"; };
+		F89B477A204A56A100B73447 /* StudentSessionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StudentSessionCell.h; sourceTree = "<group>"; };
+		F89B477B204A56A100B73447 /* StudentSessionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudentSessionCell.m; sourceTree = "<group>"; };
+		F89B477D204A5A0200B73447 /* StudentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StudentModel.h; sourceTree = "<group>"; };
+		F89B477E204A5A0200B73447 /* StudentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudentModel.m; sourceTree = "<group>"; };
+		F8B5B693204956ED00F3A960 /* SessionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SessionViewController.h; sourceTree = "<group>"; };
+		F8B5B694204956ED00F3A960 /* SessionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionViewController.m; sourceTree = "<group>"; };
 		F8C271C42018E29D002DA646 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		F8C271C52018E29D002DA646 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		F8C271C72018E322002DA646 /* CourseListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseListViewController.h; sourceTree = "<group>"; };
 		F8C271C82018E322002DA646 /* CourseListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseListViewController.m; sourceTree = "<group>"; };
 		F8C271CA2018E367002DA646 /* MenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		F8C271CB2018E367002DA646 /* MenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		F8DC6D23203D1A670031C923 /* CourseViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseViewCell.h; sourceTree = "<group>"; };
+		F8DC6D24203D1A670031C923 /* CourseViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseViewCell.m; sourceTree = "<group>"; };
+		F8DC6D26203D4CF50031C923 /* CourseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseModel.h; sourceTree = "<group>"; };
+		F8DC6D27203D4CF50031C923 /* CourseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseModel.m; sourceTree = "<group>"; };
+		F8DC6D29203D697C0031C923 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		F8DC6D2B203D69A70031C923 /* DBManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
+		F8DC6D2C203D69A70031C923 /* DBManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
 		F8FA796C20183BAA005D8677 /* AttendanceSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AttendanceSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8FA796F20183BAA005D8677 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F8FA797020183BAA005D8677 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -133,7 +161,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3764ED98996BC49C2ECBFC46 /* libPods-AttendanceSystem.a in Frameworks */,
+				F8DC6D2A203D697C0031C923 /* libsqlite3.tbd in Frameworks */,
+				13CE545DB2A9FCADFC58BA65 /* Pods_AttendanceSystem.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,7 +170,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD0B1EF16D588051908CCCE7 /* libPods-AttendanceSystemTests.a in Frameworks */,
+				BB0F8F6CE7DAAB46FF81AA43 /* Pods_AttendanceSystemTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,7 +178,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				611C31AE94B29395C3D05933 /* libPods-AttendanceSystemUITests.a in Frameworks */,
+				0FECE49D307B68A64C2FD2C4 /* Pods_AttendanceSystemUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,9 +201,10 @@
 		E64A52A59AD6581D8891F209 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7402B97F04A6EA96585AFF2A /* libPods-AttendanceSystem.a */,
-				83217C5A802AE1EC54EECC7B /* libPods-AttendanceSystemTests.a */,
-				D0BC18639B8DCFEEC977D258 /* libPods-AttendanceSystemUITests.a */,
+				F8DC6D29203D697C0031C923 /* libsqlite3.tbd */,
+				A0E52018084815B1C98759B4 /* Pods_AttendanceSystem.framework */,
+				3841E73DCC1615074B2D20E1 /* Pods_AttendanceSystemTests.framework */,
+				69081173C1EFFE53FF71640C /* Pods_AttendanceSystemUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -196,6 +226,8 @@
 				F82BBCB92018785E00CA4E72 /* LoadingManager */,
 				F82BBCBC2018785E00CA4E72 /* TPKeyboardAvoiding */,
 				F82BBCC12018785E00CA4E72 /* UIAlertController+Blocks */,
+				F8DC6D2B203D69A70031C923 /* DBManager.h */,
+				F8DC6D2C203D69A70031C923 /* DBManager.m */,
 			);
 			path = Libs;
 			sourceTree = "<group>";
@@ -227,6 +259,17 @@
 				F82BBCC32018785E00CA4E72 /* UIAlertController+Blocks.m */,
 			);
 			path = "UIAlertController+Blocks";
+			sourceTree = "<group>";
+		};
+		F871ACA920465294009E04BB /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F871ACAA204652BB009E04BB /* AttendanceViewController.h */,
+				F871ACAB204652BB009E04BB /* AttendanceViewController.m */,
+				F8B5B693204956ED00F3A960 /* SessionViewController.h */,
+				F8B5B694204956ED00F3A960 /* SessionViewController.m */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		F892F5EE201AD08600092EA3 /* ConnectionManager */ = {
@@ -316,6 +359,10 @@
 				F892F600201AE04000092EA3 /* JsonBaseModel */,
 				F892F5FC201AD93E00092EA3 /* UserModel */,
 				F89B060D2019C7CF00CAC8FF /* MenuItemModel */,
+				F8DC6D26203D4CF50031C923 /* CourseModel.h */,
+				F8DC6D27203D4CF50031C923 /* CourseModel.m */,
+				F89B477D204A5A0200B73447 /* StudentModel.h */,
+				F89B477E204A5A0200B73447 /* StudentModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -327,6 +374,20 @@
 				F89B060F2019C7CF00CAC8FF /* MenuItemModel.m */,
 			);
 			path = MenuItemModel;
+			sourceTree = "<group>";
+		};
+		F8DC6D22203D1A3C0031C923 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F8DC6D23203D1A670031C923 /* CourseViewCell.h */,
+				F8DC6D24203D1A670031C923 /* CourseViewCell.m */,
+				F85B6C3F204848AD0098D64A /* SessionViewCell.h */,
+				F85B6C40204848AD0098D64A /* SessionViewCell.m */,
+				F85B6C41204848AD0098D64A /* SessionViewCell.xib */,
+				F89B477A204A56A100B73447 /* StudentSessionCell.h */,
+				F89B477B204A56A100B73447 /* StudentSessionCell.m */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		F8FA796320183BA9005D8677 = {
@@ -354,6 +415,8 @@
 		F8FA796E20183BAA005D8677 /* AttendanceSystem */ = {
 			isa = PBXGroup;
 			children = (
+				F871ACA920465294009E04BB /* ViewController */,
+				F8DC6D22203D1A3C0031C923 /* Cell */,
 				F892F5F3201AD5B400092EA3 /* UICustom */,
 				F892F5F2201AD17700092EA3 /* Enums.h */,
 				F89B060C2019C7CF00CAC8FF /* Models */,
@@ -524,6 +587,7 @@
 				F8FA797C20183BAA005D8677 /* LaunchScreen.storyboard in Resources */,
 				F8FA797920183BAA005D8677 /* Assets.xcassets in Resources */,
 				F8FA797720183BAA005D8677 /* Main.storyboard in Resources */,
+				F85B6C43204848AD0098D64A /* SessionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,9 +662,26 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AttendanceSystem/Pods-AttendanceSystem-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/DGActivityIndicatorView/DGActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/JSONModel/JSONModel.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialControls/MaterialControls.framework",
+				"${BUILT_PRODUCTS_DIR}/REFrostedViewController/REFrostedViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DGActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSONModel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialControls.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/REFrostedViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -698,26 +779,34 @@
 				F892F5FB201AD93700092EA3 /* UserManager.m in Sources */,
 				F82BBCCA20188D5D00CA4E72 /* LoginViewController.m in Sources */,
 				F8C271C92018E322002DA646 /* CourseListViewController.m in Sources */,
+				F85B6C42204848AD0098D64A /* SessionViewCell.m in Sources */,
 				F82BBCC72018785E00CA4E72 /* UIAlertController+Blocks.m in Sources */,
 				F82BBCC42018785E00CA4E72 /* LoadingManager.m in Sources */,
 				F82BBCC62018785E00CA4E72 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				F89B060620198D6000CAC8FF /* UIColor+Categories.m in Sources */,
 				F82BBCC52018785E00CA4E72 /* TPKeyboardAvoidingScrollView.m in Sources */,
+				F89B477F204A5A0300B73447 /* StudentModel.m in Sources */,
 				F849A203202359080042A422 /* ProfileViewController.m in Sources */,
+				F89B477C204A56A100B73447 /* StudentSessionCell.m in Sources */,
 				F892F5FF201AD93E00092EA3 /* UserModel.m in Sources */,
 				F8C271C62018E29D002DA646 /* HomeViewController.m in Sources */,
+				F8B5B695204956ED00F3A960 /* SessionViewController.m in Sources */,
+				F871ACAC204652BB009E04BB /* AttendanceViewController.m in Sources */,
 				F892F603201AE04000092EA3 /* JsonBaseModel.m in Sources */,
 				F8FA797420183BAA005D8677 /* BaseViewController.m in Sources */,
 				F8FA797F20183BAA005D8677 /* main.m in Sources */,
 				F892F5F7201AD5B500092EA3 /* CustomAlertView.m in Sources */,
 				F89B060B2019946800CAC8FF /* CustomNavigationController.m in Sources */,
 				F892F607201AE48200092EA3 /* UILabel+Categorites.m in Sources */,
+				F8DC6D28203D4CF50031C923 /* CourseModel.m in Sources */,
 				F8C271CC2018E367002DA646 /* MenuViewController.m in Sources */,
 				F892F5F1201AD08700092EA3 /* ConnectionManager.m in Sources */,
 				F81B932C2023551400FC99D8 /* UIImageViewLoading.m in Sources */,
 				F8FA797120183BAA005D8677 /* AppDelegate.m in Sources */,
 				F89B06102019C7D000CAC8FF /* MenuItemModel.m in Sources */,
 				F849A2062023593C0042A422 /* AboutViewController.m in Sources */,
+				F8DC6D25203D1A670031C923 /* CourseViewCell.m in Sources */,
+				F8DC6D2D203D69A70031C923 /* DBManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

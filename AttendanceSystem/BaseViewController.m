@@ -11,6 +11,7 @@
 #import "LoadingManager.h"
 #import "UIColor+Categories.h"
 #import "CustomAlertView.h"
+#import "AttendanceViewController.h"
 
 static BOOL isAlertDisplayed = NO;
 
@@ -130,7 +131,15 @@ static BOOL isAlertDisplayed = NO;
         self.btnLeft.frame = CGRectMake(0, 0, 44, 44);
         [self.btnLeft addTarget:self action:@selector(tappedAtLeftButton:) forControlEvents:UIControlEventTouchUpInside];
         NSString *leftImageName = @"";
-        if ([self isKindOfClass:[CourseListViewController class]]) {
+        
+        NSInteger role = [[[UserManager userCenter] getCurrentUser].role_id integerValue];
+        BOOL isMenuScreen ;
+        if(role == TEACHER)
+            isMenuScreen = [self isKindOfClass:[CourseListViewController class]];
+        else
+            isMenuScreen = [self isKindOfClass:[AttendanceViewController class]];
+                            
+        if (isMenuScreen) {
             leftImageName = @"icon_nav_menu";
         }
         else
