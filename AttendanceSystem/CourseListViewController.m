@@ -115,10 +115,38 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     CourseModel* course = [self.courseList objectAtIndex:indexPath.row];
+    
     if(course.attendance_id && [course.attendance_id isEqualToString:@"0"])
     {
-        
+        [self showAlertQuestionWithMessage:@"Create New Course" completion:^(NSInteger buttonIndex) {
+            if(buttonIndex == 1) {
+                [self showLoadingView];
+                [[ConnectionManager connectionDefault] createAttendanceCourse:course success:^(id  _Nonnull responseObject) {
+                    [self hideLoadingView];
+                    
+                    if([responseObject[@"result"] isEqualToString:@"failure"])
+                    {
+                        NSString* error = responseObject[@"message"];
+                        [self showAlertNoticeWithMessage:error completion:nil];
+                        return;
+                    }
+                    
+                    course.attendance_id = responseObject[@"attendance_id"];
+                    AttendanceViewController* attendance = [self.storyboard instantiateViewControllerWithIdentifier:@"AttendanceViewController"];
+                    attendance.course = course;
+                    [(UINavigationController*)self.frostedViewController.contentViewController pushViewController:attendance animated:TRUE];
+                    
+                } andFailure:^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject) {
+                    [self hideLoadingView];
+                    [self showAlertNoticeWithMessage:errorMessage completion:nil];
+                }];
+            }
+            else {
+                
+            }
+        } cancelButtonTitle:@"No" otherButtonTitle:@"Yes"];
     }
     else {
         if(course.attendance_id) {

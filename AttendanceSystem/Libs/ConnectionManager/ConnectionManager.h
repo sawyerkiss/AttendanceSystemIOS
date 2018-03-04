@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CourseModel.h"
 
 OS_ASSUME_NONNULL_BEGIN
 
@@ -56,5 +57,13 @@ typedef void(^ConnectionFailure)(ErrorType errorType, NSString * _Nonnull errorM
 - (void)getDelegateCode:(ConnectionComplete _Nullable)success
              andFailure:(ConnectionFailure _Nullable)failure;
 
+- (void)createAttendanceCourse:(CourseModel*)course success:(ConnectionComplete _Nullable)success
+andFailure:(ConnectionFailure _Nullable)failure;
+
+- (void)finishAttendanceCourseWithId:(NSString*)attendance success:(ConnectionComplete _Nullable)success
+                           andFailure:(ConnectionFailure _Nullable)failure;
+
+- (void)cancelAttendanceCourseWithId:(NSString*)attendance success:(ConnectionComplete _Nullable)success
+                          andFailure:(ConnectionFailure _Nullable)failure;
 @end
 OS_ASSUME_NONNULL_END

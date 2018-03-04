@@ -124,10 +124,35 @@
 
 - (IBAction)didTouchCancelButton:(id)sender {
     
+    [self showAlertQuestionWithMessage:@"Delete current attendance ?" completion:^(NSInteger buttonIndex) {
+        if(buttonIndex == 1) {
+            [self showLoadingView];
+            [[ConnectionManager connectionDefault] cancelAttendanceCourseWithId:self.course.attendance_id success:^(id  _Nonnull responseObject) {
+                [self hideLoadingView];
+                [self tappedAtLeftButton:nil];
+            } andFailure:^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject) {
+                [self hideLoadingView];
+                [self showAlertNoticeWithMessage:errorMessage completion:nil];
+            }];
+        }
+    } cancelButtonTitle:@"No" otherButtonTitle:@"Yes"];
+    
 }
+
 
 - (IBAction)didTouchFinishButton:(id)sender {
     
+    [self showAlertQuestionWithMessage:@"Finish current attendance ?" completion:^(NSInteger buttonIndex) {
+        if(buttonIndex == 1) {
+            [self showLoadingView];
+            [[ConnectionManager connectionDefault] finishAttendanceCourseWithId:self.course.attendance_id success:^(id  _Nonnull responseObject) {
+                [self hideLoadingView];
+            } andFailure:^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject) {
+                [self hideLoadingView];
+                [self showAlertNoticeWithMessage:errorMessage completion:nil];
+            }];
+        }
+    } cancelButtonTitle:@"No" otherButtonTitle:@"Yes"];
 }
 
 - (void)setSocket {
