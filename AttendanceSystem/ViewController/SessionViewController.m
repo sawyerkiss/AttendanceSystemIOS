@@ -196,4 +196,17 @@ typedef enum {
     }
 }
 
+- (void)tappedAtRightButton:(id)sender {
+    [self showLoadingView];
+    
+    [[ConnectionManager connectionDefault] getDelegateCode:self.course success:^(id  _Nonnull responseObject) {
+         [self hideLoadingView];
+        [self showAlertNoticeWithMessage:[NSString stringWithFormat:@"Delegate code : %@",responseObject[@"code"]] completion:nil];
+    } andFailure:^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject) {
+        [self hideLoadingView];
+        [self showAlertNoticeWithMessage:errorMessage completion:nil];
+    }];
+    
+}
+
 @end

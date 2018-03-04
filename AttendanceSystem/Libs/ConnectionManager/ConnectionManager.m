@@ -414,9 +414,11 @@ NSString *linkService(NSString *subLink) {
      }];
 }
 
-- (void)getDelegateCode:(ConnectionComplete)success andFailure:(ConnectionFailure)failure {
+- (void)getDelegateCode:(CourseModel*)course success:(ConnectionComplete)success andFailure:(ConnectionFailure)failure {
     NSString* token = [[UserManager userCenter] getCurrentUserToken];
-    NSDictionary *parameter = @{@"token": token ? token : @""
+    NSDictionary *parameter = @{@"token": token ? token : @"",
+                                @"class_id":course.classId,
+                                @"course_id":course.courseId
                                 };
     
     NSString* url = linkService(kGetDelegateCode);

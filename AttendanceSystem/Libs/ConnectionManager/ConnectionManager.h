@@ -54,7 +54,7 @@ typedef void(^ConnectionFailure)(ErrorType errorType, NSString * _Nonnull errorM
                            success:(ConnectionComplete _Nullable)success
                         andFailure:(ConnectionFailure _Nullable)failure;
 
-- (void)getDelegateCode:(ConnectionComplete _Nullable)success
+- (void)getDelegateCode:(CourseModel*)course success:(ConnectionComplete _Nullable)success
              andFailure:(ConnectionFailure _Nullable)failure;
 
 - (void)createAttendanceCourse:(CourseModel*)course success:(ConnectionComplete _Nullable)success
