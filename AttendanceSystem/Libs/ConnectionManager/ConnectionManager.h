@@ -74,5 +74,8 @@ andFailure:(ConnectionFailure _Nullable)failure;
 - (void)checkAttendanceByQRCodeWithURL:(NSString*)url success:(ConnectionComplete _Nullable)success
                      andFailure:(ConnectionFailure _Nullable)failure;
 
+- (void)requestForgetPasswordWithEmail:(NSString*)email success:(ConnectionComplete _Nullable)success
+                            andFailure:(ConnectionFailure _Nullable)failure;
+
 @end
 OS_ASSUME_NONNULL_END

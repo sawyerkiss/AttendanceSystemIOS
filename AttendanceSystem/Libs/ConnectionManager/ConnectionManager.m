@@ -26,6 +26,7 @@ static NSString *const kCancelAttendance = @"api/attendance/delete";
 static NSString *const kFinishAttendance = @"api/attendance/close";
 static NSString *const kChangePassword = @"api/user/change-password";
 static NSString *const kGenerateQRCode = @"api/check-attendance/qr-code/%@";
+static NSString *const kForgotPassword = @"authenticate/forgot-password";
 
 //Header
 static NSString *kHeaderSourceHostKey = @"X-SOURCE-HOST";
@@ -568,7 +569,26 @@ NSString *linkService(NSString *subLink) {
     
 }
 
-
-
+- (void)requestForgetPasswordWithEmail:(NSString *)email success:(ConnectionComplete)success andFailure:(ConnectionFailure)failure {
+    
+//    NSString* token = [[UserManager userCenter] getCurrentUserToken];
+    NSString* url = linkService(kForgotPassword);
+    
+    NSDictionary *parameter = @{@"email": email};
+    NSLog(@"url : %@" ,url);
+    
+    [self.sessionManager POST:url
+                   parameters:parameter
+                     progress:nil
+                      success:
+     ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         [self handleResponseData:responseObject andSuccess:success];
+     }
+                      failure:
+     ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         [self handleResponseError:error andFailure:failure];
+     }];
+    
+}
 
 @end

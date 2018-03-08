@@ -228,7 +228,7 @@
                                                        [self showAlertNoticeWithMessage:errorMessage completion:nil];
                                                    }];
     
-                                                   
+                                                   [alert dismissViewControllerAnimated:YES completion:nil];
                                                }];
     UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault
                                                    handler:^(UIAlertAction * action) {
