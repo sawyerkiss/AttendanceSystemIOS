@@ -65,5 +65,14 @@ andFailure:(ConnectionFailure _Nullable)failure;
 
 - (void)cancelAttendanceCourseWithId:(NSString*)attendance success:(ConnectionComplete _Nullable)success
                           andFailure:(ConnectionFailure _Nullable)failure;
+
+- (void)changePasswordWithCurrentPassword:(NSString*)current newPassword:(NSString*)newPassword success:(ConnectionComplete _Nullable)success
+                               andFailure:(ConnectionFailure _Nullable)failure;
+
+- (NSString*)getQRCodeText:(NSString*)attendanceId;
+
+- (void)checkAttendanceByQRCodeWithURL:(NSString*)url success:(ConnectionComplete _Nullable)success
+                     andFailure:(ConnectionFailure _Nullable)failure;
+
 @end
 OS_ASSUME_NONNULL_END

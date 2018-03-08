@@ -11,6 +11,8 @@
 #import "SessionViewCell.h"
 #import "SessionViewController.h"
 #import "REFrostedViewController.h"
+#import "QRCodeViewController.h"
+#import "ScanQRViewController.h"
 
 @import SocketIO;
 
@@ -106,9 +108,13 @@
 - (IBAction)didTouchQRCode:(id)sender {
     if(self.userRole == TEACHER) {
         [self.socket disconnect];
+        QRCodeViewController* qrCode = [self.storyboard instantiateViewControllerWithIdentifier:@"QRCodeViewController"];
+        qrCode.course = self.course;
+        [(UINavigationController*)self.frostedViewController.contentViewController pushViewController:qrCode animated:TRUE];
     }
     else {
-        
+        ScanQRViewController* qrCode = [self.storyboard instantiateViewControllerWithIdentifier:@"ScanQRViewController"];
+        [(UINavigationController*)self.frostedViewController.contentViewController pushViewController:qrCode animated:TRUE];
     }
 }
 

@@ -8,6 +8,8 @@
 
 #import "ProfileViewController.h"
 #import "UIImageViewLoading.h"
+#import "REFrostedViewController.h"
+#import "ChangePasswordViewController.h"
 
 @interface ProfileViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIImageViewLoading *imgProfile;
@@ -60,6 +62,12 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     return NO;
+}
+- (IBAction)didTouchChangePassword:(id)sender {
+    
+    ChangePasswordViewController* qrCode = [self.storyboard instantiateViewControllerWithIdentifier:@"ChangePasswordViewController"];
+    [(UINavigationController*)self.frostedViewController.contentViewController pushViewController:qrCode animated:TRUE];
+    
 }
 
 @end

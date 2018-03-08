@@ -33,6 +33,9 @@
 		F89B477C204A56A100B73447 /* StudentSessionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F89B477B204A56A100B73447 /* StudentSessionCell.m */; };
 		F89B477F204A5A0300B73447 /* StudentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F89B477E204A5A0200B73447 /* StudentModel.m */; };
 		F8B5B695204956ED00F3A960 /* SessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5B694204956ED00F3A960 /* SessionViewController.m */; };
+		F8BEE2102050DB480043A316 /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BEE20F2050DB480043A316 /* QRCodeViewController.m */; };
+		F8BEE2132050E3D20043A316 /* ScanQRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BEE2122050E3D20043A316 /* ScanQRViewController.m */; };
+		F8BEE2162051154C0043A316 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BEE2152051154C0043A316 /* ChangePasswordViewController.m */; };
 		F8C271C62018E29D002DA646 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C271C52018E29D002DA646 /* HomeViewController.m */; };
 		F8C271C92018E322002DA646 /* CourseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C271C82018E322002DA646 /* CourseListViewController.m */; };
 		F8C271CC2018E367002DA646 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C271CB2018E367002DA646 /* MenuViewController.m */; };
@@ -125,6 +128,12 @@
 		F89B477E204A5A0200B73447 /* StudentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudentModel.m; sourceTree = "<group>"; };
 		F8B5B693204956ED00F3A960 /* SessionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SessionViewController.h; sourceTree = "<group>"; };
 		F8B5B694204956ED00F3A960 /* SessionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionViewController.m; sourceTree = "<group>"; };
+		F8BEE20E2050DB480043A316 /* QRCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QRCodeViewController.h; sourceTree = "<group>"; };
+		F8BEE20F2050DB480043A316 /* QRCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QRCodeViewController.m; sourceTree = "<group>"; };
+		F8BEE2112050E3D20043A316 /* ScanQRViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanQRViewController.h; sourceTree = "<group>"; };
+		F8BEE2122050E3D20043A316 /* ScanQRViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanQRViewController.m; sourceTree = "<group>"; };
+		F8BEE2142051154C0043A316 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
+		F8BEE2152051154C0043A316 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
 		F8C271C42018E29D002DA646 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		F8C271C52018E29D002DA646 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		F8C271C72018E322002DA646 /* CourseListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseListViewController.h; sourceTree = "<group>"; };
@@ -268,6 +277,12 @@
 				F871ACAB204652BB009E04BB /* AttendanceViewController.m */,
 				F8B5B693204956ED00F3A960 /* SessionViewController.h */,
 				F8B5B694204956ED00F3A960 /* SessionViewController.m */,
+				F8BEE20E2050DB480043A316 /* QRCodeViewController.h */,
+				F8BEE20F2050DB480043A316 /* QRCodeViewController.m */,
+				F8BEE2112050E3D20043A316 /* ScanQRViewController.h */,
+				F8BEE2122050E3D20043A316 /* ScanQRViewController.m */,
+				F8BEE2142051154C0043A316 /* ChangePasswordViewController.h */,
+				F8BEE2152051154C0043A316 /* ChangePasswordViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -664,24 +679,30 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-AttendanceSystem/Pods-AttendanceSystem-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/BEMCheckBox/BEMCheckBox.framework",
 				"${BUILT_PRODUCTS_DIR}/DGActivityIndicatorView/DGActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/JSONModel/JSONModel.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MTBBarcodeScanner/MTBBarcodeScanner.framework",
 				"${BUILT_PRODUCTS_DIR}/MaterialControls/MaterialControls.framework",
 				"${BUILT_PRODUCTS_DIR}/REFrostedViewController/REFrostedViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/ZXingObjC/ZXingObjC.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BEMCheckBox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DGActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSONModel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MTBBarcodeScanner.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialControls.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/REFrostedViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZXingObjC.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -790,6 +811,7 @@
 				F89B477C204A56A100B73447 /* StudentSessionCell.m in Sources */,
 				F892F5FF201AD93E00092EA3 /* UserModel.m in Sources */,
 				F8C271C62018E29D002DA646 /* HomeViewController.m in Sources */,
+				F8BEE2102050DB480043A316 /* QRCodeViewController.m in Sources */,
 				F8B5B695204956ED00F3A960 /* SessionViewController.m in Sources */,
 				F871ACAC204652BB009E04BB /* AttendanceViewController.m in Sources */,
 				F892F603201AE04000092EA3 /* JsonBaseModel.m in Sources */,
@@ -803,8 +825,10 @@
 				F892F5F1201AD08700092EA3 /* ConnectionManager.m in Sources */,
 				F81B932C2023551400FC99D8 /* UIImageViewLoading.m in Sources */,
 				F8FA797120183BAA005D8677 /* AppDelegate.m in Sources */,
+				F8BEE2132050E3D20043A316 /* ScanQRViewController.m in Sources */,
 				F89B06102019C7D000CAC8FF /* MenuItemModel.m in Sources */,
 				F849A2062023593C0042A422 /* AboutViewController.m in Sources */,
+				F8BEE2162051154C0043A316 /* ChangePasswordViewController.m in Sources */,
 				F8DC6D25203D1A670031C923 /* CourseViewCell.m in Sources */,
 				F8DC6D2D203D69A70031C923 /* DBManager.m in Sources */,
 			);

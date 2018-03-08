@@ -23,5 +23,6 @@ typedef void(^AlertCompletion)(NSInteger buttonIndex);
                     otherButtonTitle:(NSString* _Nullable)otherTitle;
 - (void)showLoadingView;
 - (void)hideLoadingView;
+- (void)tappedAtLeftButton:(id _Nullable)sender;
 @end
 

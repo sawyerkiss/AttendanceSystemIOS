@@ -60,5 +60,7 @@
 		<string>fbapi20150629</string>
 		<string>fbshareextension</string>
 	</array>
+    <key>NSCameraUsageDescription</key>
+    <string>Can we access your camera in order to scan barcodes?</string>
 </dict>
 </plist>

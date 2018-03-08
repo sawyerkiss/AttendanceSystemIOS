@@ -13,6 +13,9 @@ pod 'MaterialControls', '~> 1.2.2'
 pod 'DGActivityIndicatorView'
 pod 'REFrostedViewController', '~> 2.4.8'
 pod 'Socket.IO-Client-Swift', '~> 13.1.0'
+pod 'MTBBarcodeScanner'
+pod 'BEMCheckBox'
+pod 'ZXingObjC', '~> 3.2.2'
   target 'AttendanceSystemTests' do
     inherit! :search_paths
     # Pods for testing
