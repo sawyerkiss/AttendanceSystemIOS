@@ -27,6 +27,7 @@ static NSString *const kFinishAttendance = @"api/attendance/close";
 static NSString *const kChangePassword = @"api/user/change-password";
 static NSString *const kGenerateQRCode = @"api/check-attendance/qr-code/%@";
 static NSString *const kForgotPassword = @"authenticate/forgot-password";
+static NSString *const kSendAbsenceRequest = @"api/absence-request/create";
 
 //Header
 static NSString *kHeaderSourceHostKey = @"X-SOURCE-HOST";
@@ -589,6 +590,36 @@ NSString *linkService(NSString *subLink) {
          [self handleResponseError:error andFailure:failure];
      }];
     
+}
+
+- (void)sendAbsenceRequestWithReason:(NSString *)reson
+                           startDate:(NSString *)startDate
+                             endDate:(NSString *)endDate
+                             success:(ConnectionComplete)success
+                          andFailure:(ConnectionFailure)failure {
+    NSString* url = linkService(kSendAbsenceRequest);
+    
+    NSString* token = [[UserManager userCenter] getCurrentUserToken];
+    
+    NSDictionary *parameter = @{@"token": token ? token : @"",
+                                @"reason" : reson,
+                                @"start_date" : startDate,
+                                @"end_date" :endDate
+                                };
+    NSLog(@"url : %@" ,url);
+    NSLog(@"parameter : %@",parameter);
+    
+    [self.sessionManager POST:url
+                   parameters:parameter
+                     progress:nil
+                      success:
+     ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         [self handleResponseData:responseObject andSuccess:success];
+     }
+                      failure:
+     ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         [self handleResponseError:error andFailure:failure];
+     }];
 }
 
 @end

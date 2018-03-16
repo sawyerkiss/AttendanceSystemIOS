@@ -29,6 +29,9 @@
     [super viewDidLoad];
     self.title = @"Scan QR Code";
     
+    self.viewRect.layer.borderColor = [UIColor grayColor].CGColor;
+    self.viewRect.layer.borderWidth = 1;
+    
     self.capture = [[ZXCapture alloc] init];
     self.capture.camera = self.capture.back;
     self.capture.focusMode = AVCaptureFocusModeContinuousAutoFocus;

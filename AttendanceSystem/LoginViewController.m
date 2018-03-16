@@ -37,7 +37,8 @@
     //    [self.tfEmail layoutIfNeeded];
     self.tfEmail.text = @"";
     self.tfPassword.text = @"";
-    self.tfPassword.secureTextEntry = TRUE;
+    [self.tfPassword setSecureTextEntry:TRUE];
+    [self.tfPassword layoutIfNeeded];
 }
 
 - (void)didReceiveMemoryWarning {

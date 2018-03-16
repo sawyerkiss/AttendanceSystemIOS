@@ -1130,7 +1130,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UuF-kA-pRv">
                                 <rect key="frame" x="57" y="213.5" width="260" height="260"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="UuF-kA-pRv" secondAttribute="height" multiplier="1:1" id="rtR-Md-lN1"/>
                                     <constraint firstAttribute="width" constant="260" id="tFo-n8-0g8"/>
@@ -1186,7 +1186,7 @@
                                                     <constraint firstAttribute="height" constant="50" id="IX2-Nz-leP"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="hint" value="Email"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="hint" value="Password"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="highlightColor">
                                                         <color key="value" red="0.08235294118" green="0.34901960780000002" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
@@ -1209,7 +1209,7 @@
                                                     <constraint firstAttribute="height" constant="50" id="6wJ-gR-8Ru"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="hint" value="Email"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="hint" value="Confirm Password"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="highlightColor">
                                                         <color key="value" red="0.08235294118" green="0.34901960780000002" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
@@ -1343,6 +1343,193 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jZv-4C-6mB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5279.1999999999998" y="-330.58470764617692"/>
+        </scene>
+        <!--Send Absence View Controller-->
+        <scene sceneID="9DL-8f-n0c">
+            <objects>
+                <viewController storyboardIdentifier="SendAbsenceViewController" id="f7l-Tc-5ZU" customClass="SendAbsenceViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1xr-9Y-sHa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OFQ-o7-Zcu" customClass="MDTextField">
+                                <rect key="frame" x="25" y="120" width="325" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="TYw-Hh-c2d"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="hint" value="Reason"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightColor">
+                                        <color key="value" red="0.08235294118" green="0.34901960780000002" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="errorColor">
+                                        <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="hintColor">
+                                        <color key="value" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="errorMessage" value="Empty"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srv-eK-ijI">
+                                <rect key="frame" x="25" y="220" width="325" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="dwW-rC-qse"/>
+                                </constraints>
+                                <state key="normal" title="From Date">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTouchCancelPassword:" destination="FwH-sF-ZkA" eventType="touchUpInside" id="mBM-a3-kOK"/>
+                                    <action selector="didTouchFromDate:" destination="f7l-Tc-5ZU" eventType="touchUpInside" id="V5u-07-96p"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuR-Zi-zu3">
+                                <rect key="frame" x="25" y="314" width="325" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="OUd-iq-mzl"/>
+                                </constraints>
+                                <state key="normal" title="To Date">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTouchCancelPassword:" destination="FwH-sF-ZkA" eventType="touchUpInside" id="Jgj-o4-fXd"/>
+                                    <action selector="didTouchToDate:" destination="f7l-Tc-5ZU" eventType="touchUpInside" id="DAM-tx-5pY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="odS-R1-AiU">
+                                <rect key="frame" x="25" y="408" width="325" height="44"/>
+                                <color key="backgroundColor" red="0.08235294118" green="0.34901960780000002" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="6ZS-D5-4h4"/>
+                                </constraints>
+                                <state key="normal" title="Send">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTouchChangePassword:" destination="FwH-sF-ZkA" eventType="touchUpInside" id="wz6-2g-2y0"/>
+                                    <action selector="didTouchSendButton:" destination="f7l-Tc-5ZU" eventType="touchUpInside" id="dei-Zm-mQM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="srv-eK-ijI" firstAttribute="top" secondItem="OFQ-o7-Zcu" secondAttribute="bottom" constant="50" id="5fI-Zk-b7a"/>
+                            <constraint firstItem="3qe-0c-dXn" firstAttribute="trailing" secondItem="OFQ-o7-Zcu" secondAttribute="trailing" constant="25" id="7TM-jJ-3A1"/>
+                            <constraint firstItem="zuR-Zi-zu3" firstAttribute="trailing" secondItem="srv-eK-ijI" secondAttribute="trailing" id="GUc-Hh-IKE"/>
+                            <constraint firstItem="odS-R1-AiU" firstAttribute="trailing" secondItem="zuR-Zi-zu3" secondAttribute="trailing" id="IzE-L6-maC"/>
+                            <constraint firstItem="srv-eK-ijI" firstAttribute="trailing" secondItem="OFQ-o7-Zcu" secondAttribute="trailing" id="P3d-ET-AW7"/>
+                            <constraint firstItem="OFQ-o7-Zcu" firstAttribute="top" secondItem="3qe-0c-dXn" secondAttribute="top" constant="100" id="h5s-Gz-MaF"/>
+                            <constraint firstItem="odS-R1-AiU" firstAttribute="top" secondItem="zuR-Zi-zu3" secondAttribute="bottom" constant="50" id="mgL-Ek-x7k"/>
+                            <constraint firstItem="OFQ-o7-Zcu" firstAttribute="leading" secondItem="3qe-0c-dXn" secondAttribute="leading" constant="25" id="ntX-kv-53U"/>
+                            <constraint firstItem="srv-eK-ijI" firstAttribute="leading" secondItem="OFQ-o7-Zcu" secondAttribute="leading" id="rv8-QP-2dh"/>
+                            <constraint firstItem="odS-R1-AiU" firstAttribute="leading" secondItem="zuR-Zi-zu3" secondAttribute="leading" id="swG-24-5NA"/>
+                            <constraint firstItem="zuR-Zi-zu3" firstAttribute="leading" secondItem="srv-eK-ijI" secondAttribute="leading" id="uqg-ep-zoX"/>
+                            <constraint firstItem="zuR-Zi-zu3" firstAttribute="top" secondItem="srv-eK-ijI" secondAttribute="bottom" constant="50" id="vQF-8F-0s2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3qe-0c-dXn"/>
+                    </view>
+                    <connections>
+                        <outlet property="buttonFromDate" destination="srv-eK-ijI" id="Rsj-JU-kSz"/>
+                        <outlet property="buttonToDate" destination="zuR-Zi-zu3" id="Hck-TU-aNz"/>
+                        <outlet property="tfReason" destination="OFQ-o7-Zcu" id="Cei-ry-Tlx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JJU-KM-MSp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6112.8000000000002" y="-331.48425787106447"/>
+        </scene>
+        <!--Date View Controller-->
+        <scene sceneID="gJi-9r-cgg">
+            <objects>
+                <viewController storyboardIdentifier="DateViewController" id="2U0-aS-5XC" customClass="DateViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AQJ-Bn-9yz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l0k-hI-MKr">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xaX-I5-3x7">
+                                <rect key="frame" x="20" y="218.5" width="335" height="250"/>
+                                <subviews>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="q28-sP-PUN">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="210"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="542797064.27938402">
+                                            <!--2018-03-15 08:57:44 +0000-->
+                                        </date>
+                                    </datePicker>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eke-3H-EU0">
+                                        <rect key="frame" x="0.0" y="210" width="117.5" height="40"/>
+                                        <color key="backgroundColor" red="0.08235294118" green="0.34901960780000002" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="67r-NY-r00"/>
+                                        </constraints>
+                                        <state key="normal" title="Done">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTouchDoneButton:" destination="2iI-BM-xnc" eventType="touchUpInside" id="EYi-Yb-AI3"/>
+                                            <action selector="didTouchDoneButton:" destination="2U0-aS-5XC" eventType="touchUpInside" id="tlf-9O-KID"/>
+                                        </connections>
+                                    </button>
+                                    <button contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6yJ-cz-7en">
+                                        <rect key="frame" x="217.5" y="210" width="117.5" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="7Pf-GP-OH5"/>
+                                        </constraints>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTouchCancelButton:" destination="2iI-BM-xnc" eventType="touchUpInside" id="S7N-5O-8si"/>
+                                            <action selector="didTouchCancelButton:" destination="2U0-aS-5XC" eventType="touchUpInside" id="dpV-pw-sON"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="eke-3H-EU0" firstAttribute="top" secondItem="q28-sP-PUN" secondAttribute="bottom" id="0QG-Nj-DNw"/>
+                                    <constraint firstAttribute="height" constant="250" id="1c1-Cn-aa6"/>
+                                    <constraint firstAttribute="bottom" secondItem="6yJ-cz-7en" secondAttribute="bottom" id="3eZ-Rp-iDr"/>
+                                    <constraint firstItem="6yJ-cz-7en" firstAttribute="leading" secondItem="eke-3H-EU0" secondAttribute="trailing" constant="100" id="7Di-39-uTw"/>
+                                    <constraint firstAttribute="bottom" secondItem="eke-3H-EU0" secondAttribute="bottom" id="OS2-Uh-Jg0"/>
+                                    <constraint firstItem="q28-sP-PUN" firstAttribute="top" secondItem="xaX-I5-3x7" secondAttribute="top" id="SNf-y4-Ach"/>
+                                    <constraint firstItem="eke-3H-EU0" firstAttribute="leading" secondItem="xaX-I5-3x7" secondAttribute="leading" id="fFn-Q0-baQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="6yJ-cz-7en" secondAttribute="trailing" id="gT0-mO-SD0"/>
+                                    <constraint firstItem="q28-sP-PUN" firstAttribute="leading" secondItem="xaX-I5-3x7" secondAttribute="leading" id="lsl-Wb-7Q8"/>
+                                    <constraint firstAttribute="trailing" secondItem="q28-sP-PUN" secondAttribute="trailing" id="vPt-A4-AVu"/>
+                                    <constraint firstItem="6yJ-cz-7en" firstAttribute="top" secondItem="q28-sP-PUN" secondAttribute="bottom" id="yru-IW-rz2"/>
+                                    <constraint firstItem="eke-3H-EU0" firstAttribute="width" secondItem="6yJ-cz-7en" secondAttribute="width" id="zOP-bk-Yjg"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="l0k-hI-MKr" firstAttribute="top" secondItem="e09-gs-agt" secondAttribute="top" id="Bkx-oc-fdO"/>
+                            <constraint firstItem="l0k-hI-MKr" firstAttribute="trailing" secondItem="e09-gs-agt" secondAttribute="trailing" id="H7S-ej-gFV"/>
+                            <constraint firstItem="l0k-hI-MKr" firstAttribute="bottom" secondItem="e09-gs-agt" secondAttribute="bottom" id="NMg-oQ-gx4"/>
+                            <constraint firstItem="l0k-hI-MKr" firstAttribute="leading" secondItem="e09-gs-agt" secondAttribute="leading" id="ZlN-1p-XWk"/>
+                            <constraint firstItem="xaX-I5-3x7" firstAttribute="centerY" secondItem="e09-gs-agt" secondAttribute="centerY" id="aAR-VJ-CUy"/>
+                            <constraint firstItem="e09-gs-agt" firstAttribute="trailing" secondItem="xaX-I5-3x7" secondAttribute="trailing" constant="20" id="igy-6z-e0m"/>
+                            <constraint firstItem="xaX-I5-3x7" firstAttribute="leading" secondItem="e09-gs-agt" secondAttribute="leading" constant="20" id="zaG-xu-8Qg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="e09-gs-agt"/>
+                    </view>
+                    <connections>
+                        <outlet property="buttonCancel" destination="6yJ-cz-7en" id="0VM-75-mDC"/>
+                        <outlet property="buttonDone" destination="eke-3H-EU0" id="EhN-0i-Ce1"/>
+                        <outlet property="datePicker" destination="q28-sP-PUN" id="VEZ-fe-7EN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2iI-BM-xnc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7038.5" y="-322.5"/>
         </scene>
         <!--Custom Navigation Controller-->
         <scene sceneID="fXS-LC-Nsv">

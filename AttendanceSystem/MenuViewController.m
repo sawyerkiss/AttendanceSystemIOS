@@ -18,6 +18,7 @@
 #import "AboutViewController.h"
 #import "CourseListViewController.h"
 #import "AttendanceViewController.h"
+#import "SendAbsenceViewController.h"
 
 static CGFloat const kCellHeightRatio = 60.0f/667.0f;
 static CGFloat kCellHeight;
@@ -172,7 +173,10 @@ static CGFloat kCellHeight;
             [(UINavigationController*)self.frostedViewController.contentViewController pushViewController:attendance animated:TRUE];
             break;
         }
-        case MenuItemType_SendAbsenceRequest:
+        case MenuItemType_SendAbsenceRequest: {
+            SendAbsenceViewController* absence = [self.storyboard instantiateViewControllerWithIdentifier:@"SendAbsenceViewController"];
+            [(UINavigationController*)self.frostedViewController.contentViewController pushViewController:absence animated:TRUE];
+        }
             break ;
         case MenuItemType_CourseList:{
             CourseListViewController* courseList = [self.storyboard instantiateViewControllerWithIdentifier:@"CourseListViewController"];
