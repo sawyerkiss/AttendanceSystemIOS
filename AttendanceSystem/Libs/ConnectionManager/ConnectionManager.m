@@ -28,6 +28,7 @@ static NSString *const kChangePassword = @"api/user/change-password";
 static NSString *const kGenerateQRCode = @"api/check-attendance/qr-code/%@";
 static NSString *const kForgotPassword = @"authenticate/forgot-password";
 static NSString *const kSendAbsenceRequest = @"api/absence-request/create";
+static NSString *const kSendFeedbackRequest = @"api/feedback/send";
 
 //Header
 static NSString *kHeaderSourceHostKey = @"X-SOURCE-HOST";
@@ -606,6 +607,45 @@ NSString *linkService(NSString *subLink) {
                                 @"start_date" : startDate,
                                 @"end_date" :endDate
                                 };
+    NSLog(@"url : %@" ,url);
+    NSLog(@"parameter : %@",parameter);
+    
+    [self.sessionManager POST:url
+                   parameters:parameter
+                     progress:nil
+                      success:
+     ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         [self handleResponseData:responseObject andSuccess:success];
+     }
+                      failure:
+     ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         [self handleResponseError:error andFailure:failure];
+     }];
+}
+
+- (void)sendFeedbackRequestWithTitle:(NSString *)title
+                             content:(NSString *)content
+                         isAnonymous:(BOOL)isAnonymous
+                             success:(ConnectionComplete)success
+                          andFailure:(ConnectionFailure)failure {
+    
+    NSString* url = linkService(kSendFeedbackRequest);
+    
+    NSString* token = [[UserManager userCenter] getCurrentUserToken];
+    
+    NSDictionary *parameter = @{@"token": token ? token : @"",
+                                @"title" : title,
+                                @"content" : content
+                                };
+    NSInteger userRole = [[[UserManager userCenter] getCurrentUser].role_id integerValue];
+    
+    if(userRole == STUDENT){
+        if(isAnonymous)
+            [parameter setValue:@"true" forKey:@"isAnonymous"];
+        else
+             [parameter setValue:@"false" forKey:@"isAnonymous"];
+    }
+    
     NSLog(@"url : %@" ,url);
     NSLog(@"parameter : %@",parameter);
     

@@ -24,6 +24,7 @@
 		F85B6C42204848AD0098D64A /* SessionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F85B6C40204848AD0098D64A /* SessionViewCell.m */; };
 		F85B6C43204848AD0098D64A /* SessionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F85B6C41204848AD0098D64A /* SessionViewCell.xib */; };
 		F871ACAC204652BB009E04BB /* AttendanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F871ACAB204652BB009E04BB /* AttendanceViewController.m */; };
+		F8889930205B7408003C211C /* SendFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F888992F205B7408003C211C /* SendFeedbackViewController.m */; };
 		F892F5F1201AD08700092EA3 /* ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F892F5F0201AD08600092EA3 /* ConnectionManager.m */; };
 		F892F5F7201AD5B500092EA3 /* CustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F892F5F6201AD5B400092EA3 /* CustomAlertView.m */; };
 		F892F5FB201AD93700092EA3 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F892F5FA201AD93700092EA3 /* UserManager.m */; };
@@ -110,6 +111,8 @@
 		F85B6C41204848AD0098D64A /* SessionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionViewCell.xib; sourceTree = "<group>"; };
 		F871ACAA204652BB009E04BB /* AttendanceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttendanceViewController.h; sourceTree = "<group>"; };
 		F871ACAB204652BB009E04BB /* AttendanceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AttendanceViewController.m; sourceTree = "<group>"; };
+		F888992E205B7408003C211C /* SendFeedbackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendFeedbackViewController.h; sourceTree = "<group>"; };
+		F888992F205B7408003C211C /* SendFeedbackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendFeedbackViewController.m; sourceTree = "<group>"; };
 		F892F5EF201AD08600092EA3 /* ConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionManager.h; sourceTree = "<group>"; };
 		F892F5F0201AD08600092EA3 /* ConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionManager.m; sourceTree = "<group>"; };
 		F892F5F2201AD17700092EA3 /* Enums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enums.h; sourceTree = "<group>"; };
@@ -305,6 +308,8 @@
 				F83E0413205A630D000B9F80 /* SendAbsenceViewController.m */,
 				F83E0415205A6FD0000B9F80 /* DateViewController.h */,
 				F83E0416205A6FD0000B9F80 /* DateViewController.m */,
+				F888992E205B7408003C211C /* SendFeedbackViewController.h */,
+				F888992F205B7408003C211C /* SendFeedbackViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -851,6 +856,7 @@
 				F81B932C2023551400FC99D8 /* UIImageViewLoading.m in Sources */,
 				F8FA797120183BAA005D8677 /* AppDelegate.m in Sources */,
 				F8BEE2132050E3D20043A316 /* ScanQRViewController.m in Sources */,
+				F8889930205B7408003C211C /* SendFeedbackViewController.m in Sources */,
 				F89B06102019C7D000CAC8FF /* MenuItemModel.m in Sources */,
 				F849A2062023593C0042A422 /* AboutViewController.m in Sources */,
 				F8BEE2162051154C0043A316 /* ChangePasswordViewController.m in Sources */,

@@ -83,5 +83,11 @@ andFailure:(ConnectionFailure _Nullable)failure;
                              success:(ConnectionComplete _Nullable)success
                           andFailure:(ConnectionFailure _Nullable)failure;
 
+- (void)sendFeedbackRequestWithTitle:(NSString*)title
+                             content:(NSString*)content
+                         isAnonymous:(BOOL)isAnonymous
+                             success:(ConnectionComplete _Nullable)success
+                          andFailure:(ConnectionFailure _Nullable)failure;
+
 @end
 OS_ASSUME_NONNULL_END
