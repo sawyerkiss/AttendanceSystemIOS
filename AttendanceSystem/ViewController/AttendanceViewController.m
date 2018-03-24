@@ -13,8 +13,16 @@
 #import "REFrostedViewController.h"
 #import "QRCodeViewController.h"
 #import "ScanQRViewController.h"
+#import "StudentQuizViewController.h"
 
 @import SocketIO;
+
+typedef enum {
+    CHECK_LIST ,
+    QR_CODE ,
+    QUIZ
+    
+}AttendanceType;
 
 @interface AttendanceViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
@@ -101,7 +109,7 @@
 
     }
     else {
-        [self showAlertView];
+        [self showAlertView:CHECK_LIST];
     }
 }
 
@@ -124,7 +132,7 @@
         [self.socket disconnect];
     }
     else {
-        [self showAlertView];
+        [self showAlertView:QUIZ];
     }
 }
 
@@ -188,10 +196,10 @@
     
 }
 
-- (void)showAlertView {
+- (void)showAlertView:(AttendanceType)type{
     // use UIAlertController
     UIAlertController *alert= [UIAlertController
-                               alertControllerWithTitle:@"Input Code"
+                               alertControllerWithTitle:type == CHECK_LIST ? @"Input Code" : @"Input Quiz Code"
                                message:nil
                                preferredStyle:UIAlertControllerStyleAlert];
     
@@ -200,34 +208,11 @@
                                                    //Do Some action here
                                                    UITextField *textField = alert.textFields[0];
                                                    NSLog(@"text was %@", textField.text);
-                                                   [self showLoadingView];
+                                                  if(type == CHECK_LIST)
+                                                      [self submitCheckListCode:textField.text];
+                                                   else
+                                                       [self submitQuizCode:textField.text];
                                                    
-                                                   [[ConnectionManager connectionDefault] submitDelegateCodeWithCode:textField.text success:^(id  _Nonnull responseObject) {
-                                                       [self hideLoadingView];
-                                                       
-                                                       if([responseObject[@"result"] isEqualToString:@"failure"])
-                                                       {
-                                                           NSString* error = responseObject[@"message"];
-                                                        [self showAlertNoticeWithMessage:error completion:nil];
-                                                           return;
-                                                       }
-                                                       
-                                                       NSDictionary* data = responseObject[@"delegate_detail"];
-                                                       
-                                                       CourseModel* course = [[CourseModel alloc] init];
-                                                       course.courseId = data[@"course_id"];
-                                                       course.classId = data[@"class_id"];
-                                                       course.attendance_id = data[@"attendance_id"];
-                                                       
-                                                       SessionViewController* session = [self.storyboard instantiateViewControllerWithIdentifier:@"SessionViewController"];
-                                                       session.course = course;
-                                                       [(UINavigationController*)self.frostedViewController.contentViewController pushViewController:session animated:TRUE];
-                                                       
-                                                   } andFailure:^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject) {
-                                                       [self hideLoadingView];
-                                                       [self showAlertNoticeWithMessage:errorMessage completion:nil];
-                                                   }];
-    
                                                    [alert dismissViewControllerAnimated:YES completion:nil];
                                                }];
     UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault
@@ -337,6 +322,64 @@
         [self.navigationController popViewControllerAnimated:YES];
     else
         [self.frostedViewController presentMenuViewController];
+}
+
+- (void)submitCheckListCode:(NSString*)code {
+    [self showLoadingView];
+    
+    [[ConnectionManager connectionDefault] submitDelegateCodeWithCode:code success:^(id  _Nonnull responseObject) {
+        [self hideLoadingView];
+        
+        if([responseObject[@"result"] isEqualToString:@"failure"])
+        {
+            NSString* error = responseObject[@"message"];
+            [self showAlertNoticeWithMessage:error completion:nil];
+            return;
+        }
+        
+        NSDictionary* data = responseObject[@"delegate_detail"];
+        
+        CourseModel* course = [[CourseModel alloc] init];
+        course.courseId = data[@"course_id"];
+        course.classId = data[@"class_id"];
+        course.attendance_id = data[@"attendance_id"];
+        
+        SessionViewController* session = [self.storyboard instantiateViewControllerWithIdentifier:@"SessionViewController"];
+        session.course = course;
+        [(UINavigationController*)self.frostedViewController.contentViewController pushViewController:session animated:TRUE];
+        
+    } andFailure:^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject) {
+        [self hideLoadingView];
+        [self showAlertNoticeWithMessage:errorMessage completion:nil];
+    }];
+    
+}
+
+- (void)submitQuizCode:(NSString*)code {
+    [self showLoadingView];
+    [[ConnectionManager connectionDefault] checkQuizCodeWithCode:code success:^(id  _Nonnull responseObject) {
+        [self hideLoadingView];
+        
+        if(!responseObject)
+            return;
+        
+        if([responseObject[@"result"] isEqualToString:@"failure"])
+        {
+            NSString* error = responseObject[@"message"];
+            [self showAlertNoticeWithMessage:error completion:nil];
+            return;
+        }
+        
+        NSInteger quiz_id = [responseObject[@"quiz_id"] integerValue];
+        //StudentQuizViewController
+        StudentQuizViewController* studentQuiz = [self.storyboard instantiateViewControllerWithIdentifier:@"StudentQuizViewController"];
+        studentQuiz.quiz_id = quiz_id;
+        [(UINavigationController*)self.frostedViewController.contentViewController pushViewController:studentQuiz animated:TRUE];
+            
+    } andFailure:^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject) {
+        [self hideLoadingView];
+        [self showAlertNoticeWithMessage:errorMessage completion:nil];
+    }];
 }
 
 

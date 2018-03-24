@@ -43,6 +43,9 @@
 		F8C271C62018E29D002DA646 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C271C52018E29D002DA646 /* HomeViewController.m */; };
 		F8C271C92018E322002DA646 /* CourseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C271C82018E322002DA646 /* CourseListViewController.m */; };
 		F8C271CC2018E367002DA646 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C271CB2018E367002DA646 /* MenuViewController.m */; };
+		F8D8CB77205F7A15001F4D7B /* StudentQuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D8CB76205F7A15001F4D7B /* StudentQuizViewController.m */; };
+		F8D8CB7C205F9D29001F4D7B /* QuestionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D8CB7B205F9D29001F4D7B /* QuestionModel.m */; };
+		F8D8CB7F205FA103001F4D7B /* QuestionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D8CB7E205FA103001F4D7B /* QuestionViewCell.m */; };
 		F8DC6D25203D1A670031C923 /* CourseViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8DC6D24203D1A670031C923 /* CourseViewCell.m */; };
 		F8DC6D28203D4CF50031C923 /* CourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F8DC6D27203D4CF50031C923 /* CourseModel.m */; };
 		F8DC6D2A203D697C0031C923 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F8DC6D29203D697C0031C923 /* libsqlite3.tbd */; };
@@ -152,6 +155,12 @@
 		F8C271C82018E322002DA646 /* CourseListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseListViewController.m; sourceTree = "<group>"; };
 		F8C271CA2018E367002DA646 /* MenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		F8C271CB2018E367002DA646 /* MenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		F8D8CB75205F7A15001F4D7B /* StudentQuizViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StudentQuizViewController.h; sourceTree = "<group>"; };
+		F8D8CB76205F7A15001F4D7B /* StudentQuizViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudentQuizViewController.m; sourceTree = "<group>"; };
+		F8D8CB7A205F9D29001F4D7B /* QuestionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionModel.h; sourceTree = "<group>"; };
+		F8D8CB7B205F9D29001F4D7B /* QuestionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionModel.m; sourceTree = "<group>"; };
+		F8D8CB7D205FA103001F4D7B /* QuestionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionViewCell.h; sourceTree = "<group>"; };
+		F8D8CB7E205FA103001F4D7B /* QuestionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionViewCell.m; sourceTree = "<group>"; };
 		F8DC6D23203D1A670031C923 /* CourseViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseViewCell.h; sourceTree = "<group>"; };
 		F8DC6D24203D1A670031C923 /* CourseViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseViewCell.m; sourceTree = "<group>"; };
 		F8DC6D26203D4CF50031C923 /* CourseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseModel.h; sourceTree = "<group>"; };
@@ -310,6 +319,8 @@
 				F83E0416205A6FD0000B9F80 /* DateViewController.m */,
 				F888992E205B7408003C211C /* SendFeedbackViewController.h */,
 				F888992F205B7408003C211C /* SendFeedbackViewController.m */,
+				F8D8CB75205F7A15001F4D7B /* StudentQuizViewController.h */,
+				F8D8CB76205F7A15001F4D7B /* StudentQuizViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -405,6 +416,8 @@
 				F8DC6D27203D4CF50031C923 /* CourseModel.m */,
 				F89B477D204A5A0200B73447 /* StudentModel.h */,
 				F89B477E204A5A0200B73447 /* StudentModel.m */,
+				F8D8CB7A205F9D29001F4D7B /* QuestionModel.h */,
+				F8D8CB7B205F9D29001F4D7B /* QuestionModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -428,6 +441,8 @@
 				F85B6C41204848AD0098D64A /* SessionViewCell.xib */,
 				F89B477A204A56A100B73447 /* StudentSessionCell.h */,
 				F89B477B204A56A100B73447 /* StudentSessionCell.m */,
+				F8D8CB7D205FA103001F4D7B /* QuestionViewCell.h */,
+				F8D8CB7E205FA103001F4D7B /* QuestionViewCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -838,6 +853,7 @@
 				F82BBCC52018785E00CA4E72 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				F89B477F204A5A0300B73447 /* StudentModel.m in Sources */,
 				F849A203202359080042A422 /* ProfileViewController.m in Sources */,
+				F8D8CB7F205FA103001F4D7B /* QuestionViewCell.m in Sources */,
 				F89B477C204A56A100B73447 /* StudentSessionCell.m in Sources */,
 				F892F5FF201AD93E00092EA3 /* UserModel.m in Sources */,
 				F8C271C62018E29D002DA646 /* HomeViewController.m in Sources */,
@@ -857,8 +873,10 @@
 				F8FA797120183BAA005D8677 /* AppDelegate.m in Sources */,
 				F8BEE2132050E3D20043A316 /* ScanQRViewController.m in Sources */,
 				F8889930205B7408003C211C /* SendFeedbackViewController.m in Sources */,
+				F8D8CB77205F7A15001F4D7B /* StudentQuizViewController.m in Sources */,
 				F89B06102019C7D000CAC8FF /* MenuItemModel.m in Sources */,
 				F849A2062023593C0042A422 /* AboutViewController.m in Sources */,
+				F8D8CB7C205F9D29001F4D7B /* QuestionModel.m in Sources */,
 				F8BEE2162051154C0043A316 /* ChangePasswordViewController.m in Sources */,
 				F8DC6D25203D1A670031C923 /* CourseViewCell.m in Sources */,
 				F8DC6D2D203D69A70031C923 /* DBManager.m in Sources */,
@@ -1034,7 +1052,7 @@
 				INFOPLIST_FILE = AttendanceSystem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.trungtruc.AttendanceSystem;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.trungtruc.AttendanceSystemIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1054,7 +1072,7 @@
 				INFOPLIST_FILE = AttendanceSystem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.trungtruc.AttendanceSystem;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.trungtruc.AttendanceSystemIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;

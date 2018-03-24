@@ -89,5 +89,19 @@ andFailure:(ConnectionFailure _Nullable)failure;
                              success:(ConnectionComplete _Nullable)success
                           andFailure:(ConnectionFailure _Nullable)failure;
 
+- (void)checkQuizCodeWithCode:(NSString*)code
+                      success:(ConnectionComplete _Nullable)success
+                   andFailure:(ConnectionFailure _Nullable)failure;
+
+- (void)getQuizListFromId:(NSString*)quizId
+                  success:(ConnectionComplete _Nullable)success
+               andFailure:(ConnectionFailure _Nullable)failure;
+
+- (void)submitQuizListWithId:(NSString*)quizId
+                     student:(NSString*)studentId
+                questionList:(NSArray*)questionList
+                     success:(ConnectionComplete _Nullable)success
+                  andFailure:(ConnectionFailure _Nullable)failure;
+
 @end
 OS_ASSUME_NONNULL_END

@@ -8,6 +8,7 @@
 
 #import "ConnectionManager.h"
 #import "AFHTTPSessionManager.h"
+#import "QuestionModel.h"
 
 //Link API
 static NSString *const kLogin = @"authenticate/login";
@@ -29,6 +30,9 @@ static NSString *const kGenerateQRCode = @"api/check-attendance/qr-code/%@";
 static NSString *const kForgotPassword = @"authenticate/forgot-password";
 static NSString *const kSendAbsenceRequest = @"api/absence-request/create";
 static NSString *const kSendFeedbackRequest = @"api/feedback/send";
+static NSString *const kCheckQuizCode = @"api/quiz/check-code";
+static NSString *const kGetQuizList = @"api/quiz/detail";
+static NSString *const kSubmitQuizList = @"api/quiz/submit";
 
 //Header
 static NSString *kHeaderSourceHostKey = @"X-SOURCE-HOST";
@@ -660,6 +664,87 @@ NSString *linkService(NSString *subLink) {
      ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
          [self handleResponseError:error andFailure:failure];
      }];
+}
+
+- (void)checkQuizCodeWithCode:(NSString *)code success:(ConnectionComplete)success andFailure:(ConnectionFailure)failure {
+    NSString* token = [[UserManager userCenter] getCurrentUserToken];
+    NSDictionary *parameter = @{@"token": token ? token : @"",
+                                @"code": code
+                                };
+    
+    NSString* url = linkService(kCheckQuizCode);
+    NSLog(@"url : %@" ,url);
+    NSLog(@"parameter : %@" , parameter);
+    
+    [self.sessionManager POST:url
+                   parameters:parameter
+                     progress:nil
+                      success:
+     ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         [self handleResponseData:responseObject andSuccess:success];
+     }
+                      failure:
+     ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         [self handleResponseError:error andFailure:failure];
+     }];
+}
+
+- (void)getQuizListFromId:(NSString *)quizId success:(ConnectionComplete)success andFailure:(ConnectionFailure)failure {
+    NSString* token = [[UserManager userCenter] getCurrentUserToken];
+    NSDictionary *parameter = @{@"token": token ? token : @"",
+                                @"quiz_id": quizId
+                                };
+    
+    NSString* url = linkService(kGetQuizList);
+    NSLog(@"url : %@" ,url);
+    NSLog(@"parameter : %@" , parameter);
+    
+    [self.sessionManager POST:url
+                   parameters:parameter
+                     progress:nil
+                      success:
+     ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         [self handleResponseData:responseObject andSuccess:success];
+     }
+                      failure:
+     ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         [self handleResponseError:error andFailure:failure];
+     }];
+}
+
+- (void)submitQuizListWithId:(NSString *)quizId
+                     student:(NSString *)studentId
+                questionList:(NSArray *)questionList
+                     success:(ConnectionComplete)success
+                  andFailure:(ConnectionFailure)failure {
+    
+    NSString* token = [[UserManager userCenter] getCurrentUserToken];
+    NSDictionary *parameter = @{@"token": token ? token : @"",
+                                @"student_id": studentId
+                                };
+    
+    NSDictionary *quizParam = @{@"id":quizId ,
+                                @"questions":[QuestionModel arrayOfDictionariesFromModels:questionList]
+                                };
+    
+    [parameter setValue:quizParam forKey:@"quiz"];
+    
+    NSString* url = linkService(kSubmitQuizList);
+    NSLog(@"url : %@" ,url);
+    NSLog(@"parameter : %@" , parameter);
+    
+    [self.sessionManager POST:url
+                   parameters:parameter
+                     progress:nil
+                      success:
+     ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         [self handleResponseData:responseObject andSuccess:success];
+     }
+                      failure:
+     ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         [self handleResponseError:error andFailure:failure];
+     }];
+    
 }
 
 @end
