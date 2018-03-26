@@ -40,6 +40,7 @@
         self.lblAnonymous.text = @"";
         self.lblAnonymousTitle.text = @"";
     }
+    self.cbAnonymous.boxType = BEMBoxTypeSquare;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,6 +49,7 @@
 }
 
 - (IBAction)didTouchSendFeedback:(id)sender {
+    [self.view endEditing:TRUE];
     
     if(self.tfTitle.text && self.tfTitle.text.length == 0)
     {

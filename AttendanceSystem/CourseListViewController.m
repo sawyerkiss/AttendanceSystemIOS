@@ -39,6 +39,14 @@
     
     self.courseList = [[NSArray alloc] init];
     
+//    [self getCourseList];
+//    
+//    [self setSocket];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
     [self getCourseList];
     
     [self setSocket];

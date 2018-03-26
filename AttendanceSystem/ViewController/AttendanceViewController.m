@@ -161,6 +161,7 @@ typedef enum {
             [self showLoadingView];
             [[ConnectionManager connectionDefault] finishAttendanceCourseWithId:self.course.attendance_id success:^(id  _Nonnull responseObject) {
                 [self hideLoadingView];
+                 [self tappedAtLeftButton:nil];
             } andFailure:^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject) {
                 [self hideLoadingView];
                 [self showAlertNoticeWithMessage:errorMessage completion:nil];

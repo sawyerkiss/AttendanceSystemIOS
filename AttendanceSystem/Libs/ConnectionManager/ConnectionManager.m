@@ -71,7 +71,9 @@ static NSString *const kEndPointLink = @"End point link";
 static NSString *const kXSourceHost = @"X source host";
 
 NSString *linkService(NSString *subLink) {
-    NSString *endPointLink = @"https://iteccyle8.herokuapp.com/"; //[[NSBundle mainBundle] objectForInfoDictionaryKey:kEndPointLink];
+    NSString *endPointLink = @"http://192.168.1.107:3000/";
+   // @"https://iteccyle8.herokuapp.com/";
+    //[[NSBundle mainBundle] objectForInfoDictionaryKey:kEndPointLink];
     
     return [endPointLink stringByAppendingString:subLink];
 }
@@ -641,20 +643,24 @@ NSString *linkService(NSString *subLink) {
                                 @"title" : title,
                                 @"content" : content
                                 };
+    
+    NSMutableDictionary *newDict = [[NSMutableDictionary alloc] init];
+    
     NSInteger userRole = [[[UserManager userCenter] getCurrentUser].role_id integerValue];
     
+    [newDict addEntriesFromDictionary:parameter];
     if(userRole == STUDENT){
         if(isAnonymous)
-            [parameter setValue:@"true" forKey:@"isAnonymous"];
+            [newDict setObject:@"true" forKey:@"isAnonymous"];
         else
-             [parameter setValue:@"false" forKey:@"isAnonymous"];
+             [newDict setObject:@"false" forKey:@"isAnonymous"];
     }
     
     NSLog(@"url : %@" ,url);
-    NSLog(@"parameter : %@",parameter);
+    NSLog(@"parameter : %@",newDict);
     
     [self.sessionManager POST:url
-                   parameters:parameter
+                   parameters:newDict
                      progress:nil
                       success:
      ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

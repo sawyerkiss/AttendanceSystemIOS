@@ -40,7 +40,7 @@
     
     [self.view bringSubviewToFront:self.viewRect];
     [self.view bringSubviewToFront:self.lblAlert];
-//    self.scanner = [[MTBBarcodeScanner alloc] initWithPreviewView:self.view];
+    //    self.scanner = [[MTBBarcodeScanner alloc] initWithPreviewView:self.view];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -49,34 +49,34 @@
     self.capture.delegate = self;
     
     [self applyOrientation];
-//    [MTBBarcodeScanner requestCameraPermissionWithSuccess:^(BOOL success) {
-//        if (success) {
-//
-//            NSError *error = nil;
-//            [self.scanner startScanningWithResultBlock:^(NSArray *codes) {
-//                AVMetadataMachineReadableCodeObject *code = [codes firstObject];
-//                NSLog(@"Found code: %@", code.stringValue);
-//
-//                [self.scanner stopScanning];
-//            } error:&error];
-//
-//        } else {
-//            // The user denied access to the camera
-//        }
-//    }];
-//
-//    self.scanner.didStartScanningBlock = ^{
-//        NSLog(@"The scanner started scanning! We can now hide any activity spinners.");
-//    };
-//
-//    self.scanner.resultBlock = ^(NSArray *codes){
-//        NSLog(@"Found these codes: %@", codes);
-//    };
-//
-//    self.scanner.didTapToFocusBlock = ^(CGPoint point){
-//        NSLog(@"The user tapped the screen to focus. \
-//              Here we could present a view at %@", NSStringFromCGPoint(point));
-//    };
+    //    [MTBBarcodeScanner requestCameraPermissionWithSuccess:^(BOOL success) {
+    //        if (success) {
+    //
+    //            NSError *error = nil;
+    //            [self.scanner startScanningWithResultBlock:^(NSArray *codes) {
+    //                AVMetadataMachineReadableCodeObject *code = [codes firstObject];
+    //                NSLog(@"Found code: %@", code.stringValue);
+    //
+    //                [self.scanner stopScanning];
+    //            } error:&error];
+    //
+    //        } else {
+    //            // The user denied access to the camera
+    //        }
+    //    }];
+    //
+    //    self.scanner.didStartScanningBlock = ^{
+    //        NSLog(@"The scanner started scanning! We can now hide any activity spinners.");
+    //    };
+    //
+    //    self.scanner.resultBlock = ^(NSArray *codes){
+    //        NSLog(@"Found these codes: %@", codes);
+    //    };
+    //
+    //    self.scanner.didTapToFocusBlock = ^(CGPoint point){
+    //        NSLog(@"The user tapped the screen to focus. \
+    //              Here we could present a view at %@", NSStringFromCGPoint(point));
+    //    };
     
 }
 
@@ -105,19 +105,19 @@
     float captureRotation;
     
     switch (orientation) {
-        case UIInterfaceOrientationPortrait:
+            case UIInterfaceOrientationPortrait:
             captureRotation = 0;
             scanRectRotation = 90;
             break;
-        case UIInterfaceOrientationLandscapeLeft:
+            case UIInterfaceOrientationLandscapeLeft:
             captureRotation = 90;
             scanRectRotation = 180;
             break;
-        case UIInterfaceOrientationLandscapeRight:
+            case UIInterfaceOrientationLandscapeRight:
             captureRotation = 270;
             scanRectRotation = 0;
             break;
-        case UIInterfaceOrientationPortraitUpsideDown:
+            case UIInterfaceOrientationPortraitUpsideDown:
             captureRotation = 180;
             scanRectRotation = 270;
             break;
@@ -171,52 +171,52 @@
 
 - (NSString *)barcodeFormatToString:(ZXBarcodeFormat)format {
     switch (format) {
-        case kBarcodeFormatAztec:
+            case kBarcodeFormatAztec:
             return @"Aztec";
             
-        case kBarcodeFormatCodabar:
+            case kBarcodeFormatCodabar:
             return @"CODABAR";
             
-        case kBarcodeFormatCode39:
+            case kBarcodeFormatCode39:
             return @"Code 39";
             
-        case kBarcodeFormatCode93:
+            case kBarcodeFormatCode93:
             return @"Code 93";
             
-        case kBarcodeFormatCode128:
+            case kBarcodeFormatCode128:
             return @"Code 128";
             
-        case kBarcodeFormatDataMatrix:
+            case kBarcodeFormatDataMatrix:
             return @"Data Matrix";
             
-        case kBarcodeFormatEan8:
+            case kBarcodeFormatEan8:
             return @"EAN-8";
             
-        case kBarcodeFormatEan13:
+            case kBarcodeFormatEan13:
             return @"EAN-13";
             
-        case kBarcodeFormatITF:
+            case kBarcodeFormatITF:
             return @"ITF";
             
-        case kBarcodeFormatPDF417:
+            case kBarcodeFormatPDF417:
             return @"PDF417";
             
-        case kBarcodeFormatQRCode:
+            case kBarcodeFormatQRCode:
             return @"QR Code";
             
-        case kBarcodeFormatRSS14:
+            case kBarcodeFormatRSS14:
             return @"RSS 14";
             
-        case kBarcodeFormatRSSExpanded:
+            case kBarcodeFormatRSSExpanded:
             return @"RSS Expanded";
             
-        case kBarcodeFormatUPCA:
+            case kBarcodeFormatUPCA:
             return @"UPCA";
             
-        case kBarcodeFormatUPCE:
+            case kBarcodeFormatUPCE:
             return @"UPCE";
             
-        case kBarcodeFormatUPCEANExtension:
+            case kBarcodeFormatUPCEANExtension:
             return @"UPC/EAN extension";
             
         default:
@@ -245,9 +245,9 @@
     // We got a result. Display information about the result onscreen.
     NSString *formatString = [self barcodeFormatToString:result.barcodeFormat];
     NSString *display = [NSString stringWithFormat:@"Scanned!\n\nFormat: %@\n\nContents:\n%@\nLocation: %@", formatString, result.text, location];
-//    [self.decodedLabel performSelectorOnMainThread:@selector(setText:) withObject:display waitUntilDone:YES];
-   
-    [self verifyQRCodeWithURL:display];
+    //    [self.decodedLabel performSelectorOnMainThread:@selector(setText:) withObject:display waitUntilDone:YES];
+    
+    [self verifyQRCodeWithURL:result.text];
     
     // Vibrate
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
@@ -260,25 +260,36 @@
 }
 
 - (void)verifyQRCodeWithURL:(NSString*)url {
-    [self showLoadingView];
     
-    [[ConnectionManager connectionDefault] checkAttendanceByQRCodeWithURL:url success:^(id  _Nonnull responseObject) {
-        [self hideLoadingView];
+    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    bool valid = [NSURLConnection canHandleRequest:req];
+    NSLog(@"url : %@",url);
+    
+    if(valid)
+    {
+        [self showLoadingView];
         
-        if([responseObject[@"result"] isEqualToString:@"failure"])
-        {
-            NSString* error = responseObject[@"message"];
-            [self showAlertNoticeWithMessage:error completion:nil];
-            return;
-        }
-        
-        [super tappedAtLeftButton:nil];
-        
-    } andFailure:^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject) {
-        [self hideLoadingView];
-        
-        [self showAlertNoticeWithMessage:errorMessage completion:nil];
-    }];
+        [[ConnectionManager connectionDefault] checkAttendanceByQRCodeWithURL:url success:^(id  _Nonnull responseObject) {
+            [self hideLoadingView];
+            
+            if([responseObject[@"result"] isEqualToString:@"failure"])
+            {
+                NSString* error = responseObject[@"message"];
+                [self showAlertNoticeWithMessage:error completion:nil];
+                return;
+            }
+            
+            [super tappedAtLeftButton:nil];
+            
+        } andFailure:^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject) {
+            [self hideLoadingView];
+            
+            [self showAlertNoticeWithMessage:errorMessage completion:nil];
+        }];
+    }
+    else {
+         [self showAlertNoticeWithMessage:@"QR code is invalid. Please scan QR code again" completion:nil];
+    }
     
 }
 

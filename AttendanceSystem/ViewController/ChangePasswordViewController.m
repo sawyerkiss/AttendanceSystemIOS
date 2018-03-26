@@ -27,6 +27,7 @@
     self.title = @"Change Password";
     self.tfCurrentPassword.secureTextEntry = TRUE;
     self.tfNewPassword.secureTextEntry = TRUE;
+    self.cboxShowPassword.boxType = BEMBoxTypeSquare;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,7 +38,7 @@
 - (IBAction)didTouchChangePassword:(id)sender {
     [self showLoadingView] ;
     
-    [[ConnectionManager connectionDefault] changePasswordWithCurrentPassword:@"" newPassword:@"" success:^(id  _Nonnull responseObject) {
+    [[ConnectionManager connectionDefault] changePasswordWithCurrentPassword:self.tfCurrentPassword.text newPassword:self.tfNewPassword.text success:^(id  _Nonnull responseObject) {
         [self hideLoadingView];
         if([responseObject[@"result"] isEqualToString:@"failure"])
         {

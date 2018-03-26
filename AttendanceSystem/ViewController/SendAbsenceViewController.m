@@ -35,6 +35,7 @@ static NSString* kDateFormat = @"dd-MM-yyyy";
  
 }
 - (IBAction)didTouchSendButton:(id)sender {
+    [self.view endEditing:TRUE];
     
     if(self.tfReason.text && self.tfReason.text.length == 0) {
         [self showAlertNoticeWithMessage:@"Missing Reason" completion:nil];

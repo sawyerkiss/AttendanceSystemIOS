@@ -36,9 +36,17 @@
     //    [self.tfEmail addSubview:textField];
     //    [self.tfEmail layoutIfNeeded];
     self.tfEmail.text = @"";
+    self.tfEmail.delegate = self;
     self.tfPassword.text = @"";
-    [self.tfPassword setSecureTextEntry:TRUE];
+    
+    self.tfPassword.secureTextEntry = TRUE;
+    self.tfPassword.delegate = self;
+//    self.tfPassword.floatingLabel = TRUE;
+    
     [self.tfPassword layoutIfNeeded];
+    
+//    [self.tfPassword setSecureTextEntry:TRUE];
+//    [self.tfPassword layoutIfNeeded];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,8 +62,27 @@
     NSString* userName = self.tfEmail.text;
     NSString* password = self.tfPassword.text;
     
+    if(_tfEmail.text.length == 0) {
+        [_tfEmail setErrorMessage:@"Email is empty"];
+        [_tfEmail setErrorColor:[UIColor redColor]];
+    } else if(_tfPassword.text.length == 0) {
+        [_tfPassword setErrorMessage:@"Password is empty"];
+        [_tfPassword setErrorColor:[UIColor redColor]];
+        
+    }
     [[ConnectionManager connectionDefault] login:userName password:password andSuccess:^(id  _Nonnull responseObject) {
         [LoadingManager hideLoadingViewForView:self.view];
+        
+        if(!responseObject)
+        return;
+        
+        if([responseObject[@"result"] isEqualToString:@"failure"])
+        {
+         
+            NSString* error = responseObject[@"message"];
+            [self showAlertNoticeWithMessage:error completion:nil];
+            return;
+        }
         
         NSString* token = responseObject[@"token"];
         [[UserManager userCenter] setCurrentUserToken:token];
