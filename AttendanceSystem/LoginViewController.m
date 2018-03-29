@@ -14,7 +14,7 @@
 
 @interface LoginViewController ()<MDTextFieldDelegate>
 @property (weak, nonatomic) IBOutlet MDTextField *tfEmail;
-@property (weak, nonatomic) IBOutlet MDTextField *tfPassword;
+@property (weak, nonatomic) IBOutlet UITextField *tfPassword;
 
 @end
 
@@ -40,7 +40,7 @@
     self.tfPassword.text = @"";
     
     self.tfPassword.secureTextEntry = TRUE;
-    self.tfPassword.delegate = self;
+//    self.tfPassword.delegate = self;
 //    self.tfPassword.floatingLabel = TRUE;
     
     [self.tfPassword layoutIfNeeded];
@@ -66,8 +66,8 @@
         [_tfEmail setErrorMessage:@"Email is empty"];
         [_tfEmail setErrorColor:[UIColor redColor]];
     } else if(_tfPassword.text.length == 0) {
-        [_tfPassword setErrorMessage:@"Password is empty"];
-        [_tfPassword setErrorColor:[UIColor redColor]];
+//        [_tfPassword setErrorMessage:@"Password is empty"];
+//        [_tfPassword setErrorColor:[UIColor redColor]];
         
     }
     [[ConnectionManager connectionDefault] login:userName password:password andSuccess:^(id  _Nonnull responseObject) {
@@ -98,9 +98,9 @@
         [self showAlertNoticeWithMessage:errorMessage completion:nil];
         
         [_tfEmail setErrorMessage:@"Email is empty"];
-        [_tfPassword setErrorMessage:@"Password is empty"];
+//        [_tfPassword setErrorMessage:@"Password is empty"];
         [_tfEmail setErrorColor:[UIColor redColor]];
-        [_tfPassword setErrorColor:[UIColor redColor]];
+//        [_tfPassword setErrorColor:[UIColor redColor]];
     }];
     
 }

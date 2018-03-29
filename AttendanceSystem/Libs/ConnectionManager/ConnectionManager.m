@@ -71,8 +71,9 @@ static NSString *const kEndPointLink = @"End point link";
 static NSString *const kXSourceHost = @"X source host";
 
 NSString *linkService(NSString *subLink) {
-    NSString *endPointLink = @"http://192.168.1.107:3000/";
-   // @"https://iteccyle8.herokuapp.com/";
+    NSString *endPointLink =
+    //@"http://192.168.1.107:3000/";
+    @"https://iteccyle8.herokuapp.com/";
     //[[NSBundle mainBundle] objectForInfoDictionaryKey:kEndPointLink];
     
     return [endPointLink stringByAppendingString:subLink];

@@ -12,8 +12,8 @@
 
 @interface ChangePasswordViewController ()
 
-@property (weak, nonatomic) IBOutlet MDTextField *tfCurrentPassword;
-@property (weak, nonatomic) IBOutlet MDTextField *tfNewPassword;
+@property (weak, nonatomic) IBOutlet UITextField *tfCurrentPassword;
+@property (weak, nonatomic) IBOutlet UITextField *tfNewPassword;
 @property (weak, nonatomic) IBOutlet BEMCheckBox *cboxShowPassword;
 
 
@@ -65,6 +65,15 @@
     self.tfCurrentPassword.secureTextEntry = !self.tfCurrentPassword.secureTextEntry;
     self.tfNewPassword.secureTextEntry = !self.tfNewPassword.secureTextEntry;
     
+    if (self.tfCurrentPassword.isFirstResponder) {
+        [self.tfCurrentPassword resignFirstResponder];
+        [self.tfCurrentPassword becomeFirstResponder];
+    }
+    
+    if (self.tfNewPassword.isFirstResponder) {
+        [self.tfNewPassword resignFirstResponder];
+        [self.tfNewPassword becomeFirstResponder];
+    }
 }
 
 @end
