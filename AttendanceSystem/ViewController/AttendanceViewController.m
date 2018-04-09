@@ -13,7 +13,7 @@
 #import "REFrostedViewController.h"
 #import "QRCodeViewController.h"
 #import "ScanQRViewController.h"
-#import "StudentQuizViewController.h"
+#import "StudentQuizDetailViewController.h"
 
 @import SocketIO;
 
@@ -371,10 +371,10 @@ typedef enum {
             return;
         }
         
-        NSInteger quiz_id = [responseObject[@"quiz_id"] integerValue];
+//        NSInteger quiz_id = [responseObject[@"quiz_id"] integerValue];
         //StudentQuizViewController
-        StudentQuizViewController* studentQuiz = [self.storyboard instantiateViewControllerWithIdentifier:@"StudentQuizViewController"];
-        studentQuiz.quiz_id = quiz_id;
+        StudentQuizDetailViewController* studentQuiz = [self.storyboard instantiateViewControllerWithIdentifier:@"StudentQuizDetailViewController"];
+//        studentQuiz.quiz_id = quiz_id;
         [(UINavigationController*)self.frostedViewController.contentViewController pushViewController:studentQuiz animated:TRUE];
             
     } andFailure:^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject) {

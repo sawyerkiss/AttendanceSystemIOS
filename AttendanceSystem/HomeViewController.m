@@ -28,6 +28,8 @@
 - (void)awakeFromNib {
     self.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CustomNavigationController"];
     
+    
+    
     self.menuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MenuViewController"];
     
     self.menuViewSize = CGSizeMake(SCREEN_WIDTH* 2 / 3, SCREEN_HEIGHT);

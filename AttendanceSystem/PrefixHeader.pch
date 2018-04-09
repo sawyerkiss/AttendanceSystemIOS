@@ -18,4 +18,5 @@
 #import "UserManager.h"
 #import "ConnectionManager.h"
 #import "DBManager.h"
+#import "SocketManagerIO.h"
 #endif /* PrefixHeader_pch */

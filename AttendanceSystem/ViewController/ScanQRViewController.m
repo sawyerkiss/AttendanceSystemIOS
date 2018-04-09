@@ -18,6 +18,8 @@
 
 @property (nonatomic, strong) ZXCapture *capture;
 
+@property (nonatomic) BOOL isVerified;
+
 @end
 
 @implementation ScanQRViewController {
@@ -40,6 +42,8 @@
     
     [self.view bringSubviewToFront:self.viewRect];
     [self.view bringSubviewToFront:self.lblAlert];
+    
+    self.isVerified = FALSE;
     //    self.scanner = [[MTBBarcodeScanner alloc] initWithPreviewView:self.view];
 }
 
@@ -105,19 +109,19 @@
     float captureRotation;
     
     switch (orientation) {
-            case UIInterfaceOrientationPortrait:
+        case UIInterfaceOrientationPortrait:
             captureRotation = 0;
             scanRectRotation = 90;
             break;
-            case UIInterfaceOrientationLandscapeLeft:
+        case UIInterfaceOrientationLandscapeLeft:
             captureRotation = 90;
             scanRectRotation = 180;
             break;
-            case UIInterfaceOrientationLandscapeRight:
+        case UIInterfaceOrientationLandscapeRight:
             captureRotation = 270;
             scanRectRotation = 0;
             break;
-            case UIInterfaceOrientationPortraitUpsideDown:
+        case UIInterfaceOrientationPortraitUpsideDown:
             captureRotation = 180;
             scanRectRotation = 270;
             break;
@@ -171,52 +175,52 @@
 
 - (NSString *)barcodeFormatToString:(ZXBarcodeFormat)format {
     switch (format) {
-            case kBarcodeFormatAztec:
+        case kBarcodeFormatAztec:
             return @"Aztec";
             
-            case kBarcodeFormatCodabar:
+        case kBarcodeFormatCodabar:
             return @"CODABAR";
             
-            case kBarcodeFormatCode39:
+        case kBarcodeFormatCode39:
             return @"Code 39";
             
-            case kBarcodeFormatCode93:
+        case kBarcodeFormatCode93:
             return @"Code 93";
             
-            case kBarcodeFormatCode128:
+        case kBarcodeFormatCode128:
             return @"Code 128";
             
-            case kBarcodeFormatDataMatrix:
+        case kBarcodeFormatDataMatrix:
             return @"Data Matrix";
             
-            case kBarcodeFormatEan8:
+        case kBarcodeFormatEan8:
             return @"EAN-8";
             
-            case kBarcodeFormatEan13:
+        case kBarcodeFormatEan13:
             return @"EAN-13";
             
-            case kBarcodeFormatITF:
+        case kBarcodeFormatITF:
             return @"ITF";
             
-            case kBarcodeFormatPDF417:
+        case kBarcodeFormatPDF417:
             return @"PDF417";
             
-            case kBarcodeFormatQRCode:
+        case kBarcodeFormatQRCode:
             return @"QR Code";
             
-            case kBarcodeFormatRSS14:
+        case kBarcodeFormatRSS14:
             return @"RSS 14";
             
-            case kBarcodeFormatRSSExpanded:
+        case kBarcodeFormatRSSExpanded:
             return @"RSS Expanded";
             
-            case kBarcodeFormatUPCA:
+        case kBarcodeFormatUPCA:
             return @"UPCA";
             
-            case kBarcodeFormatUPCE:
+        case kBarcodeFormatUPCE:
             return @"UPCE";
             
-            case kBarcodeFormatUPCEANExtension:
+        case kBarcodeFormatUPCEANExtension:
             return @"UPC/EAN extension";
             
         default:
@@ -272,14 +276,24 @@
         [[ConnectionManager connectionDefault] checkAttendanceByQRCodeWithURL:url success:^(id  _Nonnull responseObject) {
             [self hideLoadingView];
             
-            if([responseObject[@"result"] isEqualToString:@"failure"])
-            {
-                NSString* error = responseObject[@"message"];
-                [self showAlertNoticeWithMessage:error completion:nil];
-                return;
+            if(!self.isVerified) {
+                if([responseObject[@"result"] isEqualToString:@"failure"])
+                {
+                    NSString* error = responseObject[@"message"];
+                    [self showAlertNoticeWithMessage:error completion:nil];
+                    return;
+                }
+                
+                [self showAlertNoticeWithMessage:@"Successfully checked" completion:^(NSInteger buttonIndex) {
+                    double delayInSeconds = 0.5;
+                    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+                    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                        [super tappedAtLeftButton:nil];
+                    });
+                }];
+                
+                self.isVerified = TRUE;
             }
-            
-            [super tappedAtLeftButton:nil];
             
         } andFailure:^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject) {
             [self hideLoadingView];
@@ -288,7 +302,7 @@
         }];
     }
     else {
-         [self showAlertNoticeWithMessage:@"QR code is invalid. Please scan QR code again" completion:nil];
+        [self showAlertNoticeWithMessage:@"QR code is invalid. Please scan QR code again" completion:nil];
     }
     
 }

@@ -30,7 +30,7 @@ static NSString *const kGenerateQRCode = @"api/check-attendance/qr-code/%@";
 static NSString *const kForgotPassword = @"authenticate/forgot-password";
 static NSString *const kSendAbsenceRequest = @"api/absence-request/create";
 static NSString *const kSendFeedbackRequest = @"api/feedback/send";
-static NSString *const kCheckQuizCode = @"api/quiz/check-code";
+static NSString *const kCheckQuizCode = @"api/quiz/join";
 static NSString *const kGetQuizList = @"api/quiz/detail";
 static NSString *const kSubmitQuizList = @"api/quiz/submit";
 

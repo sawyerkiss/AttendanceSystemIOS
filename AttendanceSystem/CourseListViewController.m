@@ -168,10 +168,10 @@
 }
 
 - (void)setSocket {
-    NSString* host = HOST;
-    NSURL* url = [[NSURL alloc] initWithString:host];
-    SocketManager* manager = [[SocketManager alloc] initWithSocketURL:url config:@{@"log": @YES, @"compress": @YES}];
-    self.socket = manager.defaultSocket;
+//    NSString* host = HOST;
+//    NSURL* url = [[NSURL alloc] initWithString:host];
+//    SocketManager* manager = [[SocketManager alloc] initWithSocketURL:url config:@{@"log": @YES, @"compress": @YES}];
+    self.socket = [[SocketManagerIO socketManagerIO] getSocketClient];
     
     [self.socket on:@"connect" callback:^(NSArray* data, SocketAckEmitter* ack) {
         NSLog(@"socket connected");
@@ -200,7 +200,7 @@
 //    }];
     
     
-    [self.socket connect];
+//    [self.socket connect];
 }
 
 

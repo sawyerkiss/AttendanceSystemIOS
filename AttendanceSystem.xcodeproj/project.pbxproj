@@ -10,6 +10,8 @@
 		0FECE49D307B68A64C2FD2C4 /* Pods_AttendanceSystemUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69081173C1EFFE53FF71640C /* Pods_AttendanceSystemUITests.framework */; };
 		13CE545DB2A9FCADFC58BA65 /* Pods_AttendanceSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0E52018084815B1C98759B4 /* Pods_AttendanceSystem.framework */; };
 		BB0F8F6CE7DAAB46FF81AA43 /* Pods_AttendanceSystemTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3841E73DCC1615074B2D20E1 /* Pods_AttendanceSystemTests.framework */; };
+		F80FAFB42078ADC6006796B1 /* StudentQuizDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F80FAFB32078ADC6006796B1 /* StudentQuizDetailViewController.m */; };
+		F80FAFB82078C77E006796B1 /* SocketManagerIO.m in Sources */ = {isa = PBXBuildFile; fileRef = F80FAFB72078C77E006796B1 /* SocketManagerIO.m */; };
 		F81B932C2023551400FC99D8 /* UIImageViewLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = F81B932B2023551400FC99D8 /* UIImageViewLoading.m */; };
 		F81D34B1205AC64500CD31D7 /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F81D34B0205AC64500CD31D7 /* DatePickerView.m */; };
 		F82BBCC42018785E00CA4E72 /* LoadingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F82BBCBB2018785E00CA4E72 /* LoadingManager.m */; };
@@ -87,6 +89,10 @@
 		D05C975D5E6AC62E746AF308 /* Pods-AttendanceSystem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AttendanceSystem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AttendanceSystem/Pods-AttendanceSystem.debug.xcconfig"; sourceTree = "<group>"; };
 		E88A195514A27DEBB6B03A8C /* Pods-AttendanceSystemTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AttendanceSystemTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AttendanceSystemTests/Pods-AttendanceSystemTests.release.xcconfig"; sourceTree = "<group>"; };
 		F28F35D568B759961A6E7842 /* Pods-AttendanceSystemUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AttendanceSystemUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AttendanceSystemUITests/Pods-AttendanceSystemUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F80FAFB22078ADC6006796B1 /* StudentQuizDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StudentQuizDetailViewController.h; sourceTree = "<group>"; };
+		F80FAFB32078ADC6006796B1 /* StudentQuizDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudentQuizDetailViewController.m; sourceTree = "<group>"; };
+		F80FAFB62078C77E006796B1 /* SocketManagerIO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketManagerIO.h; sourceTree = "<group>"; };
+		F80FAFB72078C77E006796B1 /* SocketManagerIO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocketManagerIO.m; sourceTree = "<group>"; };
 		F81B932A2023551400FC99D8 /* UIImageViewLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageViewLoading.h; sourceTree = "<group>"; };
 		F81B932B2023551400FC99D8 /* UIImageViewLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageViewLoading.m; sourceTree = "<group>"; };
 		F81D34AF205AC64500CD31D7 /* DatePickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatePickerView.h; sourceTree = "<group>"; };
@@ -239,6 +245,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F80FAFB52078C747006796B1 /* SocketManager */ = {
+			isa = PBXGroup;
+			children = (
+				F80FAFB62078C77E006796B1 /* SocketManagerIO.h */,
+				F80FAFB72078C77E006796B1 /* SocketManagerIO.m */,
+			);
+			path = SocketManager;
+			sourceTree = "<group>";
+		};
 		F81B93292023551400FC99D8 /* UIImageViewLoading */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +275,7 @@
 		F82BBCB82018785E00CA4E72 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				F80FAFB52078C747006796B1 /* SocketManager */,
 				F892F5F8201AD93700092EA3 /* UserManager */,
 				F892F5EE201AD08600092EA3 /* ConnectionManager */,
 				F82BBCB92018785E00CA4E72 /* LoadingManager */,
@@ -321,6 +337,8 @@
 				F888992F205B7408003C211C /* SendFeedbackViewController.m */,
 				F8D8CB75205F7A15001F4D7B /* StudentQuizViewController.h */,
 				F8D8CB76205F7A15001F4D7B /* StudentQuizViewController.m */,
+				F80FAFB22078ADC6006796B1 /* StudentQuizDetailViewController.h */,
+				F80FAFB32078ADC6006796B1 /* StudentQuizDetailViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -856,6 +874,7 @@
 				F8D8CB7F205FA103001F4D7B /* QuestionViewCell.m in Sources */,
 				F89B477C204A56A100B73447 /* StudentSessionCell.m in Sources */,
 				F892F5FF201AD93E00092EA3 /* UserModel.m in Sources */,
+				F80FAFB82078C77E006796B1 /* SocketManagerIO.m in Sources */,
 				F8C271C62018E29D002DA646 /* HomeViewController.m in Sources */,
 				F8BEE2102050DB480043A316 /* QRCodeViewController.m in Sources */,
 				F8B5B695204956ED00F3A960 /* SessionViewController.m in Sources */,
@@ -876,6 +895,7 @@
 				F8D8CB77205F7A15001F4D7B /* StudentQuizViewController.m in Sources */,
 				F89B06102019C7D000CAC8FF /* MenuItemModel.m in Sources */,
 				F849A2062023593C0042A422 /* AboutViewController.m in Sources */,
+				F80FAFB42078ADC6006796B1 /* StudentQuizDetailViewController.m in Sources */,
 				F8D8CB7C205F9D29001F4D7B /* QuestionModel.m in Sources */,
 				F8BEE2162051154C0043A316 /* ChangePasswordViewController.m in Sources */,
 				F8DC6D25203D1A670031C923 /* CourseViewCell.m in Sources */,

@@ -19,6 +19,7 @@
 @implementation LoadingManager
 
 + (LoadingManager *)showLoadingViewInView:(UIView *)view {
+    [LoadingManager hideLoadingViewForView:view];
     LoadingManager *loadingManager = [[LoadingManager alloc] initWithView:view];
     if (loadingManager) {
         
