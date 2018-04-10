@@ -640,9 +640,14 @@ NSString *linkService(NSString *subLink) {
     
     NSString* token = [[UserManager userCenter] getCurrentUserToken];
     
-    NSDictionary *parameter = @{@"token": token ? token : @"",
+    [self.sessionManager.requestSerializer setValue:token forHTTPHeaderField:@"x-access-token"];
+    
+    NSDictionary *parameter = @{
+                                @"category" : @1 ,
+//                                @"token": token ? token : @"",
                                 @"title" : title,
-                                @"content" : content
+                                @"content" : content,
+                                @"to_id" : @"0"
                                 };
     
     NSMutableDictionary *newDict = [[NSMutableDictionary alloc] init];

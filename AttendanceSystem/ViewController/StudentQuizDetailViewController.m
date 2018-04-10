@@ -114,6 +114,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
         NSLog(@"answeredQuiz : %@",data);
 //        [self showLoadingView];
+            [self hideLoadingView];
         });
     }];
     
@@ -159,6 +160,8 @@
     //       question_index: 0,
     //       option: 'a',
     //      student_id: 127 }
+    
+    [self showLoadingView];
     
     NSMutableArray* data = [[NSMutableArray alloc] init];
     

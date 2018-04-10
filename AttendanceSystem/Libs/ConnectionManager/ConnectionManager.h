@@ -83,11 +83,11 @@ andFailure:(ConnectionFailure _Nullable)failure;
                              success:(ConnectionComplete _Nullable)success
                           andFailure:(ConnectionFailure _Nullable)failure;
 
-- (void)sendFeedbackRequestWithTitle:(NSString*)title
-                             content:(NSString*)content
+- (void)sendFeedbackRequestWithTitle:(NSString *)title
+                             content:(NSString *)content
                          isAnonymous:(BOOL)isAnonymous
-                             success:(ConnectionComplete _Nullable)success
-                          andFailure:(ConnectionFailure _Nullable)failure;
+                             success:(ConnectionComplete)success
+                          andFailure:(ConnectionFailure)failure;
 
 - (void)checkQuizCodeWithCode:(NSString*)code
                       success:(ConnectionComplete _Nullable)success

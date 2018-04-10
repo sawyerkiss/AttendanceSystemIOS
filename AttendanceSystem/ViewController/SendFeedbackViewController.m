@@ -66,9 +66,11 @@
     
     [self showLoadingView];
     
+    BOOL isAnonymous = self.cbAnonymous.on;
+    
     [[ConnectionManager connectionDefault] sendFeedbackRequestWithTitle:self.tfTitle.text
                                                                 content:self.tfContent.text
-                                                            isAnonymous:self.cbAnonymous.on
+                                                            isAnonymous:isAnonymous
                                                                 success:^(id  _Nonnull responseObject) {
         [self hideLoadingView];
         [self tappedAtLeftButton:nil];
@@ -76,7 +78,7 @@
         [self hideLoadingView];
         [self showAlertNoticeWithMessage:errorMessage completion:nil];
     }];
-    
+
 }
 
 @end
