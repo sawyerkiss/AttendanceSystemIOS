@@ -14,6 +14,7 @@
 #import "QRCodeViewController.h"
 #import "ScanQRViewController.h"
 #import "StudentQuizDetailViewController.h"
+#import "TeacherQuizViewController.h"
 
 @import SocketIO;
 
@@ -130,6 +131,35 @@ typedef enum {
 - (IBAction)didTouchQuiz:(id)sender {
     if(self.userRole == TEACHER) {
         [self.socket disconnect];
+        [self showLoadingView];
+        
+        NSString* classId = self.course.classId;
+        NSString* courseId = self.course.courseId;
+        
+        [[ConnectionManager connectionDefault] getQuizListFromId:courseId classId:classId
+                                                         success:^(id  _Nonnull responseObject) {
+                                                             [self hideLoadingView];
+                                                             NSString* result = responseObject[@"result"];
+                                                             NSArray* quizList = responseObject[@"quiz_list"];
+                                                             
+                                                             if([result isEqualToString:@"success"]) {
+                                                           if(quizList && quizList.count > 0)
+                                                           {
+                                                               TeacherQuizViewController * quiz = [self.storyboard instantiateViewControllerWithIdentifier:@"TeacherQuizViewController"];
+                                                             quiz.course = self.course;
+                                                            
+                                                             [(UINavigationController*)self.frostedViewController.contentViewController pushViewController:quiz animated:TRUE];
+                                                             }
+                                                                 else
+                                                                     [self showAlertQuestionWithMessage:@"Attendance quiz haven't been opened yet" completion:nil];
+                                                             }
+                                                             else
+                                                                 [self showAlertQuestionWithMessage:@"Attendance quiz haven't been opened yet" completion:nil];
+                                                         } andFailure:^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject) {
+                                                             [self hideLoadingView];
+                                                             [self showAlertQuestionWithMessage:errorMessage completion:nil];
+                                                         }];
+   
     }
     else {
         [self showAlertView:QUIZ];
@@ -375,6 +405,7 @@ typedef enum {
         //StudentQuizViewController
         StudentQuizDetailViewController* studentQuiz = [self.storyboard instantiateViewControllerWithIdentifier:@"StudentQuizDetailViewController"];
 //        studentQuiz.quiz_id = quiz_id;
+        studentQuiz.quiz_id = code;
         [(UINavigationController*)self.frostedViewController.contentViewController pushViewController:studentQuiz animated:TRUE];
             
     } andFailure:^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject) {

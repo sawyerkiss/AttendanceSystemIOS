@@ -103,5 +103,22 @@ andFailure:(ConnectionFailure _Nullable)failure;
                      success:(ConnectionComplete _Nullable)success
                   andFailure:(ConnectionFailure _Nullable)failure;
 
+- (void)getPublishQuiz:(NSString*)quizCode
+               success:(ConnectionComplete _Nullable)success
+            andFailure:(ConnectionFailure _Nullable)failure;
+
+- (void)getQuizListFromId:(NSString *)courseId
+                  classId:(NSString*)classId
+                  success:(ConnectionComplete)success
+               andFailure:(ConnectionFailure)failure;
+
+- (void)startQuizWithId:(NSString*)quizId
+                success:(ConnectionComplete)success
+             andFailure:(ConnectionFailure)failure;
+
+
+- (void)getDisplayQuizWithSuccess:(ConnectionComplete)success
+andFailure:(ConnectionFailure)failure;
+
 @end
 OS_ASSUME_NONNULL_END

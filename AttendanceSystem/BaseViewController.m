@@ -195,16 +195,16 @@ static BOOL isAlertDisplayed = NO;
 }
 
 - (void)showLoadingView {
-    if(self.navigationController)
-        [LoadingManager showLoadingViewInView:self.navigationController.view];
-    else
+//    if(self.navigationController)
+//        [LoadingManager showLoadingViewInView:self.navigationController.view];
+//    else
         [LoadingManager showLoadingViewInView:self.view];
 }
 
 - (void)hideLoadingView {
-    if(self.navigationController)
-        [LoadingManager hideLoadingViewForView:self.navigationController.view];
-    else
+//    if(self.navigationController)
+//        [LoadingManager hideLoadingViewForView:self.navigationController.view];
+//    else
         [LoadingManager hideLoadingViewForView:self.view];
 }
 

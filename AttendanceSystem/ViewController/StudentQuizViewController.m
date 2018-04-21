@@ -79,7 +79,7 @@ static CGFloat kCellHeight;
     
     for (QuestionModel* model in self.questionList) {
         if([self.questionList containsObject:model]) {
-            model.answer = question.answer;
+            model.answers = question.answers;
             break;
         }
     }
@@ -133,11 +133,11 @@ static CGFloat kCellHeight;
     
     for (QuestionModel* model in self.questionList) {
         
-        if(model.answer.length == 0)
-        {
-            isValidate = FALSE;
-            break;
-        }
+//        if(model.answers.length == 0)
+//        {
+//            isValidate = FALSE;
+//            break;
+//        }
     }
     
     if(isValidate)

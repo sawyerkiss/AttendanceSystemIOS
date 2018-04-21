@@ -19,10 +19,15 @@
 		F82BBCC62018785E00CA4E72 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F82BBCC02018785E00CA4E72 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
 		F82BBCC72018785E00CA4E72 /* UIAlertController+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = F82BBCC32018785E00CA4E72 /* UIAlertController+Blocks.m */; };
 		F82BBCCA20188D5D00CA4E72 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F82BBCC920188D5D00CA4E72 /* LoginViewController.m */; };
+		F830AC6120899DDA00D30361 /* QuizModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F830AC6020899DDA00D30361 /* QuizModel.m */; };
 		F83E0414205A630D000B9F80 /* SendAbsenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F83E0413205A630D000B9F80 /* SendAbsenceViewController.m */; };
 		F83E0417205A6FD1000B9F80 /* DateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F83E0416205A6FD0000B9F80 /* DateViewController.m */; };
 		F849A203202359080042A422 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F849A202202359080042A422 /* ProfileViewController.m */; };
 		F849A2062023593C0042A422 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F849A2052023593C0042A422 /* AboutViewController.m */; };
+		F85B36B82081B22400AC4DD6 /* TeacherQuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F85B36B72081B22400AC4DD6 /* TeacherQuizViewController.m */; };
+		F85B36BB2081BB1200AC4DD6 /* StudentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F85B36BA2081BB1200AC4DD6 /* StudentTableViewCell.m */; };
+		F85B36BE2081C9B700AC4DD6 /* TeacherQuizWaitingController.m in Sources */ = {isa = PBXBuildFile; fileRef = F85B36BD2081C9B700AC4DD6 /* TeacherQuizWaitingController.m */; };
+		F85B36C12081CE0A00AC4DD6 /* TeacherQuizCompleteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F85B36C02081CE0A00AC4DD6 /* TeacherQuizCompleteViewController.m */; };
 		F85B6C42204848AD0098D64A /* SessionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F85B6C40204848AD0098D64A /* SessionViewCell.m */; };
 		F85B6C43204848AD0098D64A /* SessionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F85B6C41204848AD0098D64A /* SessionViewCell.xib */; };
 		F871ACAC204652BB009E04BB /* AttendanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F871ACAB204652BB009E04BB /* AttendanceViewController.m */; };
@@ -107,6 +112,8 @@
 		F82BBCC32018785E00CA4E72 /* UIAlertController+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Blocks.m"; sourceTree = "<group>"; };
 		F82BBCC820188D5D00CA4E72 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		F82BBCC920188D5D00CA4E72 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		F830AC5F20899DDA00D30361 /* QuizModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuizModel.h; sourceTree = "<group>"; };
+		F830AC6020899DDA00D30361 /* QuizModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuizModel.m; sourceTree = "<group>"; };
 		F83E0412205A630D000B9F80 /* SendAbsenceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendAbsenceViewController.h; sourceTree = "<group>"; };
 		F83E0413205A630D000B9F80 /* SendAbsenceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendAbsenceViewController.m; sourceTree = "<group>"; };
 		F83E0415205A6FD0000B9F80 /* DateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateViewController.h; sourceTree = "<group>"; };
@@ -115,6 +122,14 @@
 		F849A202202359080042A422 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		F849A2042023593C0042A422 /* AboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		F849A2052023593C0042A422 /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		F85B36B62081B22400AC4DD6 /* TeacherQuizViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeacherQuizViewController.h; sourceTree = "<group>"; };
+		F85B36B72081B22400AC4DD6 /* TeacherQuizViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeacherQuizViewController.m; sourceTree = "<group>"; };
+		F85B36B92081BB1200AC4DD6 /* StudentTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StudentTableViewCell.h; sourceTree = "<group>"; };
+		F85B36BA2081BB1200AC4DD6 /* StudentTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudentTableViewCell.m; sourceTree = "<group>"; };
+		F85B36BC2081C9B700AC4DD6 /* TeacherQuizWaitingController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeacherQuizWaitingController.h; sourceTree = "<group>"; };
+		F85B36BD2081C9B700AC4DD6 /* TeacherQuizWaitingController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeacherQuizWaitingController.m; sourceTree = "<group>"; };
+		F85B36BF2081CE0A00AC4DD6 /* TeacherQuizCompleteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeacherQuizCompleteViewController.h; sourceTree = "<group>"; };
+		F85B36C02081CE0A00AC4DD6 /* TeacherQuizCompleteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeacherQuizCompleteViewController.m; sourceTree = "<group>"; };
 		F85B6C3F204848AD0098D64A /* SessionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SessionViewCell.h; sourceTree = "<group>"; };
 		F85B6C40204848AD0098D64A /* SessionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionViewCell.m; sourceTree = "<group>"; };
 		F85B6C41204848AD0098D64A /* SessionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionViewCell.xib; sourceTree = "<group>"; };
@@ -339,6 +354,12 @@
 				F8D8CB76205F7A15001F4D7B /* StudentQuizViewController.m */,
 				F80FAFB22078ADC6006796B1 /* StudentQuizDetailViewController.h */,
 				F80FAFB32078ADC6006796B1 /* StudentQuizDetailViewController.m */,
+				F85B36B62081B22400AC4DD6 /* TeacherQuizViewController.h */,
+				F85B36B72081B22400AC4DD6 /* TeacherQuizViewController.m */,
+				F85B36BC2081C9B700AC4DD6 /* TeacherQuizWaitingController.h */,
+				F85B36BD2081C9B700AC4DD6 /* TeacherQuizWaitingController.m */,
+				F85B36BF2081CE0A00AC4DD6 /* TeacherQuizCompleteViewController.h */,
+				F85B36C02081CE0A00AC4DD6 /* TeacherQuizCompleteViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -436,6 +457,8 @@
 				F89B477E204A5A0200B73447 /* StudentModel.m */,
 				F8D8CB7A205F9D29001F4D7B /* QuestionModel.h */,
 				F8D8CB7B205F9D29001F4D7B /* QuestionModel.m */,
+				F830AC5F20899DDA00D30361 /* QuizModel.h */,
+				F830AC6020899DDA00D30361 /* QuizModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -461,6 +484,8 @@
 				F89B477B204A56A100B73447 /* StudentSessionCell.m */,
 				F8D8CB7D205FA103001F4D7B /* QuestionViewCell.h */,
 				F8D8CB7E205FA103001F4D7B /* QuestionViewCell.m */,
+				F85B36B92081BB1200AC4DD6 /* StudentTableViewCell.h */,
+				F85B36BA2081BB1200AC4DD6 /* StudentTableViewCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -858,6 +883,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F830AC6120899DDA00D30361 /* QuizModel.m in Sources */,
 				F892F5FB201AD93700092EA3 /* UserManager.m in Sources */,
 				F82BBCCA20188D5D00CA4E72 /* LoginViewController.m in Sources */,
 				F8C271C92018E322002DA646 /* CourseListViewController.m in Sources */,
@@ -865,9 +891,11 @@
 				F85B6C42204848AD0098D64A /* SessionViewCell.m in Sources */,
 				F83E0417205A6FD1000B9F80 /* DateViewController.m in Sources */,
 				F82BBCC72018785E00CA4E72 /* UIAlertController+Blocks.m in Sources */,
+				F85B36BE2081C9B700AC4DD6 /* TeacherQuizWaitingController.m in Sources */,
 				F82BBCC42018785E00CA4E72 /* LoadingManager.m in Sources */,
 				F82BBCC62018785E00CA4E72 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				F89B060620198D6000CAC8FF /* UIColor+Categories.m in Sources */,
+				F85B36B82081B22400AC4DD6 /* TeacherQuizViewController.m in Sources */,
 				F82BBCC52018785E00CA4E72 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				F89B477F204A5A0300B73447 /* StudentModel.m in Sources */,
 				F849A203202359080042A422 /* ProfileViewController.m in Sources */,
@@ -882,6 +910,7 @@
 				F892F603201AE04000092EA3 /* JsonBaseModel.m in Sources */,
 				F8FA797420183BAA005D8677 /* BaseViewController.m in Sources */,
 				F8FA797F20183BAA005D8677 /* main.m in Sources */,
+				F85B36C12081CE0A00AC4DD6 /* TeacherQuizCompleteViewController.m in Sources */,
 				F892F5F7201AD5B500092EA3 /* CustomAlertView.m in Sources */,
 				F89B060B2019946800CAC8FF /* CustomNavigationController.m in Sources */,
 				F892F607201AE48200092EA3 /* UILabel+Categorites.m in Sources */,
@@ -894,6 +923,7 @@
 				F8889930205B7408003C211C /* SendFeedbackViewController.m in Sources */,
 				F8D8CB77205F7A15001F4D7B /* StudentQuizViewController.m in Sources */,
 				F89B06102019C7D000CAC8FF /* MenuItemModel.m in Sources */,
+				F85B36BB2081BB1200AC4DD6 /* StudentTableViewCell.m in Sources */,
 				F849A2062023593C0042A422 /* AboutViewController.m in Sources */,
 				F80FAFB42078ADC6006796B1 /* StudentQuizDetailViewController.m in Sources */,
 				F8D8CB7C205F9D29001F4D7B /* QuestionModel.m in Sources */,

@@ -8,6 +8,8 @@
 
 #import "JsonBaseModel.h"
 
+@protocol StudentModel;
+
 @interface StudentModel : JsonBaseModel
 
 @property (nonatomic) NSString <Optional> *studentId;

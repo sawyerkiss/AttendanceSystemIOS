@@ -39,8 +39,8 @@
     if(question) {
         self.lblText.text = question.text;
         
-        if(question.answer.length > 0)
-        self.tfAnswer.text = question.answer;
+//        if(question.answers.length > 0)
+//        self.tfAnswer.text = question.answers;
         
         self.question = question;
     }
@@ -60,18 +60,18 @@
     
     NSUInteger newLength = oldLength - rangeLength + replacementLength;
  
-    if(newLength == 1) {
-        self.question.answer = string;
-        
-        if(self.delegate && [self.delegate respondsToSelector:@selector(changeAnswerValue:)])
-            [self.delegate changeAnswerValue:self.question];
-    }
-    else if (oldLength > 0 && newLength == 0)  {
-        self.question.answer = @"";
-        
-        if(self.delegate && [self.delegate respondsToSelector:@selector(changeAnswerValue:)])
-            [self.delegate changeAnswerValue:self.question];
-    }
+//    if(newLength == 1) {
+//        self.question.answers = string;
+//
+//        if(self.delegate && [self.delegate respondsToSelector:@selector(changeAnswerValue:)])
+//            [self.delegate changeAnswerValue:self.question];
+//    }
+//    else if (oldLength > 0 && newLength == 0)  {
+//        self.question.answers = @"";
+//
+//        if(self.delegate && [self.delegate respondsToSelector:@selector(changeAnswerValue:)])
+//            [self.delegate changeAnswerValue:self.question];
+//    }
     
     return newLength <= 1;
 

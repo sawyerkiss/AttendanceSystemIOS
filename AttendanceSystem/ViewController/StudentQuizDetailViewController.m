@@ -7,6 +7,8 @@
 //
 
 #import "StudentQuizDetailViewController.h"
+#import "QuestionModel.h"
+#import "QuizModel.h"
 
 @import SocketIO;
 
@@ -15,10 +17,18 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblQuizQuestion;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *ctrHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *ctrWidth;
+@property (weak, nonatomic) IBOutlet UIButton *buttonA;
+@property (weak, nonatomic) IBOutlet UIButton *buttonB;
+@property (weak, nonatomic) IBOutlet UIButton *buttonC;
+@property (weak, nonatomic) IBOutlet UIButton *buttonD;
+
+@property (nonatomic) NSArray* questions ;
 
 @property (nonatomic) SocketIOClient *socket;
 
 @property (nonatomic) NSUInteger questionIndex;
+
+@property (nonatomic) QuizModel* quiz;
 
 @end
 
@@ -35,6 +45,16 @@
 
     
     [self showQuestionOrNot:NO];
+    
+    [[ConnectionManager connectionDefault] getPublishQuiz:self.quiz_id success:^(id  _Nonnull responseObject) {
+        self.quiz = [[QuizModel alloc] initWithDictionary:responseObject[@"quiz"] error:nil] ;
+        self.questions = [QuestionModel arrayOfModelsFromDictionaries:self.quiz.questions error:nil];
+        
+        self.title = self.quiz.title;
+        
+    } andFailure:^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject) {
+        
+    }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -62,6 +82,11 @@
         _ctrHeight.constant = 0 ;
         _ctrWidth.constant = 0;
     }
+    
+
+    [self resetButtonColor];
+    
+    [self enableButtonOrNot:TRUE];
 }
 
 - (void)setSocket {
@@ -81,6 +106,8 @@
         [self showLoadingView];
       });
     }];
+    
+    
     
     [self.socket on:@"quizQuestionReady" callback:^(NSArray * _Nonnull data, SocketAckEmitter * _Nonnull ack) {
          dispatch_async(dispatch_get_main_queue(), ^{
@@ -107,6 +134,8 @@
        dispatch_async(dispatch_get_main_queue(), ^{
         [self hideLoadingView];
          NSLog(@"quizQuestionEnded : %@",data);
+           
+        
        });
     }];
     
@@ -115,6 +144,58 @@
         NSLog(@"answeredQuiz : %@",data);
 //        [self showLoadingView];
             [self hideLoadingView];
+            NSDictionary* dictionary = [data objectAtIndex:0];
+            NSString* option = dictionary[@"option"];
+            
+            NSInteger questionIndex = [[dictionary objectForKey:@"question_index"] integerValue];
+            
+            QuestionModel* question = [self.questions objectAtIndex:questionIndex];
+            if(question) {
+                question.answers = @[option];
+            }
+            
+            NSInteger correctAnswer = 0 ;
+            if(questionIndex == self.questions.count - 1) {
+                for(QuestionModel* question in self.questions) {
+                    if([[question.answers objectAtIndex:0] isEqualToString:@"a"])
+                    {
+                       if([question.option_a isEqualToString:question.correct_option])
+                           correctAnswer++;
+                    }
+                    else  if([[question.answers objectAtIndex:0] isEqualToString:@"b"])
+                    {
+                        if([question.option_b isEqualToString:question.correct_option])
+                            correctAnswer++;
+                    }
+                    else  if([[question.answers objectAtIndex:0] isEqualToString:@"c"])
+                    {
+                        if([question.option_c isEqualToString:question.correct_option])
+                            correctAnswer++;
+                    }
+                    else if([[question.answers objectAtIndex:0] isEqualToString:@"d"])
+                    {
+                        if([question.option_d isEqualToString:question.correct_option])
+                            correctAnswer++;
+                    }
+                    
+                }
+                
+                BOOL isChecked = FALSE;
+                
+                if([self.quiz.type isEqualToString:@"0"])
+                    isChecked = correctAnswer >= [self.quiz.required_correct_answers integerValue];
+                else
+                    isChecked = correctAnswer == self.questions.count;
+                
+                if(isChecked)
+                    [self showAlertNoticeWithMessage:@"You've checked attendance" completion:^(NSInteger buttonIndex) {
+                        [self tappedAtLeftButton:nil];
+                    }];
+                else
+                    [self showAlertNoticeWithMessage:@"You've not checked attendance" completion:^(NSInteger buttonIndex) {
+                        [self tappedAtLeftButton:nil];
+                    }];
+            }
         });
     }];
     
@@ -133,22 +214,31 @@
 
 - (IBAction)didTouchAButton:(id)sender {
 
+     [self resetButtonColor];
+    [_buttonA setBackgroundColor:[UIColor greenColor]];
     [self didAnswerWithOption:@"a"];
     
 }
 
 - (IBAction)didTouchBButton:(id)sender {
+    
+     [self resetButtonColor];
+      [_buttonB setBackgroundColor:[UIColor greenColor]];
      [self didAnswerWithOption:@"b"];
     
 }
 
 - (IBAction)didTouchCButton:(id)sender {
     
+     [self resetButtonColor];
+      [_buttonC setBackgroundColor:[UIColor greenColor]];
      [self didAnswerWithOption:@"c"];
 }
 
 - (IBAction)didTouchDButton:(id)sender {
     
+     [self resetButtonColor];
+      [_buttonD setBackgroundColor:[UIColor greenColor]];
      [self didAnswerWithOption:@"d"];
 }
 
@@ -178,7 +268,25 @@
     [data addObject:dictionary];
     
     [self.socket emit:@"answeredQuiz" with:data];
+    
+    [self enableButtonOrNot:FALSE];
     //                }];
+}
+
+- (void)resetButtonColor {
+    
+    [_buttonA setBackgroundColor:[UIColor blueColor]];
+    [_buttonB setBackgroundColor:[UIColor blueColor]];
+    [_buttonC setBackgroundColor:[UIColor blueColor]];
+    [_buttonD setBackgroundColor:[UIColor blueColor]];
+    
+}
+
+- (void)enableButtonOrNot:(BOOL)isEnable {
+    [_buttonA setEnabled:isEnable];
+    [_buttonB setEnabled:isEnable];
+    [_buttonC setEnabled:isEnable];
+    [_buttonD setEnabled:isEnable];
 }
 
 @end
