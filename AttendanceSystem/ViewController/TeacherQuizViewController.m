@@ -11,6 +11,7 @@
 #import "QuizModel.h"
 #import "TeacherQuizWaitingController.h"
 #import "REFrostedViewController.h"
+#import "TeacherQuizCompleteViewController.h"
 
 @interface TeacherQuizViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *lblQuizType;
@@ -48,12 +49,18 @@
     
     self.buttonStart.enabled = FALSE;
     
-    [self setSocket];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    if(self.socket)
-        [self.socket disconnect];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        if(self.socket)
+            [self.socket disconnect];
+    });
+
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self setSocket];
 }
 
 - (void)setSocket {
@@ -84,8 +91,8 @@
                 {
                     self.quiz = [[QuizModel alloc] initWithDictionary:responseObject[@"quiz"] error:nil];
                 
-                self.lblQuizCode.text = self.quiz.code;
-                self.lblQuizType.text = self.quiz.type;
+                    self.lblQuizCode.text = self.quiz.code;
+                self.lblQuizType.text = [self.quiz.type isEqualToString:@"0"] ? @"Academic" : @"Miscellaneous";
                 self.studentList = [StudentModel arrayOfModelsFromDictionaries:self.quiz.participants error:nil];
                 
                 [self.tableStudents reloadData];
@@ -99,7 +106,17 @@
         });
     }];
     
-  
+    [self.socket on:@"portalStartedQuiz" callback:^(NSArray * _Nonnull data, SocketAckEmitter * _Nonnull ack) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"portalStartedQuiz: %@", data);
+            NSDictionary* dictionary = [data objectAtIndex:0];
+            NSString* quiz_code = dictionary[@"quiz_code"];
+            if([quiz_code isEqualToString:self.quiz.code])
+                [self startQuiz];
+        });
+    }];
+    
+
     
     [self.socket on:@"disconnect" callback:^(NSArray * _Nonnull data, SocketAckEmitter * _Nonnull ack) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -134,19 +151,20 @@
     
 }
 
-- (IBAction)didTouchStartButton:(id)sender {
-    
+- (void)startQuiz {
     [self showLoadingView];
     
     [[ConnectionManager connectionDefault] startQuizWithId:self.quiz.code success:^(id  _Nonnull responseObject) {
         
         [self hideLoadingView];
         
+        [self emitStartQuiz];
+        
         NSString* result = responseObject[@"result"];
         
         if([result isEqualToString:@"success"]) {
             TeacherQuizWaitingController * studentQuiz = [self.storyboard instantiateViewControllerWithIdentifier:@"TeacherQuizWaitingController"];
-        
+            studentQuiz.quiz_code = self.quiz.code;
             [(UINavigationController*)self.frostedViewController.contentViewController pushViewController:studentQuiz animated:TRUE];
         }
         else
@@ -156,8 +174,29 @@
         [self hideLoadingView];
         [self showAlertNoticeWithMessage:errorMessage completion:nil];
     }];
-    
+}
 
+
+
+- (IBAction)didTouchStartButton:(id)sender {
+    
+    [self startQuiz];
+
+}
+
+-(void)emitStartQuiz {
+    NSMutableArray* data = [[NSMutableArray alloc] init];
+    
+    NSDictionary* dictionary = [[NSMutableDictionary alloc] init];
+    
+    NSString* quiz_code = [NSString stringWithFormat:@"%@",self.quiz.code];
+//    NSString* studendId = [[UserManager userCenter] getCurrentUser].userId;
+    
+    [dictionary setValue:quiz_code forKey:@"quiz_code"];
+    
+    [data addObject:dictionary];
+    
+    [self.socket emit:@"mobileStartedQuiz" with:data];
     
 }
 

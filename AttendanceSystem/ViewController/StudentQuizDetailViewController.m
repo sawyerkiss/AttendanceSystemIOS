@@ -40,7 +40,7 @@
      self.title = @"QUIZ";
    
 //    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            [self setSocket];
+    
 //    });
 
     
@@ -57,10 +57,14 @@
     }];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+       [self setSocket];
+}
 - (void)viewWillDisappear:(BOOL)animated {
-    if(self.socket)
-        [self.socket disconnect];
-//    CFRunLoopStop(CFRunLoopGetCurrent());
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        if(self.socket)
+            [self.socket disconnect];
+    });
 }
 
 - (void)didReceiveMemoryWarning {

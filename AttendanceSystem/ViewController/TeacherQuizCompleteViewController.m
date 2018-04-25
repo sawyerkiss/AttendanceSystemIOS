@@ -44,14 +44,22 @@
 }
 */
 - (IBAction)didTouchCloseButton:(id)sender {
+    
+    
 
 }
 
 - (IBAction)didTouchCheckedButton:(id)sender {
+    
+    
 }
 
 - (IBAction)didTouchUncheckedButton:(id)sender {
+    
+    
 }
+
+
 - (IBAction)didTouchNoAttendButton:(id)sender {
 }
 

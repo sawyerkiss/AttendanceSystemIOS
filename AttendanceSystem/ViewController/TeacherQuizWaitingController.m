@@ -24,7 +24,7 @@
     
     self.title = @"Quiz Waiting";
     
-     [self setSocket];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,9 +32,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self setSocket];
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
-    if(self.socket)
-        [self.socket disconnect];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        if(self.socket)
+            [self.socket disconnect];
+    });
 }
 
 - (void)setSocket {
@@ -49,16 +56,15 @@
         });
     }];
     
-    [self.socket  on:@"quizEnded" callback:^(NSArray * _Nonnull data, SocketAckEmitter * _Nonnull ack) {
-        NSLog(@"quizEnded : %@",data);
-        
+    [self.socket on:@"mobileEndedQuiz" callback:^(NSArray * _Nonnull data, SocketAckEmitter * _Nonnull ack) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            TeacherQuizCompleteViewController * studentQuiz = [self.storyboard instantiateViewControllerWithIdentifier:@"TeacherQuizCompleteViewController"];
-            [(UINavigationController*)self.frostedViewController.contentViewController pushViewController:studentQuiz animated:TRUE];
+            NSLog(@"mobileEndedQuiz: %@", data);
+            NSDictionary* dictionary = [data objectAtIndex:0];
+            NSString* quiz_code = dictionary[@"quiz_code"];
+            if([quiz_code isEqualToString:self.quiz_code])
+                [self endQuiz];
         });
-    
     }];
-    
     
     
     [self.socket on:@"disconnect" callback:^(NSArray * _Nonnull data, SocketAckEmitter * _Nonnull ack) {
@@ -71,6 +77,13 @@
     [self.socket connect];
     
     //     CFRunLoopRun();
+}
+
+- (void)endQuiz {
+    
+    TeacherQuizCompleteViewController * studentQuiz = [self.storyboard instantiateViewControllerWithIdentifier:@"TeacherQuizCompleteViewController"];
+    
+    [(UINavigationController*)self.frostedViewController.contentViewController pushViewController:studentQuiz animated:TRUE];
 }
 
 @end

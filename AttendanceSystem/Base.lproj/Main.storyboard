@@ -2065,7 +2065,7 @@ Wait for teacher start the quiz</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nU-O6-8jV">
-                                <rect key="frame" x="191" y="28" width="101" height="24"/>
+                                <rect key="frame" x="191" y="28.5" width="177" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2077,7 +2077,7 @@ Wait for teacher start the quiz</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5aX-WI-uad">
-                                <rect key="frame" x="194" y="64" width="98" height="24"/>
+                                <rect key="frame" x="194" y="64" width="174" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2165,7 +2165,7 @@ Wait for teacher start the quiz</string>
                         <constraints>
                             <constraint firstItem="hJW-zT-dmZ" firstAttribute="trailing" secondItem="Reb-Jv-O6i" secondAttribute="trailing" id="042-Cv-rYG"/>
                             <constraint firstItem="7nU-O6-8jV" firstAttribute="leading" secondItem="cLf-QI-gmG" secondAttribute="trailing" constant="8" id="4ca-As-R06"/>
-                            <constraint firstItem="Reb-Jv-O6i" firstAttribute="trailing" secondItem="5aX-WI-uad" secondAttribute="trailing" constant="83" id="6RU-zO-RlN"/>
+                            <constraint firstItem="5aX-WI-uad" firstAttribute="trailing" secondItem="7nU-O6-8jV" secondAttribute="trailing" id="7Hm-vB-ggS"/>
                             <constraint firstItem="hJW-zT-dmZ" firstAttribute="top" secondItem="mmy-T0-Xfy" secondAttribute="bottom" constant="-1" id="Acl-Yo-NKf"/>
                             <constraint firstItem="s4s-PA-lQ2" firstAttribute="top" secondItem="cLf-QI-gmG" secondAttribute="bottom" constant="15" id="BDk-0A-ZcD"/>
                             <constraint firstItem="7KF-4p-fff" firstAttribute="centerX" secondItem="Reb-Jv-O6i" secondAttribute="centerX" id="CtZ-ta-6kQ"/>
@@ -2178,8 +2178,8 @@ Wait for teacher start the quiz</string>
                             <constraint firstItem="mmy-T0-Xfy" firstAttribute="top" secondItem="fpU-OR-ePC" secondAttribute="bottom" constant="30" id="PEx-zc-t9b"/>
                             <constraint firstItem="hJW-zT-dmZ" firstAttribute="leading" secondItem="Reb-Jv-O6i" secondAttribute="leading" id="WqS-81-pZy"/>
                             <constraint firstItem="Reb-Jv-O6i" firstAttribute="bottom" secondItem="7KF-4p-fff" secondAttribute="bottom" constant="20" id="Xgt-pg-N4N"/>
+                            <constraint firstItem="Reb-Jv-O6i" firstAttribute="trailing" secondItem="7nU-O6-8jV" secondAttribute="trailing" constant="7" id="Xkc-Xc-Eyu"/>
                             <constraint firstItem="mmy-T0-Xfy" firstAttribute="width" secondItem="RgZ-hq-fHp" secondAttribute="width" multiplier="1:2" id="dlc-eL-lFJ"/>
-                            <constraint firstItem="5aX-WI-uad" firstAttribute="trailing" secondItem="7nU-O6-8jV" secondAttribute="trailing" id="eC2-Xi-3bf"/>
                             <constraint firstItem="9Ar-tM-rfI" firstAttribute="height" secondItem="mmy-T0-Xfy" secondAttribute="height" id="kY2-pP-mlE"/>
                             <constraint firstItem="5aX-WI-uad" firstAttribute="centerY" secondItem="s4s-PA-lQ2" secondAttribute="centerY" id="l2l-Ux-6EL"/>
                             <constraint firstItem="mmy-T0-Xfy" firstAttribute="leading" secondItem="Reb-Jv-O6i" secondAttribute="leading" id="muJ-ae-iH0"/>
