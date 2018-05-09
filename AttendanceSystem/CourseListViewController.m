@@ -115,6 +115,7 @@
     static NSString *cellID = @"CourseCell";
     CourseViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell loadCourseData:[self.courseList objectAtIndex:indexPath.row]];
     
     return cell;

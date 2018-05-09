@@ -120,5 +120,18 @@ andFailure:(ConnectionFailure _Nullable)failure;
 - (void)getDisplayQuizWithSuccess:(ConnectionComplete)success
 andFailure:(ConnectionFailure)failure;
 
+- (void)getStudentDetailWithId:(NSString*)studentId success:(ConnectionComplete)success
+                         andFailure:(ConnectionFailure)failure;
+
+- (void)uploadFaceForStudent:(NSString*)personId
+                      faceId:(NSString*)faceId
+                   faceImage:(NSString*)url
+                     success:(ConnectionComplete)success
+                  andFailure:(ConnectionFailure)failure;
+
+- (void)uploadImageToAPI:(NSData*)imageData
+                 success:(ConnectionComplete)success
+              andFailure:(ConnectionFailure)failure;
+
 @end
 OS_ASSUME_NONNULL_END

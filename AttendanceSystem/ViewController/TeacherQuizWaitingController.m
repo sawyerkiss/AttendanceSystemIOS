@@ -62,7 +62,7 @@
             NSDictionary* dictionary = [data objectAtIndex:0];
             NSString* quiz_code = dictionary[@"quiz_code"];
             if([quiz_code isEqualToString:self.quiz_code])
-                [self endQuiz];
+                [self endQuiz:quiz_code];
         });
     }];
     
@@ -79,10 +79,10 @@
     //     CFRunLoopRun();
 }
 
-- (void)endQuiz {
+- (void)endQuiz:(NSString*)quizCode {
     
     TeacherQuizCompleteViewController * studentQuiz = [self.storyboard instantiateViewControllerWithIdentifier:@"TeacherQuizCompleteViewController"];
-    
+    studentQuiz.quizCode = quizCode;
     [(UINavigationController*)self.frostedViewController.contentViewController pushViewController:studentQuiz animated:TRUE];
 }
 

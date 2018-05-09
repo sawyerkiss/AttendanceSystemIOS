@@ -47,6 +47,7 @@
     }
 
 - (SocketIOClient*)getSocketClient {
+    [self initClient];
     return self.socket;
 }
 @end

@@ -37,7 +37,9 @@ static NSString *const kGetPublishQuiz = @"api/quiz/published";
 static NSString *const kGetQuizList = @"api/quiz/list";
 static NSString *const kStartQuiz = @"api/quiz/start";
 static NSString *const kGetDisplayQuiz = @"api/quiz/display";
-
+static NSString *const kGetStudentDetail =  @"api/student/detail/%@";
+static NSString *const kUploadStudentFace = @"api/student/uploadFace";
+static NSString *const kUploadFaceImage = @"https://api.imgur.com/3/upload";
 //Header
 static NSString *kHeaderSourceHostKey = @"X-SOURCE-HOST";
 static NSString *kHeaderTokenKey = @"Token";
@@ -863,5 +865,115 @@ NSString *linkService(NSString *subLink) {
 //     }];
 //    
 //}
+
+- (void)getStudentDetailWithId:(NSString *)studentId success:(ConnectionComplete)success andFailure:(ConnectionFailure)failure {
+    NSString* token = [[UserManager userCenter] getCurrentUserToken];
+    NSDictionary *parameter = @{@"token": token ? token : @""
+                                };
+    
+    NSString* url = [NSString stringWithFormat:linkService(kGetStudentDetail),studentId];
+    NSLog(@"url : %@" ,url);
+    NSLog(@"parameter : %@" , parameter);
+    
+    [self.sessionManager GET:url
+                   parameters:parameter
+                     progress:nil
+                      success:
+     ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         [self handleResponseData:responseObject andSuccess:success];
+     }
+                      failure:
+     ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         [self handleResponseError:error andFailure:failure];
+     }];
+}
+
+- (void)uploadFaceForStudent:(NSString *)personId faceId:(NSString *)faceId faceImage:(NSString *)faceUrl success:(ConnectionComplete)success andFailure:(ConnectionFailure)failure {
+    NSString* token = [[UserManager userCenter] getCurrentUserToken];
+    NSDictionary *parameter = @{@"token": token ? token : @"",
+                                @"person_id" :personId,
+                                @"face_id" : faceId,
+                                @"face_image" : faceUrl
+                                };
+    
+    NSString* url = linkService(kUploadStudentFace);
+    NSLog(@"url : %@" ,url);
+    NSLog(@"parameter : %@" , parameter);
+    
+    [self.sessionManager POST:url
+                  parameters:parameter
+                    progress:nil
+                     success:
+     ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         [self handleResponseData:responseObject andSuccess:success];
+     }
+                     failure:
+     ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         [self handleResponseError:error andFailure:failure];
+     }];
+}
+
+- (void)uploadImageToAPI:(NSData *)imageData success:(ConnectionComplete)success andFailure:(ConnectionFailure)failure {
+//    NSString* data = [imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    
+//    NSURLComponents* urlComponents = [[NSURLComponents alloc] initWithString:kUploadFaceImage];
+//    NSURLQueryItem* item1 = [[NSURLQueryItem alloc] initWithName:@"type" value:@"base64"];
+//    NSURLQueryItem* item2 = [[NSURLQueryItem alloc] initWithName:@"image" value:data];
+//    urlComponents.queryItems = @[item1,item2];
+//
+//    NSURL* url = urlComponents.URL;
+//
+//    NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:url];
+//    [request setValue:[@"Client-ID " stringByAppendingString:@"8037a5266e3e44d"] forHTTPHeaderField:@"Authorization"];
+//    request.HTTPMethod = @"POST";
+//
+//    NSURLSession* session = [NSURLSession sharedSession];
+//    NSURLSessionDataTask* task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//
+//        if(response)
+//             [self handleResponseData:response andSuccess:success];
+//        else
+//             [self handleResponseError:error andFailure:failure];
+//
+//    }];
+//
+//    [task resume];
+    
+    UserModel* user = [[UserManager userCenter] getCurrentUser];
+    
+    AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
+    
+    [sessionManager.requestSerializer setValue:[@"Client-ID " stringByAppendingString:@"8037a5266e3e44d"] forHTTPHeaderField:@"Authorization"];
+    
+     NSString* data = [imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    
+    NSDictionary* parameters = @{@"type":@"base64" ,
+                                 @"image":data
+                                 };
+    
+    [sessionManager POST:kUploadFaceImage
+                   parameters:parameters
+    constructingBodyWithBlock:
+     ^(id<AFMultipartFormData>  _Nonnull formData) {
+         NSData *data = imageData;
+         
+         [formData appendPartWithFileData:data
+                                     name:user.userId
+                                 fileName:[NSString stringWithFormat:@"%@.jpg",user.userId]
+                                 mimeType:@"image/jpeg"];
+     }
+                     progress:
+     ^(NSProgress * _Nonnull uploadProgress) {
+        
+     }
+                      success:
+     ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         [self handleResponseData:responseObject andSuccess:success];
+     }
+                      failure:
+     ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         [self handleResponseError:error andFailure:failure];
+     }];
+}
 
 @end

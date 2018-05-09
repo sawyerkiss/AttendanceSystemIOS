@@ -102,6 +102,7 @@ static NSString *kSourceHost = @"XSourceHost";
      [defaults setObject:userModel.first_name forKey:kUserFirstName];
      [defaults setObject:userModel.last_name forKey:kUserLastName];
      [defaults setObject:userModel.phone forKey:kUserPhone];
+    [defaults setObject:userModel.person_id forKey:kUserPersonId];
     
     [defaults synchronize];
 }
@@ -118,6 +119,7 @@ static NSString *kSourceHost = @"XSourceHost";
       [user setLast_name:[defaults objectForKey:kUserLastName]];
       [user setPhone:[defaults objectForKey:kUserPhone]];
       [user setRole_id:[defaults objectForKey:kUserRoleId]];
+    [user setPerson_id:[defaults objectForKey:kUserPersonId]];
     
     return user;
 }

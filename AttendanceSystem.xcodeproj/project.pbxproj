@@ -53,6 +53,29 @@
 		F8D8CB77205F7A15001F4D7B /* StudentQuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D8CB76205F7A15001F4D7B /* StudentQuizViewController.m */; };
 		F8D8CB7C205F9D29001F4D7B /* QuestionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D8CB7B205F9D29001F4D7B /* QuestionModel.m */; };
 		F8D8CB7F205FA103001F4D7B /* QuestionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D8CB7E205FA103001F4D7B /* QuestionViewCell.m */; };
+		F8DAC64F209EFE3E00F4611D /* MPOPersonGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8DAC64D209EFE3E00F4611D /* MPOPersonGroupController.m */; };
+		F8DAC652209EFEA300F4611D /* PersonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F8DAC651209EFEA300F4611D /* PersonGroup.m */; };
+		F8DAC66C209EFF1500F4611D /* Colours.m in Sources */ = {isa = PBXBuildFile; fileRef = F8DAC656209EFF1500F4611D /* Colours.m */; };
+		F8DAC66D209EFF1500F4611D /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F8DAC657209EFF1500F4611D /* LICENSE */; };
+		F8DAC66E209EFF1500F4611D /* CommonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F8DAC659209EFF1500F4611D /* CommonUtil.m */; };
+		F8DAC66F209EFF1500F4611D /* ImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F8DAC65C209EFF1500F4611D /* ImageHelper.m */; };
+		F8DAC671209EFF1500F4611D /* UIImage+Crop.m in Sources */ = {isa = PBXBuildFile; fileRef = F8DAC661209EFF1500F4611D /* UIImage+Crop.m */; };
+		F8DAC672209EFF1500F4611D /* UIImage+FixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = F8DAC663209EFF1500F4611D /* UIImage+FixOrientation.m */; };
+		F8DAC673209EFF1500F4611D /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = F8DAC665209EFF1500F4611D /* UIImage+Resize.m */; };
+		F8DAC674209EFF1500F4611D /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F8DAC667209EFF1500F4611D /* UIViewController+BackButtonHandler.m */; };
+		F8DAC675209EFF1500F4611D /* UIViewController+DismissKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = F8DAC669209EFF1500F4611D /* UIViewController+DismissKeyboard.m */; };
+		F8DAC676209EFF1500F4611D /* ViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F8DAC66B209EFF1500F4611D /* ViewUtils.m */; };
+		F8DAC679209EFFC300F4611D /* MPOPersonFacesController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8DAC678209EFFC300F4611D /* MPOPersonFacesController.m */; };
+		F8DAC67C209EFFE800F4611D /* GroupPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = F8DAC67A209EFFE700F4611D /* GroupPerson.m */; };
+		F8DAC680209F002400F4611D /* MPOPersonFaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8DAC67E209F002400F4611D /* MPOPersonFaceCell.m */; };
+		F8DAC681209F002400F4611D /* MPOPersonFaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8DAC67F209F002400F4611D /* MPOPersonFaceCell.xib */; };
+		F8DAC684209F021200F4611D /* PersonFace.m in Sources */ = {isa = PBXBuildFile; fileRef = F8DAC683209F021100F4611D /* PersonFace.m */; };
+		F8DAC687209F024700F4611D /* MPOAddPersonFaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8DAC686209F024700F4611D /* MPOAddPersonFaceController.m */; };
+		F8DAC68B209F027B00F4611D /* MPOSimpleFaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8DAC689209F027B00F4611D /* MPOSimpleFaceCell.xib */; };
+		F8DAC68C209F027B00F4611D /* MPOSimpleFaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8DAC68A209F027B00F4611D /* MPOSimpleFaceCell.m */; };
+		F8DAC68E209F063C00F4611D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8DAC68D209F063C00F4611D /* UIKit.framework */; };
+		F8DAC690209F064400F4611D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8DAC68F209F064400F4611D /* Foundation.framework */; };
+		F8DAC692209F066700F4611D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8DAC691209F066700F4611D /* CoreData.framework */; };
 		F8DC6D25203D1A670031C923 /* CourseViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8DC6D24203D1A670031C923 /* CourseViewCell.m */; };
 		F8DC6D28203D4CF50031C923 /* CourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F8DC6D27203D4CF50031C923 /* CourseModel.m */; };
 		F8DC6D2A203D697C0031C923 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F8DC6D29203D697C0031C923 /* libsqlite3.tbd */; };
@@ -182,6 +205,46 @@
 		F8D8CB7B205F9D29001F4D7B /* QuestionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionModel.m; sourceTree = "<group>"; };
 		F8D8CB7D205FA103001F4D7B /* QuestionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionViewCell.h; sourceTree = "<group>"; };
 		F8D8CB7E205FA103001F4D7B /* QuestionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionViewCell.m; sourceTree = "<group>"; };
+		F8DAC64D209EFE3E00F4611D /* MPOPersonGroupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPOPersonGroupController.m; sourceTree = "<group>"; };
+		F8DAC64E209EFE3E00F4611D /* MPOPersonGroupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPOPersonGroupController.h; sourceTree = "<group>"; };
+		F8DAC650209EFEA200F4611D /* PersonGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonGroup.h; sourceTree = "<group>"; };
+		F8DAC651209EFEA300F4611D /* PersonGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonGroup.m; sourceTree = "<group>"; };
+		F8DAC655209EFF1500F4611D /* Colours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Colours.h; sourceTree = "<group>"; };
+		F8DAC656209EFF1500F4611D /* Colours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Colours.m; sourceTree = "<group>"; };
+		F8DAC657209EFF1500F4611D /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		F8DAC658209EFF1500F4611D /* CommonUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtil.h; sourceTree = "<group>"; };
+		F8DAC659209EFF1500F4611D /* CommonUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtil.m; sourceTree = "<group>"; };
+		F8DAC65B209EFF1500F4611D /* ImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageHelper.h; sourceTree = "<group>"; };
+		F8DAC65C209EFF1500F4611D /* ImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageHelper.m; sourceTree = "<group>"; };
+		F8DAC660209EFF1500F4611D /* UIImage+Crop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Crop.h"; sourceTree = "<group>"; };
+		F8DAC661209EFF1500F4611D /* UIImage+Crop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Crop.m"; sourceTree = "<group>"; };
+		F8DAC662209EFF1500F4611D /* UIImage+FixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FixOrientation.h"; sourceTree = "<group>"; };
+		F8DAC663209EFF1500F4611D /* UIImage+FixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FixOrientation.m"; sourceTree = "<group>"; };
+		F8DAC664209EFF1500F4611D /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		F8DAC665209EFF1500F4611D /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		F8DAC666209EFF1500F4611D /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
+		F8DAC667209EFF1500F4611D /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
+		F8DAC668209EFF1500F4611D /* UIViewController+DismissKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DismissKeyboard.h"; sourceTree = "<group>"; };
+		F8DAC669209EFF1500F4611D /* UIViewController+DismissKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DismissKeyboard.m"; sourceTree = "<group>"; };
+		F8DAC66A209EFF1500F4611D /* ViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewUtils.h; sourceTree = "<group>"; };
+		F8DAC66B209EFF1500F4611D /* ViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewUtils.m; sourceTree = "<group>"; };
+		F8DAC677209EFFC300F4611D /* MPOPersonFacesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPOPersonFacesController.h; sourceTree = "<group>"; };
+		F8DAC678209EFFC300F4611D /* MPOPersonFacesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPOPersonFacesController.m; sourceTree = "<group>"; };
+		F8DAC67A209EFFE700F4611D /* GroupPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupPerson.m; sourceTree = "<group>"; };
+		F8DAC67B209EFFE800F4611D /* GroupPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupPerson.h; sourceTree = "<group>"; };
+		F8DAC67D209F002400F4611D /* MPOPersonFaceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPOPersonFaceCell.h; sourceTree = "<group>"; };
+		F8DAC67E209F002400F4611D /* MPOPersonFaceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPOPersonFaceCell.m; sourceTree = "<group>"; };
+		F8DAC67F209F002400F4611D /* MPOPersonFaceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPOPersonFaceCell.xib; sourceTree = "<group>"; };
+		F8DAC682209F021100F4611D /* PersonFace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonFace.h; sourceTree = "<group>"; };
+		F8DAC683209F021100F4611D /* PersonFace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonFace.m; sourceTree = "<group>"; };
+		F8DAC685209F024700F4611D /* MPOAddPersonFaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPOAddPersonFaceController.h; sourceTree = "<group>"; };
+		F8DAC686209F024700F4611D /* MPOAddPersonFaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPOAddPersonFaceController.m; sourceTree = "<group>"; };
+		F8DAC688209F027B00F4611D /* MPOSimpleFaceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPOSimpleFaceCell.h; sourceTree = "<group>"; };
+		F8DAC689209F027B00F4611D /* MPOSimpleFaceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPOSimpleFaceCell.xib; sourceTree = "<group>"; };
+		F8DAC68A209F027B00F4611D /* MPOSimpleFaceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPOSimpleFaceCell.m; sourceTree = "<group>"; };
+		F8DAC68D209F063C00F4611D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F8DAC68F209F064400F4611D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F8DAC691209F066700F4611D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		F8DC6D23203D1A670031C923 /* CourseViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseViewCell.h; sourceTree = "<group>"; };
 		F8DC6D24203D1A670031C923 /* CourseViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseViewCell.m; sourceTree = "<group>"; };
 		F8DC6D26203D4CF50031C923 /* CourseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseModel.h; sourceTree = "<group>"; };
@@ -212,6 +275,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8DAC692209F066700F4611D /* CoreData.framework in Frameworks */,
+				F8DAC690209F064400F4611D /* Foundation.framework in Frameworks */,
+				F8DAC68E209F063C00F4611D /* UIKit.framework in Frameworks */,
 				F8DC6D2A203D697C0031C923 /* libsqlite3.tbd in Frameworks */,
 				13CE545DB2A9FCADFC58BA65 /* Pods_AttendanceSystem.framework in Frameworks */,
 			);
@@ -252,6 +318,9 @@
 		E64A52A59AD6581D8891F209 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F8DAC691209F066700F4611D /* CoreData.framework */,
+				F8DAC68F209F064400F4611D /* Foundation.framework */,
+				F8DAC68D209F063C00F4611D /* UIKit.framework */,
 				F8DC6D29203D697C0031C923 /* libsqlite3.tbd */,
 				A0E52018084815B1C98759B4 /* Pods_AttendanceSystem.framework */,
 				3841E73DCC1615074B2D20E1 /* Pods_AttendanceSystemTests.framework */,
@@ -281,6 +350,12 @@
 		F81D34AE205AC57800CD31D7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F8DAC688209F027B00F4611D /* MPOSimpleFaceCell.h */,
+				F8DAC68A209F027B00F4611D /* MPOSimpleFaceCell.m */,
+				F8DAC689209F027B00F4611D /* MPOSimpleFaceCell.xib */,
+				F8DAC67D209F002400F4611D /* MPOPersonFaceCell.h */,
+				F8DAC67E209F002400F4611D /* MPOPersonFaceCell.m */,
+				F8DAC67F209F002400F4611D /* MPOPersonFaceCell.xib */,
 				F81D34AF205AC64500CD31D7 /* DatePickerView.h */,
 				F81D34B0205AC64500CD31D7 /* DatePickerView.m */,
 			);
@@ -334,6 +409,12 @@
 		F871ACA920465294009E04BB /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				F8DAC685209F024700F4611D /* MPOAddPersonFaceController.h */,
+				F8DAC686209F024700F4611D /* MPOAddPersonFaceController.m */,
+				F8DAC677209EFFC300F4611D /* MPOPersonFacesController.h */,
+				F8DAC678209EFFC300F4611D /* MPOPersonFacesController.m */,
+				F8DAC64E209EFE3E00F4611D /* MPOPersonGroupController.h */,
+				F8DAC64D209EFE3E00F4611D /* MPOPersonGroupController.m */,
 				F871ACAA204652BB009E04BB /* AttendanceViewController.h */,
 				F871ACAB204652BB009E04BB /* AttendanceViewController.m */,
 				F8B5B693204956ED00F3A960 /* SessionViewController.h */,
@@ -448,6 +529,12 @@
 		F89B060C2019C7CF00CAC8FF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F8DAC682209F021100F4611D /* PersonFace.h */,
+				F8DAC683209F021100F4611D /* PersonFace.m */,
+				F8DAC67B209EFFE800F4611D /* GroupPerson.h */,
+				F8DAC67A209EFFE700F4611D /* GroupPerson.m */,
+				F8DAC650209EFEA200F4611D /* PersonGroup.h */,
+				F8DAC651209EFEA300F4611D /* PersonGroup.m */,
 				F892F600201AE04000092EA3 /* JsonBaseModel */,
 				F892F5FC201AD93E00092EA3 /* UserModel */,
 				F89B060D2019C7CF00CAC8FF /* MenuItemModel */,
@@ -470,6 +557,48 @@
 				F89B060F2019C7CF00CAC8FF /* MenuItemModel.m */,
 			);
 			path = MenuItemModel;
+			sourceTree = "<group>";
+		};
+		F8DAC653209EFF1500F4611D /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				F8DAC654209EFF1500F4611D /* Colours */,
+				F8DAC658209EFF1500F4611D /* CommonUtil.h */,
+				F8DAC659209EFF1500F4611D /* CommonUtil.m */,
+				F8DAC65A209EFF1500F4611D /* ImageHelper */,
+				F8DAC660209EFF1500F4611D /* UIImage+Crop.h */,
+				F8DAC661209EFF1500F4611D /* UIImage+Crop.m */,
+				F8DAC662209EFF1500F4611D /* UIImage+FixOrientation.h */,
+				F8DAC663209EFF1500F4611D /* UIImage+FixOrientation.m */,
+				F8DAC664209EFF1500F4611D /* UIImage+Resize.h */,
+				F8DAC665209EFF1500F4611D /* UIImage+Resize.m */,
+				F8DAC666209EFF1500F4611D /* UIViewController+BackButtonHandler.h */,
+				F8DAC667209EFF1500F4611D /* UIViewController+BackButtonHandler.m */,
+				F8DAC668209EFF1500F4611D /* UIViewController+DismissKeyboard.h */,
+				F8DAC669209EFF1500F4611D /* UIViewController+DismissKeyboard.m */,
+				F8DAC66A209EFF1500F4611D /* ViewUtils.h */,
+				F8DAC66B209EFF1500F4611D /* ViewUtils.m */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		F8DAC654209EFF1500F4611D /* Colours */ = {
+			isa = PBXGroup;
+			children = (
+				F8DAC655209EFF1500F4611D /* Colours.h */,
+				F8DAC656209EFF1500F4611D /* Colours.m */,
+				F8DAC657209EFF1500F4611D /* LICENSE */,
+			);
+			path = Colours;
+			sourceTree = "<group>";
+		};
+		F8DAC65A209EFF1500F4611D /* ImageHelper */ = {
+			isa = PBXGroup;
+			children = (
+				F8DAC65B209EFF1500F4611D /* ImageHelper.h */,
+				F8DAC65C209EFF1500F4611D /* ImageHelper.m */,
+			);
+			path = ImageHelper;
 			sourceTree = "<group>";
 		};
 		F8DC6D22203D1A3C0031C923 /* Cell */ = {
@@ -515,6 +644,7 @@
 		F8FA796E20183BAA005D8677 /* AttendanceSystem */ = {
 			isa = PBXGroup;
 			children = (
+				F8DAC653209EFF1500F4611D /* utils */,
 				F81D34AE205AC57800CD31D7 /* View */,
 				F871ACA920465294009E04BB /* ViewController */,
 				F8DC6D22203D1A3C0031C923 /* Cell */,
@@ -686,9 +816,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8FA797C20183BAA005D8677 /* LaunchScreen.storyboard in Resources */,
+				F8DAC68B209F027B00F4611D /* MPOSimpleFaceCell.xib in Resources */,
 				F8FA797920183BAA005D8677 /* Assets.xcassets in Resources */,
 				F8FA797720183BAA005D8677 /* Main.storyboard in Resources */,
 				F85B6C43204848AD0098D64A /* SessionViewCell.xib in Resources */,
+				F8DAC681209F002400F4611D /* MPOPersonFaceCell.xib in Resources */,
+				F8DAC66D209EFF1500F4611D /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -771,6 +904,7 @@
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MTBBarcodeScanner/MTBBarcodeScanner.framework",
 				"${BUILT_PRODUCTS_DIR}/MaterialControls/MaterialControls.framework",
+				"${BUILT_PRODUCTS_DIR}/ProjectOxfordFace/ProjectOxfordFace.framework",
 				"${BUILT_PRODUCTS_DIR}/REFrostedViewController/REFrostedViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
@@ -785,6 +919,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MTBBarcodeScanner.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialControls.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProjectOxfordFace.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/REFrostedViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
@@ -888,11 +1023,16 @@
 				F82BBCCA20188D5D00CA4E72 /* LoginViewController.m in Sources */,
 				F8C271C92018E322002DA646 /* CourseListViewController.m in Sources */,
 				F81D34B1205AC64500CD31D7 /* DatePickerView.m in Sources */,
+				F8DAC673209EFF1500F4611D /* UIImage+Resize.m in Sources */,
+				F8DAC676209EFF1500F4611D /* ViewUtils.m in Sources */,
 				F85B6C42204848AD0098D64A /* SessionViewCell.m in Sources */,
 				F83E0417205A6FD1000B9F80 /* DateViewController.m in Sources */,
 				F82BBCC72018785E00CA4E72 /* UIAlertController+Blocks.m in Sources */,
+				F8DAC684209F021200F4611D /* PersonFace.m in Sources */,
 				F85B36BE2081C9B700AC4DD6 /* TeacherQuizWaitingController.m in Sources */,
 				F82BBCC42018785E00CA4E72 /* LoadingManager.m in Sources */,
+				F8DAC68C209F027B00F4611D /* MPOSimpleFaceCell.m in Sources */,
+				F8DAC672209EFF1500F4611D /* UIImage+FixOrientation.m in Sources */,
 				F82BBCC62018785E00CA4E72 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				F89B060620198D6000CAC8FF /* UIColor+Categories.m in Sources */,
 				F85B36B82081B22400AC4DD6 /* TeacherQuizViewController.m in Sources */,
@@ -913,24 +1053,36 @@
 				F85B36C12081CE0A00AC4DD6 /* TeacherQuizCompleteViewController.m in Sources */,
 				F892F5F7201AD5B500092EA3 /* CustomAlertView.m in Sources */,
 				F89B060B2019946800CAC8FF /* CustomNavigationController.m in Sources */,
+				F8DAC66F209EFF1500F4611D /* ImageHelper.m in Sources */,
+				F8DAC66E209EFF1500F4611D /* CommonUtil.m in Sources */,
 				F892F607201AE48200092EA3 /* UILabel+Categorites.m in Sources */,
 				F8DC6D28203D4CF50031C923 /* CourseModel.m in Sources */,
 				F8C271CC2018E367002DA646 /* MenuViewController.m in Sources */,
+				F8DAC674209EFF1500F4611D /* UIViewController+BackButtonHandler.m in Sources */,
 				F892F5F1201AD08700092EA3 /* ConnectionManager.m in Sources */,
+				F8DAC671209EFF1500F4611D /* UIImage+Crop.m in Sources */,
 				F81B932C2023551400FC99D8 /* UIImageViewLoading.m in Sources */,
+				F8DAC679209EFFC300F4611D /* MPOPersonFacesController.m in Sources */,
 				F8FA797120183BAA005D8677 /* AppDelegate.m in Sources */,
 				F8BEE2132050E3D20043A316 /* ScanQRViewController.m in Sources */,
+				F8DAC67C209EFFE800F4611D /* GroupPerson.m in Sources */,
 				F8889930205B7408003C211C /* SendFeedbackViewController.m in Sources */,
 				F8D8CB77205F7A15001F4D7B /* StudentQuizViewController.m in Sources */,
 				F89B06102019C7D000CAC8FF /* MenuItemModel.m in Sources */,
+				F8DAC66C209EFF1500F4611D /* Colours.m in Sources */,
+				F8DAC652209EFEA300F4611D /* PersonGroup.m in Sources */,
 				F85B36BB2081BB1200AC4DD6 /* StudentTableViewCell.m in Sources */,
 				F849A2062023593C0042A422 /* AboutViewController.m in Sources */,
+				F8DAC687209F024700F4611D /* MPOAddPersonFaceController.m in Sources */,
+				F8DAC675209EFF1500F4611D /* UIViewController+DismissKeyboard.m in Sources */,
 				F80FAFB42078ADC6006796B1 /* StudentQuizDetailViewController.m in Sources */,
 				F8D8CB7C205F9D29001F4D7B /* QuestionModel.m in Sources */,
 				F8BEE2162051154C0043A316 /* ChangePasswordViewController.m in Sources */,
 				F8DC6D25203D1A670031C923 /* CourseViewCell.m in Sources */,
 				F8DC6D2D203D69A70031C923 /* DBManager.m in Sources */,
 				F83E0414205A630D000B9F80 /* SendAbsenceViewController.m in Sources */,
+				F8DAC680209F002400F4611D /* MPOPersonFaceCell.m in Sources */,
+				F8DAC64F209EFE3E00F4611D /* MPOPersonGroupController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -37,12 +37,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-     self.title = @"QUIZ";
-   
-//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+    self.title = @"QUIZ";
     
-//    });
-
+    //    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+    
+    //    });
+    
     
     [self showQuestionOrNot:NO];
     
@@ -58,7 +58,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-       [self setSocket];
+    [self setSocket];
 }
 - (void)viewWillDisappear:(BOOL)animated {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -87,66 +87,66 @@
         _ctrWidth.constant = 0;
     }
     
-
+    
     [self resetButtonColor];
     
     [self enableButtonOrNot:TRUE];
 }
 
 - (void)setSocket {
-//    NSString* host = HOST;
-//    NSURL* url = [[NSURL alloc] initWithString:host];
-//    NSString* strToken = [[UserManager userCenter] getCurrentUserToken];
-//    SocketManager* manager = [[SocketManager alloc] initWithSocketURL:url config:@{@"log": @YES, @"compress": @YES,@"forcePolling": @YES,@"connectParams": @{@"Authorization":strToken}}];
-//    self.socket = manager.defaultSocket;
+    //    NSString* host = HOST;
+    //    NSURL* url = [[NSURL alloc] initWithString:host];
+    //    NSString* strToken = [[UserManager userCenter] getCurrentUserToken];
+    //    SocketManager* manager = [[SocketManager alloc] initWithSocketURL:url config:@{@"log": @YES, @"compress": @YES,@"forcePolling": @YES,@"connectParams": @{@"Authorization":strToken}}];
+    //    self.socket = manager.defaultSocket;
     
     self.socket = [[SocketManagerIO socketManagerIO] getSocketClient];
     
     [self.socket on:@"connect" callback:^(NSArray* data, SocketAckEmitter* ack) {
         NSLog(@"socket connected");
-     
-      dispatch_async(dispatch_get_main_queue(), ^{
-        [self showQuestionOrNot:NO];
-        [self showLoadingView];
-      });
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self showQuestionOrNot:NO];
+            [self showLoadingView];
+        });
     }];
     
     
     
     [self.socket on:@"quizQuestionReady" callback:^(NSArray * _Nonnull data, SocketAckEmitter * _Nonnull ack) {
-         dispatch_async(dispatch_get_main_queue(), ^{
-        [self showLoadingView];
-        NSLog(@"quizQuestionReady : %@",data);
-         });
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self showLoadingView];
+            NSLog(@"quizQuestionReady : %@",data);
+        });
     }];
     
     [self.socket on:@"quizQuestionLoaded" callback:^(NSArray * _Nonnull data, SocketAckEmitter * _Nonnull ack) {
-     dispatch_async(dispatch_get_main_queue(), ^{
-        NSLog(@"quizQuestionLoaded : %@",data);
-        [self hideLoadingView];
-         
-         NSDictionary* firstData = [data objectAtIndex:0];
-         
-         self.questionIndex = [[firstData objectForKey:@"question_index"] integerValue];
-         self.quiz_id = [firstData objectForKey:@"quiz_code"];
-         
-        [self showQuestionOrNot:TRUE];
-     });
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"quizQuestionLoaded : %@",data);
+            [self hideLoadingView];
+            
+            NSDictionary* firstData = [data objectAtIndex:0];
+            
+            self.questionIndex = [[firstData objectForKey:@"question_index"] integerValue];
+            self.quiz_id = [firstData objectForKey:@"quiz_code"];
+            
+            [self showQuestionOrNot:TRUE];
+        });
     }];
     
     [self.socket on:@"quizQuestionEnded" callback:^(NSArray * _Nonnull data, SocketAckEmitter * _Nonnull ack) {
-       dispatch_async(dispatch_get_main_queue(), ^{
-        [self hideLoadingView];
-         NSLog(@"quizQuestionEnded : %@",data);
-           
-        
-       });
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self hideLoadingView];
+            NSLog(@"quizQuestionEnded : %@",data);
+            
+            
+        });
     }];
     
     [self.socket on:@"answeredQuiz" callback:^(NSArray * _Nonnull data, SocketAckEmitter * _Nonnull ack) {
         dispatch_async(dispatch_get_main_queue(), ^{
-        NSLog(@"answeredQuiz : %@",data);
-//        [self showLoadingView];
+            NSLog(@"answeredQuiz : %@",data);
+            //        [self showLoadingView];
             [self hideLoadingView];
             NSDictionary* dictionary = [data objectAtIndex:0];
             NSString* option = dictionary[@"option"];
@@ -161,25 +161,29 @@
             NSInteger correctAnswer = 0 ;
             if(questionIndex == self.questions.count - 1) {
                 for(QuestionModel* question in self.questions) {
-                    if([[question.answers objectAtIndex:0] isEqualToString:@"a"])
+                    
+                    if(question.answers && question.answers.count > 0)
                     {
-                       if([question.option_a isEqualToString:question.correct_option])
-                           correctAnswer++;
-                    }
-                    else  if([[question.answers objectAtIndex:0] isEqualToString:@"b"])
-                    {
-                        if([question.option_b isEqualToString:question.correct_option])
-                            correctAnswer++;
-                    }
-                    else  if([[question.answers objectAtIndex:0] isEqualToString:@"c"])
-                    {
-                        if([question.option_c isEqualToString:question.correct_option])
-                            correctAnswer++;
-                    }
-                    else if([[question.answers objectAtIndex:0] isEqualToString:@"d"])
-                    {
-                        if([question.option_d isEqualToString:question.correct_option])
-                            correctAnswer++;
+                        if([[question.answers objectAtIndex:0] isEqualToString:@"a"])
+                        {
+                            if([question.option_a isEqualToString:question.correct_option])
+                                correctAnswer++;
+                        }
+                        else  if([[question.answers objectAtIndex:0] isEqualToString:@"b"])
+                        {
+                            if([question.option_b isEqualToString:question.correct_option])
+                                correctAnswer++;
+                        }
+                        else  if([[question.answers objectAtIndex:0] isEqualToString:@"c"])
+                        {
+                            if([question.option_c isEqualToString:question.correct_option])
+                                correctAnswer++;
+                        }
+                        else if([[question.answers objectAtIndex:0] isEqualToString:@"d"])
+                        {
+                            if([question.option_d isEqualToString:question.correct_option])
+                                correctAnswer++;
+                        }
                     }
                     
                 }
@@ -204,21 +208,21 @@
     }];
     
     [self.socket on:@"disconnect" callback:^(NSArray * _Nonnull data, SocketAckEmitter * _Nonnull ack) {
-       dispatch_async(dispatch_get_main_queue(), ^{
-        NSLog(@"socket disconnected");
-        [self hideLoadingView];
-       });
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"socket disconnected");
+            [self hideLoadingView];
+        });
     }];
     
     [self.socket connect];
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//    CFRunLoopRun();
-//    });
+    //    dispatch_async(dispatch_get_main_queue(), ^{
+    //    CFRunLoopRun();
+    //    });
 }
 
 - (IBAction)didTouchAButton:(id)sender {
-
-     [self resetButtonColor];
+    
+    [self resetButtonColor];
     [_buttonA setBackgroundColor:[UIColor greenColor]];
     [self didAnswerWithOption:@"a"];
     
@@ -226,24 +230,24 @@
 
 - (IBAction)didTouchBButton:(id)sender {
     
-     [self resetButtonColor];
-      [_buttonB setBackgroundColor:[UIColor greenColor]];
-     [self didAnswerWithOption:@"b"];
+    [self resetButtonColor];
+    [_buttonB setBackgroundColor:[UIColor greenColor]];
+    [self didAnswerWithOption:@"b"];
     
 }
 
 - (IBAction)didTouchCButton:(id)sender {
     
-     [self resetButtonColor];
-      [_buttonC setBackgroundColor:[UIColor greenColor]];
-     [self didAnswerWithOption:@"c"];
+    [self resetButtonColor];
+    [_buttonC setBackgroundColor:[UIColor greenColor]];
+    [self didAnswerWithOption:@"c"];
 }
 
 - (IBAction)didTouchDButton:(id)sender {
     
-     [self resetButtonColor];
-      [_buttonD setBackgroundColor:[UIColor greenColor]];
-     [self didAnswerWithOption:@"d"];
+    [self resetButtonColor];
+    [_buttonD setBackgroundColor:[UIColor greenColor]];
+    [self didAnswerWithOption:@"d"];
 }
 
 

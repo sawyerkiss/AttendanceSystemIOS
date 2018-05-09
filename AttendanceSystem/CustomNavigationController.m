@@ -35,7 +35,20 @@
     else {
         AttendanceViewController* attendance = [self.storyboard instantiateViewControllerWithIdentifier:@"AttendanceViewController"];
         self.viewControllers = @[attendance];
+        
+        NSString* studentId = [[UserManager userCenter] getCurrentUser].userId;
+        
+        [[ConnectionManager connectionDefault] getStudentDetailWithId:studentId success:^(id  _Nonnull responseObject) {
+            if(responseObject && responseObject[@"student"]) {
+                UserModel* user = [[UserModel alloc] initWithDictionary:responseObject[@"student"] error:nil];
+                [[UserManager userCenter] setCurrentUser:user];
+            }
+        } andFailure:^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject) {
+            
+        }];
     }
+    
+  
 }
 
 #pragma mark Gesture recognizer

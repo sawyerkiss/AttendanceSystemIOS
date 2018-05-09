@@ -15,6 +15,7 @@ static NSString *const kUserFirstName = @"user_first_name";
 static NSString *const kUserLastName = @"user_last_name";
 static NSString *const kUserAvatar = @"user_avatar";
 static NSString *const kUserPhone = @"user_phone";
+static NSString *const kUserPersonId = @"person_id";
 
 @interface UserModel : JsonBaseModel
 
@@ -25,6 +26,7 @@ static NSString *const kUserPhone = @"user_phone";
 @property (nonatomic) NSString <Optional> *first_name;
 @property (nonatomic) NSString <Optional> *last_name;
 @property (nonatomic) NSString <Optional> *phone;
+@property (nonatomic) NSString <Optional> *person_id;
 
 @end
 
