@@ -51,7 +51,7 @@
     NSMutableArray * _detectedFaces;
     int _intension;
     
-    NSMutableArray* selectedImageData;
+    NSMutableDictionary* selectedImageData;
     
     UserModel* user;
     
@@ -71,7 +71,7 @@
     user = [[UserManager userCenter] getCurrentUser];
     
     [self buildMainUI];
-    self.navigationItem.title = @"Student";
+    self.navigationItem.title = @"Upload faces";
     _intension = INTENSION_SAVE_PERSON;
     [self setupForDismissKeyboard];
     
@@ -147,7 +147,7 @@
         
         if(!self.person || self.person.faces.count <= 2)
         {
-             [CommonUtil simpleDialog:@"please add 3 faces to the student"];
+             [CommonUtil simpleDialog:@"please add more 2 faces to the student"];
             return;
         }
         
@@ -158,7 +158,20 @@
         
        __block int index = 0 ;
         
-        for(UIImage* image in selectedImageData) {
+        for(NSString* key in selectedImageData) {
+            
+        UIImage* image = [selectedImageData objectForKey:key];
+            
+            if(!image) {
+                if(HUDProgess)
+                    [HUDProgess removeFromSuperview];
+                
+                _number_of_face = 0;
+                return;
+            }
+            
+            NSLog(@"Face id : %@",key);
+            
          NSData *data = UIImageJPEGRepresentation(image, 0.8);
         
         [[ConnectionManager connectionDefault] uploadImageToAPI:data
@@ -256,7 +269,7 @@
     addBtn.bottom = self.view.height - NAVIGATION_BAR_HEIGHT - STATUS_BAR_HEIGHT - 20;
     saveBtn.bottom = self.view.height - NAVIGATION_BAR_HEIGHT - STATUS_BAR_HEIGHT - 20;
     [addBtn setTitle:@"Add Face" forState:UIControlStateNormal];
-    [saveBtn setTitle:@"Save" forState:UIControlStateNormal];
+    [saveBtn setTitle:@"Submit" forState:UIControlStateNormal];
     [addBtn setBackgroundImage:btnBackImage forState:UIControlStateNormal];
     [saveBtn setBackgroundImage:btnBackImage forState:UIControlStateNormal];
     [addBtn addTarget:self action:@selector(chooseImage:) forControlEvents:UIControlEventTouchUpInside];
@@ -361,7 +374,12 @@
                     [CommonUtil showSimpleHUD:@"Failed in deleting this face" forController:self.navigationController];
                     return;
                 }
+                
+                [selectedImageData removeObjectForKey:((PersonFace*)self.person.faces[_selectFaceIndex]).faceId];
+                
+                if(self.person.faces.count > 0)
                 [self.person.faces removeObjectAtIndex:_selectFaceIndex];
+                
                 [_facescollectionView reloadData];
             }];
         }
@@ -379,10 +397,7 @@
     }
     
    if(!selectedImageData)
-        selectedImageData = [[NSMutableArray alloc] init];
-    
-     if(selectedImage)
-         [selectedImageData addObject:selectedImage];
+        selectedImageData = [[NSMutableDictionary alloc] init];
     
     [picker dismissViewControllerAnimated:YES completion:^(void) {}];
     
@@ -425,7 +440,9 @@
                 ((PersonFace*)_detectedFaces[0]).faceId = addPersistedFaceResult.persistedFaceId;
                 [self.person.faces addObject:_detectedFaces[0]];
                 [_facescollectionView reloadData];
-//                *self.needTraining = YES;
+                self.needTraining = YES;
+                
+                [selectedImageData setValue:selectedImage forKey:addPersistedFaceResult.persistedFaceId];
                 
             }];
             
@@ -436,7 +453,10 @@
             controller.detectedFaces = _detectedFaces;
             controller.image = selectedImage;
             controller.needTraining = self.needTraining;
-            [self.navigationController pushViewController:controller animated:YES];
+//            [self.navigationController pushViewController:controller animated:YES];
+            [MPOAddPersonFaceController pushViewController:self.navigationController viewController:controller completion:^(NSString *faceId) {
+                [selectedImageData setValue:selectedImage forKey:faceId];
+            }];
         }
     }];
 }
@@ -507,21 +527,31 @@
     
     [client updatePersonWithLargePersonGroupId:self.group.groupId personId:self.person.personId name:_personNameField.text userData:nil completionBlock:^(NSError *error) {
         
+        if (error) {
+            
+            if(HUDProgess)
+                [HUDProgess removeFromSuperview];
+            
+            _number_of_face = 0;
+            
+            [CommonUtil simpleDialog:@"Failed in updating student."];
+            
+            return;
+        }
+        
         _number_of_face++ ;
         
-        if(_number_of_face == 3) {
+        if(_number_of_face == selectedImageData.count) {
         if(HUDProgess)
             [HUDProgess removeFromSuperview];
         
             _number_of_face = 0;
             
             [CommonUtil simpleDialog:@"Finish updating student."];
+            
+            [self.navigationController popViewControllerAnimated:TRUE];
         }
         
-        if (error) {
-            [CommonUtil simpleDialog:@"Failed in updating student."];
-            return;
-        }
         self.person.personName = _personNameField.text;
         [_facescollectionView reloadData];
     }];

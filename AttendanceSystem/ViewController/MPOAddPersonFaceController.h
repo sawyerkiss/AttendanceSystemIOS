@@ -33,9 +33,11 @@
 #import "GroupPerson.h"
 #import "PersonGroup.h"
 
+typedef void(^MPOAddPersonFaceCompletion)(NSString * faceId);
+
 @interface MPOAddPersonFaceController : UIViewController
 
-@property (nonatomic, assign) BOOL * needTraining;
+@property (nonatomic, assign) BOOL needTraining;
 
 @property(nonatomic, retain) GroupPerson * person;
 
@@ -44,5 +46,9 @@
 @property(nonatomic, retain) UIImage * image;
 
 @property(nonatomic, retain) NSMutableArray * detectedFaces;
+
++ (void)pushViewController:(UINavigationController *)navigationController
+            viewController:(MPOAddPersonFaceController *)viewController
+                completion:(MPOAddPersonFaceCompletion)completion;
 
 @end

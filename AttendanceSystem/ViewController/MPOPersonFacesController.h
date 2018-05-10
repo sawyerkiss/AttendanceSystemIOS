@@ -39,7 +39,7 @@
 
 @property(nonatomic, retain) PersonGroup * group;
 
-@property (nonatomic, assign) BOOL * needTraining;
+@property (nonatomic, assign) BOOL needTraining;
 
 - (instancetype) initWithGroup:(PersonGroup*) group;
 

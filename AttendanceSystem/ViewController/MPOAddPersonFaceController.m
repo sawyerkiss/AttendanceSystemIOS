@@ -41,9 +41,18 @@
     NSInteger _selectedIndex;
 }
 
+@property (nonatomic, copy) MPOAddPersonFaceCompletion completion;
+
 @end
 
 @implementation MPOAddPersonFaceController
+
++ (void)pushViewController:(UINavigationController *)navigationController viewController:(MPOAddPersonFaceController *)viewController completion:(MPOAddPersonFaceCompletion)completion {
+    if(viewController) {
+        viewController.completion = completion;
+       [navigationController pushViewController:viewController animated:TRUE];
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -105,7 +114,10 @@
         [self.detectedFaces removeObject:face];
         [self.person.faces addObject:face];
         [_facescollectionView reloadData];
-        *self.needTraining = YES;
+        self.needTraining = YES;
+        
+        if(self.completion)
+            self.completion(face.faceId);
         
         [self.navigationController popViewControllerAnimated:TRUE];
         
