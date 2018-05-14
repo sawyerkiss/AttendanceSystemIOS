@@ -20,6 +20,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *buttonStart;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *ctrStartHeight;
 @property (nonatomic) NSMutableArray<StudentModel*> * studentList;
 @property (nonatomic) SocketIOClient *socket;
 @property (nonatomic) QuizModel *quiz;
@@ -47,7 +48,8 @@
     self.lblQuizType.text = @"";
     self.lblQuizCode.text = @"";
     
-    self.buttonStart.enabled = FALSE;
+    self.buttonStart.enabled = TRUE;
+    self.ctrStartHeight.constant = 0;
     
 }
 
@@ -60,6 +62,14 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    
+//    double delayInSeconds = 0.5;
+//
+//    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+//    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+//     [self showLoadingView];
+//    });
+    
     [self setSocket];
 }
 
@@ -69,9 +79,10 @@
     
     [self.socket on:@"connect" callback:^(NSArray* data, SocketAckEmitter* ack) {
         NSLog(@"socket connected");
-        
+     
         dispatch_async(dispatch_get_main_queue(), ^{
-//            [self showLoadingView];
+            [self hideLoadingView];
+            [self showLoadingView];
         });
     }];
     
@@ -93,6 +104,7 @@
                 
                     self.lblQuizCode.text = self.quiz.code;
                 self.lblQuizType.text = [self.quiz.type isEqualToString:@"0"] ? @"Academic" : @"Miscellaneous";
+                    
                 self.studentList = [StudentModel arrayOfModelsFromDictionaries:self.quiz.participants error:nil];
                 
                 [self.tableStudents reloadData];
@@ -116,6 +128,40 @@
         });
     }];
     
+    [self.socket on:@"webPublishedQuiz" callback:^(NSArray * _Nonnull data, SocketAckEmitter * _Nonnull ack) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"webPublishedQuiz : %@" , data);
+//            [self hideLoadingView];
+            
+            NSDictionary* dictionary = [data objectAtIndex:0];
+            NSString* quiz_code = dictionary[@"quiz_code"];
+            
+//            [self showLoadingView];
+            
+            [[ConnectionManager connectionDefault] getPublishQuiz:quiz_code success:^(id  _Nonnull responseObject) {
+                [self hideLoadingView];
+                
+                NSString* result = responseObject[@"result"];
+                
+                if([result isEqualToString:@"success"])
+                {
+                    self.quiz = [[QuizModel alloc] initWithDictionary:responseObject[@"quiz"] error:nil];
+                    
+                    self.lblQuizCode.text = self.quiz.code;
+                    self.lblQuizType.text = [self.quiz.type isEqualToString:@"0"] ? @"Academic" : @"Miscellaneous";
+                    
+                    self.ctrStartHeight.constant = 40;
+                }
+            }
+                andFailure:^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject) {
+               
+                    [self hideLoadingView];
+                    
+                    self.ctrStartHeight.constant = 0;
+                    
+               }];
+        });
+    }];
 
     
     [self.socket on:@"disconnect" callback:^(NSArray * _Nonnull data, SocketAckEmitter * _Nonnull ack) {
@@ -140,7 +186,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellID = @"StudentTableViewCellID";
     StudentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    [cell loadDataForCell:[self.studentList objectAtIndex:indexPath.row]];
+    [cell loadDataForCell:[self.studentList objectAtIndex:indexPath.row] completeQuiz:false];
     
     return cell;
 }

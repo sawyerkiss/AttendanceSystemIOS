@@ -133,5 +133,9 @@ andFailure:(ConnectionFailure)failure;
                  success:(ConnectionComplete)success
               andFailure:(ConnectionFailure)failure;
 
+- (void)getQuizMobileResults:(NSString*)quizCode classHasCourseId:(NSString*)classId
+                     success:(ConnectionComplete)success
+                  andFailure:(ConnectionFailure)failure;
+
 @end
 OS_ASSUME_NONNULL_END

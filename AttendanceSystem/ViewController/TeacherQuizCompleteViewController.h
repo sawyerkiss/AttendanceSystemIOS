@@ -11,5 +11,6 @@
 @interface TeacherQuizCompleteViewController : BaseViewController
 
 @property(nonatomic) NSString* quizCode;
+@property (nonatomic) NSString* class_has_course_id;
 
 @end

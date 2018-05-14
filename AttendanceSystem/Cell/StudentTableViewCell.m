@@ -27,10 +27,11 @@
     // Configure the view for the selected state
 }
 
-- (void)loadDataForCell:(StudentModel *)student {
+- (void)loadDataForCell:(StudentModel *)student completeQuiz:(BOOL)isComplete{
     if(student) {
-        self.lblCode.text = student.code;
-        self.lblName.text = student.name;
+        
+        self.lblCode.text = isComplete ? student.stud_id : student.code;
+        self.lblName.text = isComplete ? [NSString stringWithFormat:@"%@ %@",student.first_name,student.last_name] :student.name;
     }
 }
 

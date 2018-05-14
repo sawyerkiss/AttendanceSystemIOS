@@ -11,6 +11,6 @@
 
 @interface StudentTableViewCell : UITableViewCell
 
--(void)loadDataForCell:(StudentModel*)student;
+-(void)loadDataForCell:(StudentModel*)student completeQuiz:(BOOL) isComplete;
 
 @end

@@ -14,6 +14,8 @@
 
 @property (nonatomic) SocketIOClient *socket;
 
+//@property (nonatomic) NSString* quiz_code;
+
 @end
 
 @implementation TeacherQuizWaitingController
@@ -59,13 +61,24 @@
     [self.socket on:@"mobileEndedQuiz" callback:^(NSArray * _Nonnull data, SocketAckEmitter * _Nonnull ack) {
         dispatch_async(dispatch_get_main_queue(), ^{
             NSLog(@"mobileEndedQuiz: %@", data);
-            NSDictionary* dictionary = [data objectAtIndex:0];
-            NSString* quiz_code = dictionary[@"quiz_code"];
-            if([quiz_code isEqualToString:self.quiz_code])
-                [self endQuiz:quiz_code];
+                        NSDictionary* dictionary = [data objectAtIndex:0];
+                        NSString* quiz_code = dictionary[@"quiz_code"];
+            self.quiz_code = quiz_code;
         });
     }];
     
+    [self.socket on:@"quizCompletedMobile" callback:^(NSArray * _Nonnull data, SocketAckEmitter * _Nonnull ack) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"quizCompletedMobile: %@", data);
+            NSDictionary* dictionary = [data objectAtIndex:0];
+            NSString* quiz_code = dictionary[@"quiz_code"];
+            self.quiz_code = quiz_code;
+            NSString* class_has_course_id = dictionary[@"class_has_course_id"];
+//            if([quiz_code isEqualToString:self.quiz_code])
+                [self endQuiz:self.quiz_code class_has_course_id:class_has_course_id];
+            
+        });
+    }];
     
     [self.socket on:@"disconnect" callback:^(NSArray * _Nonnull data, SocketAckEmitter * _Nonnull ack) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -79,10 +92,12 @@
     //     CFRunLoopRun();
 }
 
-- (void)endQuiz:(NSString*)quizCode {
+- (void)endQuiz:(NSString*)quizCode class_has_course_id:(NSString*)class_has_course_id{
     
     TeacherQuizCompleteViewController * studentQuiz = [self.storyboard instantiateViewControllerWithIdentifier:@"TeacherQuizCompleteViewController"];
     studentQuiz.quizCode = quizCode;
+    studentQuiz.class_has_course_id = class_has_course_id;
+    
     [(UINavigationController*)self.frostedViewController.contentViewController pushViewController:studentQuiz animated:TRUE];
 }
 

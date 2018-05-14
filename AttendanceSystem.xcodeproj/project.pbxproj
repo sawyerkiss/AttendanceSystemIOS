@@ -20,6 +20,7 @@
 		F82BBCC72018785E00CA4E72 /* UIAlertController+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = F82BBCC32018785E00CA4E72 /* UIAlertController+Blocks.m */; };
 		F82BBCCA20188D5D00CA4E72 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F82BBCC920188D5D00CA4E72 /* LoginViewController.m */; };
 		F830AC6120899DDA00D30361 /* QuizModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F830AC6020899DDA00D30361 /* QuizModel.m */; };
+		F83116F620A6A1F200BC9178 /* MPOVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F83116F520A6A1F100BC9178 /* MPOVerificationViewController.m */; };
 		F83E0414205A630D000B9F80 /* SendAbsenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F83E0413205A630D000B9F80 /* SendAbsenceViewController.m */; };
 		F83E0417205A6FD1000B9F80 /* DateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F83E0416205A6FD0000B9F80 /* DateViewController.m */; };
 		F849A203202359080042A422 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F849A202202359080042A422 /* ProfileViewController.m */; };
@@ -137,6 +138,8 @@
 		F82BBCC920188D5D00CA4E72 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		F830AC5F20899DDA00D30361 /* QuizModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuizModel.h; sourceTree = "<group>"; };
 		F830AC6020899DDA00D30361 /* QuizModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuizModel.m; sourceTree = "<group>"; };
+		F83116F420A6A1F100BC9178 /* MPOVerificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPOVerificationViewController.h; sourceTree = "<group>"; };
+		F83116F520A6A1F100BC9178 /* MPOVerificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPOVerificationViewController.m; sourceTree = "<group>"; };
 		F83E0412205A630D000B9F80 /* SendAbsenceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendAbsenceViewController.h; sourceTree = "<group>"; };
 		F83E0413205A630D000B9F80 /* SendAbsenceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendAbsenceViewController.m; sourceTree = "<group>"; };
 		F83E0415205A6FD0000B9F80 /* DateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateViewController.h; sourceTree = "<group>"; };
@@ -409,6 +412,8 @@
 		F871ACA920465294009E04BB /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				F83116F420A6A1F100BC9178 /* MPOVerificationViewController.h */,
+				F83116F520A6A1F100BC9178 /* MPOVerificationViewController.m */,
 				F8DAC685209F024700F4611D /* MPOAddPersonFaceController.h */,
 				F8DAC686209F024700F4611D /* MPOAddPersonFaceController.m */,
 				F8DAC677209EFFC300F4611D /* MPOPersonFacesController.h */,
@@ -1066,6 +1071,7 @@
 				F8FA797120183BAA005D8677 /* AppDelegate.m in Sources */,
 				F8BEE2132050E3D20043A316 /* ScanQRViewController.m in Sources */,
 				F8DAC67C209EFFE800F4611D /* GroupPerson.m in Sources */,
+				F83116F620A6A1F200BC9178 /* MPOVerificationViewController.m in Sources */,
 				F8889930205B7408003C211C /* SendFeedbackViewController.m in Sources */,
 				F8D8CB77205F7A15001F4D7B /* StudentQuizViewController.m in Sources */,
 				F89B06102019C7D000CAC8FF /* MenuItemModel.m in Sources */,
@@ -1248,13 +1254,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 653Z7X9T9W;
+				DEVELOPMENT_TEAM = GMSMKW52BZ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = AttendanceSystem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.demo.trungtruc.AttendanceSystemIOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.app.trungtruc.AttendanceSystemIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1268,13 +1274,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 653Z7X9T9W;
+				DEVELOPMENT_TEAM = GMSMKW52BZ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = AttendanceSystem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.demo.trungtruc.AttendanceSystemIOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.app.trungtruc.AttendanceSystemIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;

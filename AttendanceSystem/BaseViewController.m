@@ -95,7 +95,11 @@ static BOOL isAlertDisplayed = NO;
 - (void)showAlertNoticeWithMessage:(NSString *)message completion:(AlertCompletion)completion {
     isAlertDisplayed = YES;
     if(!message || message.length == 0)
+    {
+        message = @"Internal server error";
         return;
+    }
+    
     [CustomAlertView showCustomAlertViewWithTitle:@""
                                           message:message
                                 cancelButtonTitle:NSLocalizedString(@"OK", nil)

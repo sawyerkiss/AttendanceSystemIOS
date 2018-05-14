@@ -40,6 +40,8 @@ static NSString *const kGetDisplayQuiz = @"api/quiz/display";
 static NSString *const kGetStudentDetail =  @"api/student/detail/%@";
 static NSString *const kUploadStudentFace = @"api/student/uploadFace";
 static NSString *const kUploadFaceImage = @"https://api.imgur.com/3/upload";
+static NSString *const kGetQuizResults = @"api/quiz/quizMobileResults";
+
 //Header
 static NSString *kHeaderSourceHostKey = @"X-SOURCE-HOST";
 static NSString *kHeaderTokenKey = @"Token";
@@ -77,9 +79,10 @@ static NSString *const kEndPointLink = @"End point link";
 static NSString *const kXSourceHost = @"X source host";
 
 NSString *linkService(NSString *subLink) {
-    NSString *endPointLink =
+    NSString *endPointLink = HOST;
     //@"http://192.168.1.107:3000/";
-    @"https://iteccyle8.herokuapp.com/";
+//    @"http://172.16.0.209:3000/";
+//    @"https://iteccyle8.herokuapp.com/";
     //[[NSBundle mainBundle] objectForInfoDictionaryKey:kEndPointLink];
     
     return [endPointLink stringByAppendingString:subLink];
@@ -109,6 +112,8 @@ NSString *linkService(NSString *subLink) {
         self.sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
         self.sessionManager.requestSerializer.timeoutInterval = 20.0f;
         
+        self.sessionManager.responseSerializer = [AFJSONResponseSerializer
+                                                  serializerWithReadingOptions:NSJSONReadingAllowFragments];
 //        [self.sessionManager.requestSerializer setValue:kXSourceHost forHTTPHeaderField:kHeaderSourceHostKey];
         
 //        NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
@@ -974,6 +979,32 @@ NSString *linkService(NSString *subLink) {
      ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
          [self handleResponseError:error andFailure:failure];
      }];
+}
+
+- (void)getQuizMobileResults:(NSString *)quizCode classHasCourseId:(NSString *)classId success:(ConnectionComplete)success andFailure:(ConnectionFailure)failure {
+    
+    NSString* token = [[UserManager userCenter] getCurrentUserToken];
+    NSDictionary *parameter = @{@"token": token ? token : @"",
+                                @"quiz_code" :quizCode,
+                                @"class_has_course_id" : classId
+                                };
+    
+    NSString* url = linkService(kGetQuizResults);
+    NSLog(@"url : %@" ,url);
+    NSLog(@"parameter : %@" , parameter);
+    
+    [self.sessionManager POST:url
+                   parameters:parameter
+                     progress:nil
+                      success:
+     ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         [self handleResponseData:responseObject andSuccess:success];
+     }
+                      failure:
+     ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         [self handleResponseError:error andFailure:failure];
+     }];
+    
 }
 
 @end

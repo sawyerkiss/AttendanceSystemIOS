@@ -16,6 +16,7 @@ typedef NS_ENUM(NSUInteger, MenuItemType) {
     MenuItemType_Schedules,
     MenuItemType_Account,
     MenuItemType_About,
+    MenuItemType_UploadFaces,
     MenuItemType_Logout
 };
 

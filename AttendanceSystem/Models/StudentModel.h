@@ -17,4 +17,9 @@
 @property (nonatomic) NSString <Optional> *name;
 @property (nonatomic) NSString <Optional> *status;
 
+@property (nonatomic) NSString <Optional> *first_name;
+@property (nonatomic) NSString <Optional> *last_name;
+@property (nonatomic) NSString <Optional> *stud_id;
+@property (nonatomic) NSString <Optional> *person_id;
+
 @end

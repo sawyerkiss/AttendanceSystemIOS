@@ -68,6 +68,7 @@
         [hub setCustomView:self.activityIndicatorView];
         hub.bezelView.color = [UIColor darkGrayColor];
         hub.contentColor = [UIColor whiteColor];
+        hub.top = 44.0f;
         
         [hub showAnimated:YES];
         [view.window addSubview:hub];
