@@ -40,4 +40,9 @@
     return self;
 }
 
+-(BOOL) isEqual:(id)object {
+    GroupPerson* model = object;
+    return [model.personId isEqualToString:self.personId];
+}
+
 @end

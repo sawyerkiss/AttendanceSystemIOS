@@ -18,7 +18,7 @@
 
 @interface StudentSessionCell : UITableViewCell
 
-- (void)loadDataForCell:(StudentModel*)data;
+- (void)loadDataForCell:(StudentModel*)data withAttendanceType:(AttendanceType)type;
 
 @property (nonatomic) CourseModel* course;
 

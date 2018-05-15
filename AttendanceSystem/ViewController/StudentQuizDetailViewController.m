@@ -139,6 +139,16 @@
             [self hideLoadingView];
             NSLog(@"quizQuestionEnded : %@",data);
             
+     
+        });
+    }];
+    
+    [self.socket on:@"quizEnded" callback:^(NSArray * _Nonnull data, SocketAckEmitter * _Nonnull ack) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"quizEnded: %@", data);
+//            NSDictionary* dictionary = [data objectAtIndex:0];
+            
+            [self checkAttendance:self.questions.count - 1];
             
         });
     }];
@@ -151,6 +161,14 @@
             NSDictionary* dictionary = [data objectAtIndex:0];
             NSString* option = dictionary[@"option"];
             
+            NSInteger studentId = [[dictionary objectForKey:@"student_id"] integerValue];
+            
+            NSString *studentIdValue = [NSString stringWithFormat:@"%ld",studentId];
+            NSString* userId = [[UserManager userCenter] getCurrentUser].userId;
+            
+            if(!studentIdValue || ![studentIdValue isEqualToString:userId])
+                return;
+            
             NSInteger questionIndex = [[dictionary objectForKey:@"question_index"] integerValue];
             
             QuestionModel* question = [self.questions objectAtIndex:questionIndex];
@@ -158,52 +176,8 @@
                 question.answers = @[option];
             }
             
-            NSInteger correctAnswer = 0 ;
-            if(questionIndex == self.questions.count - 1) {
-                for(QuestionModel* question in self.questions) {
-                    
-                    if(question.answers && question.answers.count > 0)
-                    {
-                        if([[question.answers objectAtIndex:0] isEqualToString:@"a"])
-                        {
-                            if([question.option_a isEqualToString:question.correct_option])
-                                correctAnswer++;
-                        }
-                        else  if([[question.answers objectAtIndex:0] isEqualToString:@"b"])
-                        {
-                            if([question.option_b isEqualToString:question.correct_option])
-                                correctAnswer++;
-                        }
-                        else  if([[question.answers objectAtIndex:0] isEqualToString:@"c"])
-                        {
-                            if([question.option_c isEqualToString:question.correct_option])
-                                correctAnswer++;
-                        }
-                        else if([[question.answers objectAtIndex:0] isEqualToString:@"d"])
-                        {
-                            if([question.option_d isEqualToString:question.correct_option])
-                                correctAnswer++;
-                        }
-                    }
-                    
-                }
-                
-                BOOL isChecked = FALSE;
-                
-                if([self.quiz.type isEqualToString:@"0"])
-                    isChecked = correctAnswer >= [self.quiz.required_correct_answers integerValue];
-                else
-                    isChecked = correctAnswer == self.questions.count;
-                
-                if(isChecked)
-                    [self showAlertNoticeWithMessage:@"You've checked attendance" completion:^(NSInteger buttonIndex) {
-                        [self tappedAtLeftButton:nil];
-                    }];
-                else
-                    [self showAlertNoticeWithMessage:@"You've not checked attendance" completion:^(NSInteger buttonIndex) {
-                        [self tappedAtLeftButton:nil];
-                    }];
-            }
+            [self checkAttendance:questionIndex];
+            
         });
     }];
     
@@ -295,6 +269,56 @@
     [_buttonB setEnabled:isEnable];
     [_buttonC setEnabled:isEnable];
     [_buttonD setEnabled:isEnable];
+}
+
+- (void)checkAttendance:(NSInteger)questionIndex{
+    NSInteger correctAnswer = 0 ;
+    if(questionIndex == self.questions.count - 1) {
+        for(QuestionModel* question in self.questions) {
+            
+            if(question.answers && question.answers.count > 0)
+            {
+                if([[question.answers objectAtIndex:0] isEqualToString:@"a"])
+                {
+                    if([question.option_a isEqualToString:question.correct_option])
+                        correctAnswer++;
+                }
+                else  if([[question.answers objectAtIndex:0] isEqualToString:@"b"])
+                {
+                    if([question.option_b isEqualToString:question.correct_option])
+                        correctAnswer++;
+                }
+                else  if([[question.answers objectAtIndex:0] isEqualToString:@"c"])
+                {
+                    if([question.option_c isEqualToString:question.correct_option])
+                        correctAnswer++;
+                }
+                else if([[question.answers objectAtIndex:0] isEqualToString:@"d"])
+                {
+                    if([question.option_d isEqualToString:question.correct_option])
+                        correctAnswer++;
+                }
+            }
+            
+        }
+        
+        BOOL isChecked = FALSE;
+        
+        if([self.quiz.type isEqualToString:@"0"])
+            isChecked = correctAnswer >= [self.quiz.required_correct_answers integerValue];
+        else
+            isChecked = correctAnswer == self.questions.count;
+        
+        if(isChecked)
+            [self showAlertNoticeWithMessage:@"You've checked attendance" completion:^(NSInteger buttonIndex) {
+                [self tappedAtLeftButton:nil];
+            }];
+        else
+            [self showAlertNoticeWithMessage:@"You've not checked attendance" completion:^(NSInteger buttonIndex) {
+                [self tappedAtLeftButton:nil];
+            }];
+    }
+
 }
 
 @end

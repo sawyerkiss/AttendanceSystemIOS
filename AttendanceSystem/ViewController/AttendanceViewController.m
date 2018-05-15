@@ -20,13 +20,6 @@
 
 @import SocketIO;
 
-typedef enum {
-    CHECK_LIST ,
-    QR_CODE ,
-    QUIZ
-    
-}AttendanceType;
-
 @interface AttendanceViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UILabel *lblStatistic;

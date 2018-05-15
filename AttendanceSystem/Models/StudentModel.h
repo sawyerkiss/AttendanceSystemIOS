@@ -22,4 +22,6 @@
 @property (nonatomic) NSString <Optional> *stud_id;
 @property (nonatomic) NSString <Optional> *person_id;
 
+@property (nonatomic) UIImage <Optional> *face;
+
 @end

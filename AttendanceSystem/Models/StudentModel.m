@@ -16,4 +16,9 @@
                                                                   }];
 }
 
+-(BOOL) isEqual:(id)object {
+    StudentModel* model = object;
+    return [model.studentId isEqualToString:self.studentId];
+}
+
 @end

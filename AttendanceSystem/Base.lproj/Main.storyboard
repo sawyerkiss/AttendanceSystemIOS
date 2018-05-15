@@ -2486,10 +2486,10 @@ Wait for teacher start the quiz</string>
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uv7-6e-NTM">
-                                                <rect key="frame" x="0.0" y="0.0" width="188" height="60"/>
+                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IPw-0j-BLB">
-                                                        <rect key="frame" x="0.0" y="0.0" width="188" height="60"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="60"/>
                                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="ABSENT">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2500,7 +2500,7 @@ Wait for teacher start the quiz</string>
                                                         </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t8z-5Y-XG5">
-                                                        <rect key="frame" x="0.0" y="55" width="188" height="5"/>
+                                                        <rect key="frame" x="0.0" y="55" width="187.5" height="5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="5" id="8ai-6Z-c0W"/>
@@ -2512,17 +2512,16 @@ Wait for teacher start the quiz</string>
                                                     <constraint firstItem="t8z-5Y-XG5" firstAttribute="leading" secondItem="uv7-6e-NTM" secondAttribute="leading" id="Ndt-Af-VDU"/>
                                                     <constraint firstAttribute="trailing" secondItem="t8z-5Y-XG5" secondAttribute="trailing" id="QlG-XE-oHN"/>
                                                     <constraint firstAttribute="bottom" secondItem="IPw-0j-BLB" secondAttribute="bottom" id="iJQ-8I-6Zv"/>
-                                                    <constraint firstItem="IPw-0j-BLB" firstAttribute="leading" secondItem="uv7-6e-NTM" secondAttribute="leading" id="ny5-zR-aks"/>
                                                     <constraint firstAttribute="trailing" secondItem="IPw-0j-BLB" secondAttribute="trailing" id="rTC-PX-T6j"/>
                                                     <constraint firstItem="IPw-0j-BLB" firstAttribute="top" secondItem="uv7-6e-NTM" secondAttribute="top" id="sJ4-U4-flx"/>
                                                     <constraint firstAttribute="bottom" secondItem="t8z-5Y-XG5" secondAttribute="bottom" id="xwn-og-wsd"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oay-9g-9yE">
-                                                <rect key="frame" x="187" y="0.0" width="188" height="60"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOt-KO-ib3">
-                                                        <rect key="frame" x="0.0" y="0.0" width="188" height="60"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="60"/>
                                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="PRESENT">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2533,7 +2532,7 @@ Wait for teacher start the quiz</string>
                                                         </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EjK-zR-Usj">
-                                                        <rect key="frame" x="0.0" y="55" width="188" height="5"/>
+                                                        <rect key="frame" x="0.0" y="55" width="187.5" height="5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="5" id="sKP-OT-cB9"/>
@@ -2554,14 +2553,15 @@ Wait for teacher start the quiz</string>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="Oay-9g-9yE" firstAttribute="leading" secondItem="uv7-6e-NTM" secondAttribute="trailing" constant="-1" id="2mN-Py-Ar4"/>
                                             <constraint firstAttribute="height" constant="60" id="Eiq-Sa-TOO"/>
                                             <constraint firstItem="uv7-6e-NTM" firstAttribute="top" secondItem="0gN-Zd-K4N" secondAttribute="top" id="Iyk-4Y-2rG"/>
                                             <constraint firstAttribute="bottom" secondItem="uv7-6e-NTM" secondAttribute="bottom" id="JfN-wT-lT7"/>
-                                            <constraint firstAttribute="trailing" secondItem="Oay-9g-9yE" secondAttribute="trailing" id="N9j-CX-NJ9"/>
                                             <constraint firstItem="Oay-9g-9yE" firstAttribute="top" secondItem="0gN-Zd-K4N" secondAttribute="top" id="S3y-o4-SSa"/>
                                             <constraint firstItem="Oay-9g-9yE" firstAttribute="width" secondItem="uv7-6e-NTM" secondAttribute="width" id="bts-sV-0ef"/>
-                                            <constraint firstItem="uv7-6e-NTM" firstAttribute="leading" secondItem="0gN-Zd-K4N" secondAttribute="leading" id="ptO-Cz-odb"/>
+                                            <constraint firstAttribute="trailing" secondItem="uv7-6e-NTM" secondAttribute="trailing" id="heM-6H-alL"/>
+                                            <constraint firstItem="IPw-0j-BLB" firstAttribute="leading" secondItem="Oay-9g-9yE" secondAttribute="trailing" id="kwZ-DB-vvs"/>
+                                            <constraint firstItem="uv7-6e-NTM" firstAttribute="leading" secondItem="Oay-9g-9yE" secondAttribute="trailing" id="qfQ-iH-Nbd"/>
+                                            <constraint firstItem="Oay-9g-9yE" firstAttribute="leading" secondItem="0gN-Zd-K4N" secondAttribute="leading" id="ud7-sZ-JED"/>
                                             <constraint firstAttribute="bottom" secondItem="Oay-9g-9yE" secondAttribute="bottom" id="yTX-Dr-fsG"/>
                                         </constraints>
                                     </view>
@@ -2580,18 +2580,18 @@ Wait for teacher start the quiz</string>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8p1-bh-NTU">
-                                                                    <rect key="frame" x="20" y="10" width="215" height="28"/>
+                                                                    <rect key="frame" x="75" y="10" width="280" height="28"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oel-LR-mPG">
-                                                                    <rect key="frame" x="255" y="23" width="100" height="30"/>
+                                                                    <rect key="frame" x="355" y="23" width="0.0" height="30"/>
                                                                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="0JK-0z-bfu"/>
+                                                                        <constraint firstAttribute="width" id="jBL-Q2-rRQ"/>
                                                                     </constraints>
-                                                                    <state key="normal" title="PRESENT">
+                                                                    <state key="normal">
                                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
                                                                     <connections>
@@ -2599,27 +2599,38 @@ Wait for teacher start the quiz</string>
                                                                     </connections>
                                                                 </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7D-p5-0WY">
-                                                                    <rect key="frame" x="20" y="38" width="215" height="28"/>
+                                                                    <rect key="frame" x="75" y="38" width="280" height="27.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U28-jd-sRV">
+                                                                    <rect key="frame" x="15" y="13" width="50" height="50"/>
+                                                                    <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" secondItem="U28-jd-sRV" secondAttribute="height" multiplier="1:1" id="1gj-kR-pav"/>
+                                                                        <constraint firstAttribute="width" constant="50" id="fK1-xR-acw"/>
+                                                                    </constraints>
+                                                                </imageView>
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstItem="h7D-p5-0WY" firstAttribute="height" secondItem="8p1-bh-NTU" secondAttribute="height" id="2Sf-YO-zYQ"/>
                                                                 <constraint firstItem="8p1-bh-NTU" firstAttribute="top" secondItem="BOf-6V-z9q" secondAttribute="top" constant="10" id="CI8-55-eg6"/>
+                                                                <constraint firstItem="U28-jd-sRV" firstAttribute="leading" secondItem="BOf-6V-z9q" secondAttribute="leadingMargin" id="DJl-SL-dJ2"/>
                                                                 <constraint firstAttribute="bottom" secondItem="h7D-p5-0WY" secondAttribute="bottom" constant="10" id="Ebo-Tt-2qw"/>
                                                                 <constraint firstItem="h7D-p5-0WY" firstAttribute="leading" secondItem="8p1-bh-NTU" secondAttribute="leading" id="GC0-PN-hZZ"/>
+                                                                <constraint firstItem="U28-jd-sRV" firstAttribute="centerY" secondItem="BOf-6V-z9q" secondAttribute="centerY" id="LjW-fs-RY2"/>
                                                                 <constraint firstItem="h7D-p5-0WY" firstAttribute="trailing" secondItem="8p1-bh-NTU" secondAttribute="trailing" id="WQh-Pr-SGz"/>
+                                                                <constraint firstItem="8p1-bh-NTU" firstAttribute="leading" secondItem="U28-jd-sRV" secondAttribute="trailing" constant="10" id="gv8-b1-yhG"/>
                                                                 <constraint firstAttribute="trailing" secondItem="Oel-LR-mPG" secondAttribute="trailing" constant="20" id="peZ-rH-AFJ"/>
-                                                                <constraint firstItem="8p1-bh-NTU" firstAttribute="leading" secondItem="BOf-6V-z9q" secondAttribute="leading" constant="20" id="sK6-70-ayz"/>
-                                                                <constraint firstItem="Oel-LR-mPG" firstAttribute="leading" secondItem="8p1-bh-NTU" secondAttribute="trailing" constant="20" id="uV5-Ou-s61"/>
+                                                                <constraint firstItem="Oel-LR-mPG" firstAttribute="leading" secondItem="8p1-bh-NTU" secondAttribute="trailing" id="uV5-Ou-s61"/>
                                                                 <constraint firstItem="h7D-p5-0WY" firstAttribute="top" secondItem="8p1-bh-NTU" secondAttribute="bottom" id="vz0-Pd-nls"/>
                                                                 <constraint firstItem="Oel-LR-mPG" firstAttribute="centerY" secondItem="BOf-6V-z9q" secondAttribute="centerY" id="xAg-ab-LOd"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                         <connections>
                                                             <outlet property="btnAttendance" destination="Oel-LR-mPG" id="dmy-Xn-11h"/>
+                                                            <outlet property="imgFace" destination="U28-jd-sRV" id="Q9f-lG-UlU"/>
                                                             <outlet property="lblStudentId" destination="h7D-p5-0WY" id="8nO-FF-p90"/>
                                                             <outlet property="lblStudentName" destination="8p1-bh-NTU" id="VjG-hW-Z6Z"/>
                                                         </connections>
@@ -2628,11 +2639,15 @@ Wait for teacher start the quiz</string>
                                             </tableView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0GA-va-WHR">
                                                 <rect key="frame" x="113" y="274" width="150" height="40"/>
+                                                <color key="backgroundColor" red="0.08235294118" green="0.34901960780000002" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="4fr-RL-APY"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="iRu-vb-IBO"/>
                                                 </constraints>
-                                                <state key="normal" title="Verify"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="Verify">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="didTouchVerify:" destination="BkT-xX-5dw" eventType="touchUpInside" id="T2Q-Ot-BqH"/>
                                                 </connections>

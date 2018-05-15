@@ -61,7 +61,7 @@ typedef enum {
         
     NSMutableArray * faceArray;
         
-        NSMutableArray * studentList;
+        NSMutableArray * personList;
     
     PersonGroup * _selectedGroup;
     GroupPerson * _selectedPerson;
@@ -76,9 +76,9 @@ typedef enum {
 
 @property (nonatomic) NSArray *sessionList;
 
-@property (nonatomic) NSArray *absenceList;
+@property (nonatomic) NSMutableArray *absenceList;
 
-@property (nonatomic) NSArray *presentList;
+@property (nonatomic) NSMutableArray *presentList;
 
 @property (nonatomic) SESSION_TYPE session_type ;
 
@@ -102,7 +102,7 @@ typedef enum {
     _faces0 = [[NSMutableArray alloc] init];
     _faces1 = [[NSMutableArray alloc] init];
     faceArray = [[NSMutableArray alloc] init];
-    studentList = [[NSMutableArray alloc] init];
+    personList = [[NSMutableArray alloc] init];
     
     _selectedFaceIndex0 = -1;
     _selectedFaceIndex1 = -1;
@@ -126,10 +126,10 @@ typedef enum {
     
     self.sessionList = [[NSArray alloc] init];
     
-    self.absenceList = [[NSArray alloc] init];
-    self.presentList = [[NSArray alloc] init];
+    self.absenceList = [[NSMutableArray alloc] init];
+    self.presentList = [[NSMutableArray alloc] init];
     
-    self.session_type = ABSENCE;
+    self.session_type = PRESENT;
     
     [self loadSessionListWithType:self.session_type];
 }
@@ -505,7 +505,7 @@ typedef enum {
     StudentSessionCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     cell.course = self.course;
 //    cell.delegate = self;
-    [cell loadDataForCell:[self.sessionList objectAtIndex:indexPath.row]];
+    [cell loadDataForCell:[self.sessionList objectAtIndex:indexPath.row] withAttendanceType:FACE_DETECTION];
     
     return cell;
 }
@@ -534,26 +534,38 @@ typedef enum {
 }
 
 - (void)getStudentSessionList {
+    
+    [self.presentList removeAllObjects];
+    [self.absenceList removeAllObjects];
+    
     [[ConnectionManager connectionDefault] getStudentCourseWithAttendance:self.course.attendance_id success:^(id  _Nonnull responseObject) {
         [self hideLoadingView];
-//        NSArray* studentList = [StudentModel arrayOfModelsFromDictionaries:responseObject[@"check_attendance_list"] error:nil];
-//
-//        NSString* filter = @"self.status MATCHES %@";
-//
-//        NSPredicate* predicate = [NSPredicate predicateWithFormat:filter,@"1"];
-//
-//        NSArray* filteredPresent = [studentList filteredArrayUsingPredicate:predicate];
-//        self.presentList = filteredPresent;
-//
-//        NSString* filter1 = @"self.status MATCHES %@";
-//
-//        NSPredicate* predicate1 = [NSPredicate predicateWithFormat:filter1,@"0"];
-//
-//        NSArray* filteredAbsence = [studentList filteredArrayUsingPredicate:predicate1];
-//
-//        self.absenceList = filteredAbsence;
-//
-//        [self loadSessionListWithType:self.session_type];
+        NSArray* studentList = [StudentModel arrayOfModelsFromDictionaries:responseObject[@"check_attendance_list"] error:nil];
+        
+        for(StudentModel* student in studentList) {
+            NSString* personId = student.person_id ;
+              student.face = nil;
+            for(GroupPerson* person in personList) {
+              
+                if([personId isEqualToString:person.personId])
+                {
+                    student.face = ((PersonFace*)[person.faces objectAtIndex:0]).image;
+                    break;
+                }
+            }
+            
+            if(student.face) {
+                if(![self.presentList containsObject:student])
+                [self.presentList addObject:student];
+            }
+            else {
+                if(![self.absenceList containsObject:student])
+                [self.absenceList addObject:student];
+            }
+            
+        }
+        
+        [self loadSessionListWithType:self.session_type];
         
     } andFailure:^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject) {
         [self hideLoadingView];
@@ -600,7 +612,8 @@ typedef enum {
                                        person.personId = candidate.personId;
                                        [person.faces addObject:face];
                                        
-                                       [studentList addObject:person];
+                                       if(![personList containsObject:person])
+                                       [personList addObject:person];
                                    }
                                }
                                

@@ -37,4 +37,12 @@ typedef enum {
     STAFF = 3
 } UserRole;
 
+typedef enum {
+    CHECK_LIST ,
+    QR_CODE ,
+    QUIZ,
+    FACE_DETECTION
+    
+}AttendanceType;
+
 #endif /* Enums_h */

@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblStudentId;
 @property (weak, nonatomic) IBOutlet UIButton *btnAttendance;
 
+@property (weak, nonatomic) IBOutlet UIImageView *imgFace;
 @property (nonatomic) StudentModel* student;
 
 @end
@@ -31,16 +32,21 @@
     // Configure the view for the selected state
 }
 
-- (void)loadDataForCell:(StudentModel *)data {
+- (void)loadDataForCell:(StudentModel *)data withAttendanceType:(AttendanceType)type{
     
     self.lblStudentName.text = data.code;
     self.lblStudentId.text = data.name;
     self.student = data;
     
+    if(type == CHECK_LIST) {
     if([self.student.status isEqualToString:@"1"])
        [self.btnAttendance setTitle:@"ABSENT" forState:UIControlStateNormal];
     else
         [self.btnAttendance setTitle:@"PRESENT" forState:UIControlStateNormal];
+    }
+    else if( type == FACE_DETECTION) {
+        self.imgFace.image = data.face;
+    }
 }
 
 

@@ -204,8 +204,6 @@
         
         [self hideLoadingView];
         
-        [self emitStartQuiz];
-        
         NSString* result = responseObject[@"result"];
         
         if([result isEqualToString:@"success"]) {
@@ -225,6 +223,8 @@
 
 
 - (IBAction)didTouchStartButton:(id)sender {
+    
+    [self emitStartQuiz];
     
     [self startQuiz];
 

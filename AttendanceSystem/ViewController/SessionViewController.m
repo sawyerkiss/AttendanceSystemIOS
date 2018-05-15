@@ -100,7 +100,7 @@ typedef enum {
     StudentSessionCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     cell.course = self.course;
     cell.delegate = self;
-    [cell loadDataForCell:[self.sessionList objectAtIndex:indexPath.row]];
+    [cell loadDataForCell:[self.sessionList objectAtIndex:indexPath.row] withAttendanceType:CHECK_LIST];
     
     return cell;
 }
