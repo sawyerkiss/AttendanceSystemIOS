@@ -14,6 +14,8 @@
 		F80FAFB82078C77E006796B1 /* SocketManagerIO.m in Sources */ = {isa = PBXBuildFile; fileRef = F80FAFB72078C77E006796B1 /* SocketManagerIO.m */; };
 		F81B932C2023551400FC99D8 /* UIImageViewLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = F81B932B2023551400FC99D8 /* UIImageViewLoading.m */; };
 		F81D34B1205AC64500CD31D7 /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F81D34B0205AC64500CD31D7 /* DatePickerView.m */; };
+		F8292CAC20AC1EEB002CB171 /* PickerViewPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = F8292CAA20AC1EEA002CB171 /* PickerViewPopup.m */; };
+		F8292CAD20AC1EEB002CB171 /* PickerViewPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8292CAB20AC1EEA002CB171 /* PickerViewPopup.xib */; };
 		F82BBCC42018785E00CA4E72 /* LoadingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F82BBCBB2018785E00CA4E72 /* LoadingManager.m */; };
 		F82BBCC52018785E00CA4E72 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F82BBCBE2018785E00CA4E72 /* TPKeyboardAvoidingScrollView.m */; };
 		F82BBCC62018785E00CA4E72 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F82BBCC02018785E00CA4E72 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
@@ -126,6 +128,9 @@
 		F81B932B2023551400FC99D8 /* UIImageViewLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageViewLoading.m; sourceTree = "<group>"; };
 		F81D34AF205AC64500CD31D7 /* DatePickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatePickerView.h; sourceTree = "<group>"; };
 		F81D34B0205AC64500CD31D7 /* DatePickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DatePickerView.m; sourceTree = "<group>"; };
+		F8292CA920AC1EEA002CB171 /* PickerViewPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerViewPopup.h; sourceTree = "<group>"; };
+		F8292CAA20AC1EEA002CB171 /* PickerViewPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerViewPopup.m; sourceTree = "<group>"; };
+		F8292CAB20AC1EEA002CB171 /* PickerViewPopup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerViewPopup.xib; sourceTree = "<group>"; };
 		F82BBCBA2018785E00CA4E72 /* LoadingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingManager.h; sourceTree = "<group>"; };
 		F82BBCBB2018785E00CA4E72 /* LoadingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingManager.m; sourceTree = "<group>"; };
 		F82BBCBD2018785E00CA4E72 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
@@ -353,6 +358,7 @@
 		F81D34AE205AC57800CD31D7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F8292CA820AC1EEA002CB171 /* PickerView */,
 				F8DAC688209F027B00F4611D /* MPOSimpleFaceCell.h */,
 				F8DAC68A209F027B00F4611D /* MPOSimpleFaceCell.m */,
 				F8DAC689209F027B00F4611D /* MPOSimpleFaceCell.xib */,
@@ -363,6 +369,16 @@
 				F81D34B0205AC64500CD31D7 /* DatePickerView.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		F8292CA820AC1EEA002CB171 /* PickerView */ = {
+			isa = PBXGroup;
+			children = (
+				F8292CA920AC1EEA002CB171 /* PickerViewPopup.h */,
+				F8292CAA20AC1EEA002CB171 /* PickerViewPopup.m */,
+				F8292CAB20AC1EEA002CB171 /* PickerViewPopup.xib */,
+			);
+			path = PickerView;
 			sourceTree = "<group>";
 		};
 		F82BBCB82018785E00CA4E72 /* Libs */ = {
@@ -821,6 +837,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8FA797C20183BAA005D8677 /* LaunchScreen.storyboard in Resources */,
+				F8292CAD20AC1EEB002CB171 /* PickerViewPopup.xib in Resources */,
 				F8DAC68B209F027B00F4611D /* MPOSimpleFaceCell.xib in Resources */,
 				F8FA797920183BAA005D8677 /* Assets.xcassets in Resources */,
 				F8FA797720183BAA005D8677 /* Main.storyboard in Resources */,
@@ -1073,6 +1090,7 @@
 				F8DAC67C209EFFE800F4611D /* GroupPerson.m in Sources */,
 				F83116F620A6A1F200BC9178 /* MPOVerificationViewController.m in Sources */,
 				F8889930205B7408003C211C /* SendFeedbackViewController.m in Sources */,
+				F8292CAC20AC1EEB002CB171 /* PickerViewPopup.m in Sources */,
 				F8D8CB77205F7A15001F4D7B /* StudentQuizViewController.m in Sources */,
 				F89B06102019C7D000CAC8FF /* MenuItemModel.m in Sources */,
 				F8DAC66C209EFF1500F4611D /* Colours.m in Sources */,

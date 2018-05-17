@@ -41,6 +41,7 @@ static NSString *const kGetStudentDetail =  @"api/student/detail/%@";
 static NSString *const kUploadStudentFace = @"api/student/uploadFace";
 static NSString *const kUploadFaceImage = @"https://api.imgur.com/3/upload";
 static NSString *const kGetQuizResults = @"api/quiz/quizMobileResults";
+static NSString *const kSubmitFaceDetection = @"api/check-attendance/verify-face";
 
 //Header
 static NSString *kHeaderSourceHostKey = @"X-SOURCE-HOST";
@@ -990,6 +991,30 @@ NSString *linkService(NSString *subLink) {
                                 };
     
     NSString* url = linkService(kGetQuizResults);
+    NSLog(@"url : %@" ,url);
+    NSLog(@"parameter : %@" , parameter);
+    
+    [self.sessionManager POST:url
+                   parameters:parameter
+                     progress:nil
+                      success:
+     ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         [self handleResponseData:responseObject andSuccess:success];
+     }
+                      failure:
+     ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         [self handleResponseError:error andFailure:failure];
+     }];
+    
+}
+
+- (void)submitFaceDetectionData:(NSDictionary *)parameter success:(ConnectionComplete)success andFailure:(ConnectionFailure)failure {
+    
+//    NSString* token = [[UserManager userCenter] getCurrentUserToken];
+//    NSDictionary *parameter = @{@"token": token ? token : @""
+//                                };
+    
+    NSString* url = linkService(kSubmitFaceDetection);
     NSLog(@"url : %@" ,url);
     NSLog(@"parameter : %@" , parameter);
     

@@ -31,6 +31,7 @@
     
     self.title = @"COURSE LIST";
     
+    self.tableCourse.estimatedSectionHeaderHeight = 0 ;
     self.tableCourse.dataSource = self;
     self.tableCourse.delegate = self;
     self.tableCourse.rowHeight = UITableViewAutomaticDimension;

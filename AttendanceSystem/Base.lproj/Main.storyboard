@@ -1042,7 +1042,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="udb-wM-ZGF">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CourseCell" rowHeight="103" id="Vdd-49-Lv8" customClass="CourseViewCell">
@@ -1095,16 +1095,16 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <sections/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="udb-wM-ZGF" firstAttribute="top" secondItem="0ox-8D-o2X" secondAttribute="top" id="5xi-q9-7Fs"/>
-                            <constraint firstItem="udb-wM-ZGF" firstAttribute="trailing" secondItem="0ox-8D-o2X" secondAttribute="trailing" id="giw-iy-uNX"/>
-                            <constraint firstItem="udb-wM-ZGF" firstAttribute="leading" secondItem="0ox-8D-o2X" secondAttribute="leading" id="p1C-zJ-BTW"/>
-                            <constraint firstItem="udb-wM-ZGF" firstAttribute="bottom" secondItem="0ox-8D-o2X" secondAttribute="bottom" id="sBJ-85-pgz"/>
+                            <constraint firstItem="udb-wM-ZGF" firstAttribute="top" secondItem="d9P-3P-Hkl" secondAttribute="top" id="5xi-q9-7Fs"/>
+                            <constraint firstItem="udb-wM-ZGF" firstAttribute="trailing" secondItem="d9P-3P-Hkl" secondAttribute="trailing" id="giw-iy-uNX"/>
+                            <constraint firstItem="udb-wM-ZGF" firstAttribute="leading" secondItem="d9P-3P-Hkl" secondAttribute="leading" id="p1C-zJ-BTW"/>
+                            <constraint firstItem="udb-wM-ZGF" firstAttribute="bottom" secondItem="d9P-3P-Hkl" secondAttribute="bottom" id="sBJ-85-pgz"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="0ox-8D-o2X"/>
                     </view>
                     <navigationItem key="navigationItem" id="khK-j2-PxR"/>
                     <connections>
@@ -2638,11 +2638,10 @@ Wait for teacher start the quiz</string>
                                                 </prototypes>
                                             </tableView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0GA-va-WHR">
-                                                <rect key="frame" x="113" y="274" width="150" height="40"/>
+                                                <rect key="frame" x="20" y="274" width="153" height="40"/>
                                                 <color key="backgroundColor" red="0.08235294118" green="0.34901960780000002" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="4fr-RL-APY"/>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="iRu-vb-IBO"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="Verify">
@@ -2652,15 +2651,34 @@ Wait for teacher start the quiz</string>
                                                     <action selector="didTouchVerify:" destination="BkT-xX-5dw" eventType="touchUpInside" id="T2Q-Ot-BqH"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IMs-Ut-F3E">
+                                                <rect key="frame" x="202" y="274" width="153" height="40"/>
+                                                <color key="backgroundColor" red="0.08235294118" green="0.34901960780000002" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="b8d-pa-Lfe"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="Submit">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="didTouchSubmit:" destination="BkT-xX-5dw" eventType="touchUpInside" id="u6e-5d-Mix"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="0GA-va-WHR" firstAttribute="top" secondItem="giY-oV-lK4" secondAttribute="bottom" constant="20" id="Ke5-WQ-Jcc"/>
+                                            <constraint firstItem="IMs-Ut-F3E" firstAttribute="leading" secondItem="0GA-va-WHR" secondAttribute="trailing" constant="29" id="LLs-TM-KNB"/>
                                             <constraint firstItem="giY-oV-lK4" firstAttribute="top" secondItem="nKi-5a-WcA" secondAttribute="top" id="QBj-aw-5VR"/>
                                             <constraint firstAttribute="trailing" secondItem="giY-oV-lK4" secondAttribute="trailing" id="SEw-9X-6Xx"/>
                                             <constraint firstItem="giY-oV-lK4" firstAttribute="leading" secondItem="nKi-5a-WcA" secondAttribute="leading" id="SmQ-eN-U7h"/>
-                                            <constraint firstItem="0GA-va-WHR" firstAttribute="centerX" secondItem="nKi-5a-WcA" secondAttribute="centerX" id="Vo3-Ni-Moc"/>
+                                            <constraint firstAttribute="bottom" secondItem="IMs-Ut-F3E" secondAttribute="bottom" constant="20" id="Xrk-fo-XEE"/>
+                                            <constraint firstItem="IMs-Ut-F3E" firstAttribute="top" secondItem="giY-oV-lK4" secondAttribute="bottom" constant="20" id="bdL-nw-xdG"/>
+                                            <constraint firstItem="IMs-Ut-F3E" firstAttribute="width" secondItem="0GA-va-WHR" secondAttribute="width" id="hLG-eS-8eM"/>
                                             <constraint firstAttribute="bottom" secondItem="0GA-va-WHR" secondAttribute="bottom" constant="20" id="oeu-2C-nDv"/>
+                                            <constraint firstItem="0GA-va-WHR" firstAttribute="leading" secondItem="nKi-5a-WcA" secondAttribute="leading" constant="20" id="tvN-Sg-yi4"/>
+                                            <constraint firstAttribute="trailing" secondItem="IMs-Ut-F3E" secondAttribute="trailing" constant="20" id="zfO-3K-Epo"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -2693,6 +2711,8 @@ Wait for teacher start the quiz</string>
                     </view>
                     <connections>
                         <outlet property="_imageContainer" destination="19S-HA-Ysk" id="NEW-EL-NnA"/>
+                        <outlet property="btnSubmit" destination="IMs-Ut-F3E" id="Bzp-YT-ayk"/>
+                        <outlet property="btnVerify" destination="0GA-va-WHR" id="gOy-fd-W7K"/>
                         <outlet property="ctrAbsenceLineHeight" destination="8ai-6Z-c0W" id="y3h-1z-eYJ"/>
                         <outlet property="ctrPresentLineHeight" destination="sKP-OT-cB9" id="2re-2Y-gza"/>
                         <outlet property="tableSession" destination="giY-oV-lK4" id="1jD-Fr-fV7"/>

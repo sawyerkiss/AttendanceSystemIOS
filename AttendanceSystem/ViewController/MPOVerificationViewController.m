@@ -39,6 +39,7 @@
 #import "PersonFace.h"
 #import <ProjectOxfordFace/MPOFaceServiceClient.h>
 #import "StudentSessionCell.h"
+#import "PickerViewPopup.h"
 
 typedef enum {
     PRESENT = 1,
@@ -61,10 +62,17 @@ typedef enum {
         
     NSMutableArray * faceArray;
         
-        NSMutableArray * personList;
+    NSMutableArray * personList;
+    
+    NSMutableArray * studentList;
     
     PersonGroup * _selectedGroup;
     GroupPerson * _selectedPerson;
+        
+        NSData *dataImage;
+        
+        BOOL hasVerifiedStudent ;
+        NSMutableArray * imageArray;
 }
 
 @property (weak, nonatomic) IBOutlet UICollectionView *_imageContainer;
@@ -74,6 +82,8 @@ typedef enum {
 
 @property (weak, nonatomic) IBOutlet UITableView *tableSession;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnSubmit;
+@property (weak, nonatomic) IBOutlet UIButton *btnVerify;
 @property (nonatomic) NSArray *sessionList;
 
 @property (nonatomic) NSMutableArray *absenceList;
@@ -103,6 +113,8 @@ typedef enum {
     _faces1 = [[NSMutableArray alloc] init];
     faceArray = [[NSMutableArray alloc] init];
     personList = [[NSMutableArray alloc] init];
+    studentList = [[NSMutableArray alloc] init];
+    imageArray = [[NSMutableArray alloc] init];
     
     _selectedFaceIndex0 = -1;
     _selectedFaceIndex1 = -1;
@@ -130,6 +142,8 @@ typedef enum {
     self.presentList = [[NSMutableArray alloc] init];
     
     self.session_type = PRESENT;
+    
+    hasVerifiedStudent = FALSE;
     
     [self loadSessionListWithType:self.session_type];
 }
@@ -383,6 +397,9 @@ typedef enum {
     
     MPOFaceServiceClient *client = [[MPOFaceServiceClient alloc] initWithEndpointAndSubscriptionKey:ProjectOxfordFaceEndpoint key:ProjectOxfordFaceSubscriptionKey];
     NSData *data = UIImageJPEGRepresentation(_selectedImage, 0.8);
+    
+    dataImage = data;
+    
     [client detectWithData:data returnFaceId:YES returnFaceLandmarks:YES returnFaceAttributes:@[] completionBlock:^(NSArray<MPOFace *> *collection, NSError *error) {
         [HUD removeFromSuperview];
         if (error) {
@@ -397,11 +414,14 @@ typedef enum {
             personFace.image = croppedImage;
             personFace.face = face;
             [faceArray addObject:personFace];
+            
         }
         [__imageContainer reloadData];
         if (_verificationType == VerificationTypeFaceAndFace) {
             [(UICollectionView*)_imageContainer1 reloadData];
         }
+        
+        self.btnVerify.enabled = TRUE;
         _verifyBtn.enabled = NO;
         _selectedFaceIndex0 = -1;
         _selectedFaceIndex1 = -1;
@@ -514,6 +534,36 @@ typedef enum {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    if(self.session_type == ABSENCE)
+        return;
+    
+    StudentModel* studentSelect = [self.sessionList objectAtIndex:indexPath.row];
+    
+    [PickerViewPopup showPickerViewInputInView:self.navigationController.view andData:studentList andSelectionIndex:0 andCompletion:^(NSInteger selectionIndex) {
+        StudentModel* studentVerify = [studentList objectAtIndex:selectionIndex];
+        
+        if(self.session_type == PRESENT) {
+            
+            if(![self.presentList containsObject:studentVerify])
+            {
+                studentVerify.face = studentSelect.face;
+                studentSelect.face = nil;
+                
+                [self.presentList addObject:studentVerify];
+                [self.absenceList removeObject:studentVerify];
+                
+                [self.presentList removeObject:studentSelect];
+                [self.absenceList addObject:studentSelect];
+            }
+            
+        }
+        else {
+            
+        }
+        
+        [self loadSessionListWithType:self.session_type];
+        
+    }];
 }
 
 - (void)loadSessionListWithType:(SESSION_TYPE)type {
@@ -540,7 +590,8 @@ typedef enum {
     
     [[ConnectionManager connectionDefault] getStudentCourseWithAttendance:self.course.attendance_id success:^(id  _Nonnull responseObject) {
         [self hideLoadingView];
-        NSArray* studentList = [StudentModel arrayOfModelsFromDictionaries:responseObject[@"check_attendance_list"] error:nil];
+        studentList = [StudentModel arrayOfModelsFromDictionaries:responseObject[@"check_attendance_list"] error:nil];
+        hasVerifiedStudent = FALSE;
         
         for(StudentModel* student in studentList) {
             NSString* personId = student.person_id ;
@@ -554,9 +605,13 @@ typedef enum {
                 }
             }
             
+        
+            
             if(student.face) {
-                if(![self.presentList containsObject:student])
-                [self.presentList addObject:student];
+                if(![self.presentList containsObject:student]){
+                    [self.presentList addObject:student];
+                    hasVerifiedStudent = TRUE;
+                }
             }
             else {
                 if(![self.absenceList containsObject:student])
@@ -566,6 +621,36 @@ typedef enum {
         }
         
         [self loadSessionListWithType:self.session_type];
+        
+       
+        if(hasVerifiedStudent ) {
+            
+            [self.btnVerify setEnabled:FALSE];
+            
+            if(dataImage) {
+            [self showLoadingView];
+            [[ConnectionManager connectionDefault] uploadImageToAPI:dataImage
+                                                            success:^(id  _Nonnull responseObject) {
+                                                                //response[@"data"];
+                                                                // link -> image url
+                                                                [self hideLoadingView];
+                                                                
+                                                                if(!responseObject) {
+//                                                                    [self updatePersonWithLargePersonGroupId];
+                                                                    return;
+                                                                }
+                                                                
+                                                                NSString* imageUrl = [responseObject[@"data"] objectForKey:@"link"];
+                                                             
+                                                                if(![imageArray containsObject:imageUrl])
+                                                                    [imageArray addObject:imageUrl];
+                                                            }
+                                                         andFailure:^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject)
+             {
+                  [self hideLoadingView];
+             }];
+            }
+        }
         
     } andFailure:^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject) {
         [self hideLoadingView];
@@ -644,6 +729,51 @@ typedef enum {
         }
     }
     return nil;
+}
+
+- (void)submitFaceDetectionData {
+    
+    [self showLoadingView];
+    
+    NSString* token = [[UserManager userCenter] getCurrentUserToken];
+    NSMutableArray* studentIdList = [[NSMutableArray alloc] init];
+    
+    for(StudentModel* student in self.presentList)
+    {
+        if(![studentIdList containsObject:student.studentId])
+            [studentIdList addObject:student.studentId];
+    }
+    
+    
+    NSDictionary *parameter = @{@"token": token ? token : @"",
+                                @"students":studentIdList,
+                                @"attendance_id": self.course.attendance_id,
+                                @"attendance_type": @4,
+                                @"attendance_img": imageArray
+                                    };
+    
+    [[ConnectionManager connectionDefault] submitFaceDetectionData:parameter success:^(id  _Nonnull responseObject) {
+        [self hideLoadingView];
+        [self.navigationController popToRootViewControllerAnimated:TRUE];
+    } andFailure:^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject) {
+        [self hideLoadingView];
+        
+        [self showAlertNoticeWithMessage:errorMessage completion:nil];
+    }];
+    
+}
+
+
+- (IBAction)didTouchSubmit:(id)sender {
+    
+    if(hasVerifiedStudent) {
+    
+    [self showAlertQuestionWithMessage:@"Are you sure to submit face detection datas ?"   completion:^(NSInteger buttonIndex) {
+     if(buttonIndex == 1)
+         [self submitFaceDetectionData];
+     }];
+        
+    }
 }
 
 @end
