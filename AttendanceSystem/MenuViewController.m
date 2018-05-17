@@ -222,7 +222,7 @@ static CGFloat kCellHeight;
             person.personId = [[UserManager userCenter] getCurrentUser].person_id;
             
             PersonGroup* group = [[PersonGroup alloc] init];
-            group.groupId = @"hcmus-test";
+            group.groupId = GROUP;
             
             MPOPersonFacesController * controller = [[MPOPersonFacesController alloc] initWithGroup:group andPerson:person];
             //        controller.needTraining = * NO ;

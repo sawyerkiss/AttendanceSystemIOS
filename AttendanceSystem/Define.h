@@ -29,5 +29,7 @@
 //
 //
 
+#define GROUP @"hcmus-face";
+
 
 #endif /* Define_h */

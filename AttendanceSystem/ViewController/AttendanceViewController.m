@@ -420,7 +420,7 @@
         controller.verificationType = VerificationTypeFaceAndPerson;
         controller.course = self.course;
         PersonGroup* group = [[PersonGroup alloc] init];
-        group.groupId = @"hcmus-test";
+        group.groupId = GROUP;
         controller.group = group;
         [self.navigationController pushViewController:controller animated:YES];
     }

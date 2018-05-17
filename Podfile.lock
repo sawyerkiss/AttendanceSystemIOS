@@ -42,6 +42,21 @@ DEPENDENCIES:
   - Socket.IO-Client-Swift (~> 13.1.0)
   - ZXingObjC (~> 3.2.2)
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
+    - BEMCheckBox
+    - DGActivityIndicatorView
+    - JSONModel
+    - MaterialControls
+    - MBProgressHUD
+    - MTBBarcodeScanner
+    - ProjectOxfordFace
+    - REFrostedViewController
+    - Socket.IO-Client-Swift
+    - Starscream
+    - ZXingObjC
+
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
@@ -56,6 +71,6 @@ SPEC CHECKSUMS:
   Starscream: dfb1b3f39506717ee52b67fb48de0c8269504cbc
   ZXingObjC: 2c95a0dc52daac69b23ec78fad8fa2fec05f8981
 
-PODFILE CHECKSUM: 233a5d4fe339da4028ab22c89d065b5c29d10b62
+PODFILE CHECKSUM: 96f7b2bc74b7f8f5ff4ea35b42ee6416d178098c
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0
