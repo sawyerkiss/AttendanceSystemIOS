@@ -17,7 +17,7 @@
 @property (nonatomic) NSString <Optional> *class_name;
 @property (nonatomic) NSString <Optional> *chcid;
 @property (nonatomic) NSString <Optional> *total_stud;
-@property (nonatomic) NSString <Optional> *schedule;
+@property (nonatomic) NSString <Optional> *schedules;
 @property (nonatomic) NSString <Optional> *office_hour;
 @property (nonatomic) NSString <Optional> *note;
 

@@ -474,7 +474,7 @@ static  NSInteger matrix[] = {6,12,18,24,7,13,19,25,8,14,20,26,9,15,21,27,10,16,
                        course.total_stud,
                        @"0",
                        @"0",
-                       course.schedule,
+                       course.schedules,
                        course.office_hour,
                        course.note];
     

@@ -10,7 +10,7 @@
 
 @interface ScheduleCollectionViewCell : UICollectionViewCell
 
-- (void)loadData:(NSMutableArray *)lessionArray;
+- (void)loadData:(NSMutableArray *)lessionArray inCell:(NSInteger) index;
 
 
 @end

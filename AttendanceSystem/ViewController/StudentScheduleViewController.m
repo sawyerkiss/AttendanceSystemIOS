@@ -15,6 +15,9 @@ static const NSArray* DAY_OF_WEEK ;
 static const NSArray* MATRIX_OF_INDEX;
 static int INDEX_ARRAY[] = {2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
+static CGFloat const kCellHeightRatio = 70.0f/667.0f;
+static CGFloat kCellHeight;
+
 @interface StudentScheduleViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *scheduleCollection;
@@ -40,6 +43,8 @@ static int INDEX_ARRAY[] = {2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    kCellHeight = SCREEN_HEIGHT * kCellHeightRatio;
+    
     self.title = @"SCHEDULES";
     
     self.timeLabel.text = @"";
@@ -47,7 +52,7 @@ static int INDEX_ARRAY[] = {2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
     
     DAY_OF_WEEK = @[@"MON",@"TUE", @"WED",@"THU",@"FRI",@"SAT"];
     MATRIX_OF_INDEX = @[@6,@12,@18,@24,@7,@13,@19,@25,@8,@14,@20,@26,@9,@15,@21,@27,@10,@16,@22,@28,@11,@17,@23,@29];
-//   INDEX_ARRAY = {2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    //   INDEX_ARRAY = {2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
     
     //@[@2,@2,@2,@2,@2,@2,@0,@0,@0,@0,@0,@0,@0,@0,@0,@0,@0,@0,@0,@0,@0,@0,@0,@0,@0,@0,@0,@0,@0,@0];
     
@@ -56,8 +61,8 @@ static int INDEX_ARRAY[] = {2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
     _scheduleCollection.delegate = self;
     [_scheduleCollection registerNib:[UINib nibWithNibName:@"ScheduleCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"scheduleCell"];
     
-//    [_scheduleCollection registerClass:[ScheduleCollectionViewCell class] forCellWithReuseIdentifier:@"scheduleCell"];
-//
+    //    [_scheduleCollection registerClass:[ScheduleCollectionViewCell class] forCellWithReuseIdentifier:@"scheduleCell"];
+    //
     [_scheduleCollection setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
     
@@ -73,68 +78,42 @@ static int INDEX_ARRAY[] = {2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
     }
     
     [[self.schedulesData objectAtIndex:0] addObject:[[LessionInfo alloc] init:@"MON"]];
-      [[self.schedulesData objectAtIndex:1] addObject:[[LessionInfo alloc] init:@"TUE"]];
-      [[self.schedulesData objectAtIndex:2] addObject:[[LessionInfo alloc] init:@"WED"]];
-      [[self.schedulesData objectAtIndex:3] addObject:[[LessionInfo alloc] init:@"THU"]];
-      [[self.schedulesData objectAtIndex:4] addObject:[[LessionInfo alloc] init:@"FRI"]];
-      [[self.schedulesData objectAtIndex:5] addObject:[[LessionInfo alloc] init:@"SAT"]];
+    [[self.schedulesData objectAtIndex:1] addObject:[[LessionInfo alloc] init:@"TUE"]];
+    [[self.schedulesData objectAtIndex:2] addObject:[[LessionInfo alloc] init:@"WED"]];
+    [[self.schedulesData objectAtIndex:3] addObject:[[LessionInfo alloc] init:@"THU"]];
+    [[self.schedulesData objectAtIndex:4] addObject:[[LessionInfo alloc] init:@"FRI"]];
+    [[self.schedulesData objectAtIndex:5] addObject:[[LessionInfo alloc] init:@"SAT"]];
     
     [self.scheduleCollection reloadData];
     
+    /////////////////////////////////////////
     self.lessionTable.estimatedSectionHeaderHeight = 0 ;
     self.lessionTable.dataSource = self;
     self.lessionTable.delegate = self;
     self.lessionTable.rowHeight = UITableViewAutomaticDimension;
-    self.lessionTable.estimatedRowHeight = 100;
+    self.lessionTable.estimatedRowHeight = 110;
+    [self.lessionTable setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
+    //////////////////////////////////////////
     
-    [self showLoadingView];
     
-    NSString* studentId = [[UserManager userCenter] getCurrentUser].userId;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
     
-    self.userRole = [[[UserManager userCenter] getCurrentUser].role_id integerValue];
+    [super viewWillAppear:animated];
+    double delayInSeconds = 0.5;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self showLoadingView];
+        
+        double delayInSeconds = 0.5;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [self callGetScheduleAPI];
+        });
+    });
     
-    if(self.userRole == TEACHER) {
-        
-        [[ConnectionManager connectionDefault] getTeacherScheduleWithId:studentId success:^(id  _Nonnull responseObject) {
-            
-            [self hideLoadingView];
-            
-            NSArray* courseList = [CourseModel arrayOfModelsFromDictionaries:responseObject[@"courses"] error:nil];
-            
-            [self fillCourseListToScheduleData:courseList];
-            
-            [self.scheduleCollection reloadData];
-            
-            
-        } andFailure:^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject) {
-            
-            [self hideLoadingView];
-            
-            [self showAlertNoticeWithMessage:errorMessage completion:nil];
-        }];
-        
-    }
-    else
-    {
     
-    [[ConnectionManager connectionDefault] getStudentScheduleWithId:studentId success:^(id  _Nonnull responseObject) {
-        
-        [self hideLoadingView];
-        
-        NSArray* courseList = [CourseModel arrayOfModelsFromDictionaries:responseObject[@"courses"] error:nil];
-        
-        [self fillCourseListToScheduleData:courseList];
-        
-        [self.scheduleCollection reloadData];
-        
-        
-    } andFailure:^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject) {
-        
-        [self hideLoadingView];
-        
-        [self showAlertNoticeWithMessage:errorMessage completion:nil];
-    }];
-    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -163,13 +142,13 @@ static int INDEX_ARRAY[] = {2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
         
         cell.layer.backgroundColor = [[UIColor greenColor] CGColor];
         
-       [cell loadData:[self.schedulesData objectAtIndex:indexPath.row]];
+        [cell loadData:[self.schedulesData objectAtIndex:indexPath.row] inCell:2];
         
         
     }
     else {
         
-        [cell loadData:[self.schedulesData objectAtIndex:indexPath.row]];
+        [cell loadData:[self.schedulesData objectAtIndex:indexPath.row] inCell:INDEX_ARRAY[indexPath.row]];
         
         cell.layer.backgroundColor = [[UIColor whiteColor] CGColor];
         
@@ -205,35 +184,39 @@ static int INDEX_ARRAY[] = {2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-  
-    self.lessionTable.hidden = YES;
+    
+    
     
     if(indexPath.row >= 0 && indexPath.row <= 5)
         return;
     else {
-    __selectedIndex = indexPath.row;
+        __selectedIndex = indexPath.row;
         
-    NSString* time = [self getTime:indexPath.row];
-    
-    self.timeLabel.text = time;
+        NSString* time = [self getTime:indexPath.row];
         
-    if(INDEX_ARRAY[indexPath.row] == 1)
-    {
-        self.lessionTable.hidden = NO;
-        self.freeLabel.text = @"";
+        [collectionView reloadData];
         
-        self.lessonArray = [self.schedulesData objectAtIndex:indexPath.row];
-        [self.lessionTable reloadData];
-    }
-    else {
-        self.freeLabel.text = @"No schedule";
+        self.timeLabel.text = time;
+        
         self.lessionTable.hidden = YES;
         
-        [self.lessonArray removeAllObjects];
-        [self.lessionTable reloadData];
-    }
+        if(INDEX_ARRAY[indexPath.row] == 1)
+        {
+            self.lessionTable.hidden = NO;
+            self.freeLabel.text = @"";
+            
+            self.lessonArray = [self.schedulesData objectAtIndex:indexPath.row];
+            [self.lessionTable reloadData];
+        }
+        else {
+            self.freeLabel.text = @"No schedule";
+            self.lessionTable.hidden = YES;
+            
+            //        [self.lessonArray removeAllObjects];
+            //        [self.lessionTable reloadData];
+        }
         
-    [collectionView reloadData];
+       
     }
     
 }
@@ -279,40 +262,55 @@ static int INDEX_ARRAY[] = {2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
     
     for(CourseModel* course in courseList) {
         
-        NSString* scheduleString = course.schedule;
+        if(!course.schedules)
+            continue;
         
-        NSArray* scheduleStringArray = [scheduleString componentsSeparatedByString:@"-"];
+        NSString* scheduleString = course.schedules;
         
-        NSInteger index = [[scheduleStringArray objectAtIndex:0] integerValue];
-        index = (NSInteger)(MATRIX_OF_INDEX[index]);
+        NSArray* scheduleStringArray = [scheduleString componentsSeparatedByString:@";"];
         
-        INDEX_ARRAY[index] = 1;
-        
-        LessionInfo *lession = [[LessionInfo alloc] init];
-        
-        lession.code = course.code;
-        lession.class_name = course.class_name;
-        lession.name = course.name;
-        lession.office_hour = course.office_hour ? [NSString stringWithFormat:@"Office hour: %@", course.office_hour] : @"";
-        lession.note = course.note ? [NSString stringWithFormat:@"Note: %@", course.note] : @"";
-        
-        NSString* typeClass = [scheduleStringArray objectAtIndex:2] ;
-        
-        if([typeClass isEqualToString:@"LT"])
+        for(NSString* lession in scheduleStringArray)
         {
-            typeClass = @"Ly Thuyet";
-            lession.isUnderLine = FALSE;
+            NSArray* lessionStringArray = [lession componentsSeparatedByString:@"-"];
+            
+            NSString* indexText = [lessionStringArray objectAtIndex:0];
+            
+            NSUInteger index = [indexText integerValue];
+            
+            int newIndex = [MATRIX_OF_INDEX[index] intValue];
+            
+            NSLog(@"new index : %d",newIndex);
+            
+            if(newIndex >=0 && newIndex <= sizeof(INDEX_ARRAY)/sizeof(int))
+                INDEX_ARRAY[newIndex] = 1;
+            
+            LessionInfo *lession = [[LessionInfo alloc] init];
+            
+            lession.code = course.code;
+            lession.class_name = course.class_name;
+            lession.name = course.name;
+            lession.office_hour = course.office_hour && ![course.office_hour isEqualToString:@""] ? [NSString stringWithFormat:@"Office hour: %@", course.office_hour] : @"";
+            lession.note = course.note && ![course.note isEqualToString:@""] ? [NSString stringWithFormat:@"Note: %@", course.note] : @"";
+            
+            NSString* typeClass = [lessionStringArray objectAtIndex:2] ;
+            
+            if([typeClass isEqualToString:@"LT"])
+            {
+                typeClass = @"Ly Thuyet";
+                lession.isUnderLine = FALSE;
+            }
+            else{
+                typeClass = @"Thuc Hanh";
+                lession.isUnderLine = TRUE;
+            }
+            
+            lession.content = [lessionStringArray objectAtIndex:1] ? [NSString stringWithFormat:@"Room: %@ - %@", [lessionStringArray objectAtIndex:1],typeClass] :@"";
+            
+            
+            if(newIndex < [self.schedulesData count])
+                [[self.schedulesData objectAtIndex:newIndex] addObject:lession];
         }
-        else{
-            typeClass = @"Thuc Hanh";
-            lession.isUnderLine = TRUE;
-        }
         
-        lession.content = [scheduleStringArray objectAtIndex:1] ? [NSString stringWithFormat:@"Room: %@ - %@", [scheduleStringArray objectAtIndex:1],typeClass] :@"";
-        
-        
-        [[self.schedulesData objectAtIndex:index] addObject:lession];
-       
     }
     
 }
@@ -334,9 +332,74 @@ static int INDEX_ARRAY[] = {2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
     return cell;
 }
 
+//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+//
+//    return kCellHeight;
+//}
+
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+-(NSInteger)integerFromString:(NSString *)string
+{
+    NSNumberFormatter *formatter=[[NSNumberFormatter alloc]init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    NSNumber *numberObj = [formatter numberFromString:string];
+    return [numberObj integerValue];
+}
+
+- (void)callGetScheduleAPI {
+    
+    NSString* studentId = [[UserManager userCenter] getCurrentUser].userId;
+    
+    self.userRole = [[[UserManager userCenter] getCurrentUser].role_id integerValue];
+    
+    if(self.userRole == TEACHER) {
+        
+        [[ConnectionManager connectionDefault] getTeacherScheduleWithId:studentId success:^(id  _Nonnull responseObject) {
+            
+            [self hideLoadingView];
+            
+            NSArray* courseList = [CourseModel arrayOfModelsFromDictionaries:responseObject[@"courses"] error:nil];
+            
+            [self fillCourseListToScheduleData:courseList];
+            
+            [self.scheduleCollection reloadData];
+            
+            
+        } andFailure:^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject) {
+            
+            [self hideLoadingView];
+            
+            [self showAlertNoticeWithMessage:errorMessage completion:nil];
+        }];
+        
+    }
+    else
+    {
+        
+        [[ConnectionManager connectionDefault] getStudentScheduleWithId:studentId success:^(id  _Nonnull responseObject) {
+            
+            [self hideLoadingView];
+            
+            NSArray* courseList = [CourseModel arrayOfModelsFromDictionaries:responseObject[@"courses"] error:nil];
+            
+            [self fillCourseListToScheduleData:courseList];
+            
+            [self.scheduleCollection reloadData];
+            
+            
+        } andFailure:^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject) {
+            
+            [self hideLoadingView];
+            
+            [self showAlertNoticeWithMessage:errorMessage completion:nil];
+        }];
+    }
+    
 }
 
 @end
