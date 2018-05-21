@@ -21,6 +21,7 @@
 #import "SendAbsenceViewController.h"
 #import "SendFeedbackViewController.h"
 #import "MPOPersonFacesController.h"
+#import "StudentScheduleViewController.h"
 
 static CGFloat const kCellHeightRatio = 60.0f/667.0f;
 static CGFloat kCellHeight;
@@ -199,6 +200,11 @@ static CGFloat kCellHeight;
             break;
             
         case MenuItemType_Schedules:
+        {
+            StudentScheduleViewController* absence = [self.storyboard instantiateViewControllerWithIdentifier:@"StudentScheduleViewController"];
+            [(UINavigationController*)self.frostedViewController.contentViewController pushViewController:absence animated:TRUE];
+        }
+            
             break;
             
         case MenuItemType_Account: {

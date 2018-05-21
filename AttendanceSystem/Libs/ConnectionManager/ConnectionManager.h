@@ -141,5 +141,13 @@ andFailure:(ConnectionFailure)failure;
                         success:(ConnectionComplete)success
                      andFailure:(ConnectionFailure)failure;
 
+- (void)getStudentScheduleWithId:(NSString*)studentId
+                         success:(ConnectionComplete)success
+                      andFailure:(ConnectionFailure)failure;
+
+- (void)getTeacherScheduleWithId:(NSString*)studentId
+                         success:(ConnectionComplete)success
+                      andFailure:(ConnectionFailure)failure;
+
 @end
 OS_ASSUME_NONNULL_END

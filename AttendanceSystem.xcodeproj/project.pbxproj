@@ -16,6 +16,10 @@
 		F81D34B1205AC64500CD31D7 /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F81D34B0205AC64500CD31D7 /* DatePickerView.m */; };
 		F8292CAC20AC1EEB002CB171 /* PickerViewPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = F8292CAA20AC1EEA002CB171 /* PickerViewPopup.m */; };
 		F8292CAD20AC1EEB002CB171 /* PickerViewPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8292CAB20AC1EEA002CB171 /* PickerViewPopup.xib */; };
+		F82A4D6B20AFEEF50085EE3D /* StudentScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F82A4D6A20AFEEF50085EE3D /* StudentScheduleViewController.m */; };
+		F82A4D6E20AFEFC00085EE3D /* ScheduleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F82A4D6D20AFEFC00085EE3D /* ScheduleCollectionViewCell.m */; };
+		F82A4D7020B0006C0085EE3D /* ScheduleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F82A4D6F20B0006C0085EE3D /* ScheduleCollectionViewCell.xib */; };
+		F82A4D7320B00F0A0085EE3D /* LessionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F82A4D7220B00F0A0085EE3D /* LessionInfo.m */; };
 		F82BBCC42018785E00CA4E72 /* LoadingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F82BBCBB2018785E00CA4E72 /* LoadingManager.m */; };
 		F82BBCC52018785E00CA4E72 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F82BBCBE2018785E00CA4E72 /* TPKeyboardAvoidingScrollView.m */; };
 		F82BBCC62018785E00CA4E72 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F82BBCC02018785E00CA4E72 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
@@ -34,6 +38,7 @@
 		F85B6C42204848AD0098D64A /* SessionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F85B6C40204848AD0098D64A /* SessionViewCell.m */; };
 		F85B6C43204848AD0098D64A /* SessionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F85B6C41204848AD0098D64A /* SessionViewCell.xib */; };
 		F871ACAC204652BB009E04BB /* AttendanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F871ACAB204652BB009E04BB /* AttendanceViewController.m */; };
+		F887192520B17574004EBC05 /* LessionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F887192420B17574004EBC05 /* LessionTableViewCell.m */; };
 		F8889930205B7408003C211C /* SendFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F888992F205B7408003C211C /* SendFeedbackViewController.m */; };
 		F892F5F1201AD08700092EA3 /* ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F892F5F0201AD08600092EA3 /* ConnectionManager.m */; };
 		F892F5F7201AD5B500092EA3 /* CustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F892F5F6201AD5B400092EA3 /* CustomAlertView.m */; };
@@ -131,6 +136,13 @@
 		F8292CA920AC1EEA002CB171 /* PickerViewPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerViewPopup.h; sourceTree = "<group>"; };
 		F8292CAA20AC1EEA002CB171 /* PickerViewPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerViewPopup.m; sourceTree = "<group>"; };
 		F8292CAB20AC1EEA002CB171 /* PickerViewPopup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerViewPopup.xib; sourceTree = "<group>"; };
+		F82A4D6920AFEEF50085EE3D /* StudentScheduleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StudentScheduleViewController.h; sourceTree = "<group>"; };
+		F82A4D6A20AFEEF50085EE3D /* StudentScheduleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudentScheduleViewController.m; sourceTree = "<group>"; };
+		F82A4D6C20AFEFC00085EE3D /* ScheduleCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleCollectionViewCell.h; sourceTree = "<group>"; };
+		F82A4D6D20AFEFC00085EE3D /* ScheduleCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleCollectionViewCell.m; sourceTree = "<group>"; };
+		F82A4D6F20B0006C0085EE3D /* ScheduleCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleCollectionViewCell.xib; sourceTree = "<group>"; };
+		F82A4D7120B00F0A0085EE3D /* LessionInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LessionInfo.h; sourceTree = "<group>"; };
+		F82A4D7220B00F0A0085EE3D /* LessionInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LessionInfo.m; sourceTree = "<group>"; };
 		F82BBCBA2018785E00CA4E72 /* LoadingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingManager.h; sourceTree = "<group>"; };
 		F82BBCBB2018785E00CA4E72 /* LoadingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingManager.m; sourceTree = "<group>"; };
 		F82BBCBD2018785E00CA4E72 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
@@ -166,6 +178,8 @@
 		F85B6C41204848AD0098D64A /* SessionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionViewCell.xib; sourceTree = "<group>"; };
 		F871ACAA204652BB009E04BB /* AttendanceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttendanceViewController.h; sourceTree = "<group>"; };
 		F871ACAB204652BB009E04BB /* AttendanceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AttendanceViewController.m; sourceTree = "<group>"; };
+		F887192320B17574004EBC05 /* LessionTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LessionTableViewCell.h; sourceTree = "<group>"; };
+		F887192420B17574004EBC05 /* LessionTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LessionTableViewCell.m; sourceTree = "<group>"; };
 		F888992E205B7408003C211C /* SendFeedbackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendFeedbackViewController.h; sourceTree = "<group>"; };
 		F888992F205B7408003C211C /* SendFeedbackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendFeedbackViewController.m; sourceTree = "<group>"; };
 		F892F5EF201AD08600092EA3 /* ConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionManager.h; sourceTree = "<group>"; };
@@ -367,6 +381,11 @@
 				F8DAC67F209F002400F4611D /* MPOPersonFaceCell.xib */,
 				F81D34AF205AC64500CD31D7 /* DatePickerView.h */,
 				F81D34B0205AC64500CD31D7 /* DatePickerView.m */,
+				F82A4D6C20AFEFC00085EE3D /* ScheduleCollectionViewCell.h */,
+				F82A4D6D20AFEFC00085EE3D /* ScheduleCollectionViewCell.m */,
+				F82A4D6F20B0006C0085EE3D /* ScheduleCollectionViewCell.xib */,
+				F887192320B17574004EBC05 /* LessionTableViewCell.h */,
+				F887192420B17574004EBC05 /* LessionTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -462,6 +481,8 @@
 				F85B36BD2081C9B700AC4DD6 /* TeacherQuizWaitingController.m */,
 				F85B36BF2081CE0A00AC4DD6 /* TeacherQuizCompleteViewController.h */,
 				F85B36C02081CE0A00AC4DD6 /* TeacherQuizCompleteViewController.m */,
+				F82A4D6920AFEEF50085EE3D /* StudentScheduleViewController.h */,
+				F82A4D6A20AFEEF50085EE3D /* StudentScheduleViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -567,6 +588,8 @@
 				F8D8CB7B205F9D29001F4D7B /* QuestionModel.m */,
 				F830AC5F20899DDA00D30361 /* QuizModel.h */,
 				F830AC6020899DDA00D30361 /* QuizModel.m */,
+				F82A4D7120B00F0A0085EE3D /* LessionInfo.h */,
+				F82A4D7220B00F0A0085EE3D /* LessionInfo.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -793,7 +816,7 @@
 				TargetAttributes = {
 					F8FA796B20183BAA005D8677 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					F8FA798320183BAA005D8677 = {
 						CreatedOnToolsVersion = 9.2;
@@ -838,6 +861,7 @@
 				F8FA797920183BAA005D8677 /* Assets.xcassets in Resources */,
 				F8FA797720183BAA005D8677 /* Main.storyboard in Resources */,
 				F85B6C43204848AD0098D64A /* SessionViewCell.xib in Resources */,
+				F82A4D7020B0006C0085EE3D /* ScheduleCollectionViewCell.xib in Resources */,
 				F8DAC681209F002400F4611D /* MPOPersonFaceCell.xib in Resources */,
 				F8DAC66D209EFF1500F4611D /* LICENSE in Resources */,
 			);
@@ -985,6 +1009,7 @@
 				F83E0417205A6FD1000B9F80 /* DateViewController.m in Sources */,
 				F82BBCC72018785E00CA4E72 /* UIAlertController+Blocks.m in Sources */,
 				F8DAC684209F021200F4611D /* PersonFace.m in Sources */,
+				F82A4D6E20AFEFC00085EE3D /* ScheduleCollectionViewCell.m in Sources */,
 				F85B36BE2081C9B700AC4DD6 /* TeacherQuizWaitingController.m in Sources */,
 				F82BBCC42018785E00CA4E72 /* LoadingManager.m in Sources */,
 				F8DAC68C209F027B00F4611D /* MPOSimpleFaceCell.m in Sources */,
@@ -1003,6 +1028,7 @@
 				F8BEE2102050DB480043A316 /* QRCodeViewController.m in Sources */,
 				F8B5B695204956ED00F3A960 /* SessionViewController.m in Sources */,
 				F871ACAC204652BB009E04BB /* AttendanceViewController.m in Sources */,
+				F82A4D6B20AFEEF50085EE3D /* StudentScheduleViewController.m in Sources */,
 				F892F603201AE04000092EA3 /* JsonBaseModel.m in Sources */,
 				F8FA797420183BAA005D8677 /* BaseViewController.m in Sources */,
 				F8FA797F20183BAA005D8677 /* main.m in Sources */,
@@ -1019,6 +1045,7 @@
 				F8DAC671209EFF1500F4611D /* UIImage+Crop.m in Sources */,
 				F81B932C2023551400FC99D8 /* UIImageViewLoading.m in Sources */,
 				F8DAC679209EFFC300F4611D /* MPOPersonFacesController.m in Sources */,
+				F82A4D7320B00F0A0085EE3D /* LessionInfo.m in Sources */,
 				F8FA797120183BAA005D8677 /* AppDelegate.m in Sources */,
 				F8BEE2132050E3D20043A316 /* ScanQRViewController.m in Sources */,
 				F8DAC67C209EFFE800F4611D /* GroupPerson.m in Sources */,
@@ -1039,6 +1066,7 @@
 				F8DC6D25203D1A670031C923 /* CourseViewCell.m in Sources */,
 				F8DC6D2D203D69A70031C923 /* DBManager.m in Sources */,
 				F83E0414205A630D000B9F80 /* SendAbsenceViewController.m in Sources */,
+				F887192520B17574004EBC05 /* LessionTableViewCell.m in Sources */,
 				F8DAC680209F002400F4611D /* MPOPersonFaceCell.m in Sources */,
 				F8DAC64F209EFE3E00F4611D /* MPOPersonGroupController.m in Sources */,
 			);
@@ -1204,17 +1232,18 @@
 			baseConfigurationReference = D05C975D5E6AC62E746AF308 /* Pods-AttendanceSystem.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = GMSMKW52BZ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = AttendanceSystem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.demo.app.trungtruc.AttendanceSystemIOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.keaz.tomycar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "c5cd7aae-dcea-4e27-ba13-865014aaf18c";
+				PROVISIONING_PROFILE_SPECIFIER = ToMyCar_AdHoc;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1224,17 +1253,18 @@
 			baseConfigurationReference = 835046C900977DD4F5051CCC /* Pods-AttendanceSystem.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = GMSMKW52BZ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = AttendanceSystem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.demo.app.trungtruc.AttendanceSystemIOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.keaz.tomycar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "c5cd7aae-dcea-4e27-ba13-865014aaf18c";
+				PROVISIONING_PROFILE_SPECIFIER = ToMyCar_AdHoc;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

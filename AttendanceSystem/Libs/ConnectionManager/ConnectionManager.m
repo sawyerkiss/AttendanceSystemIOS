@@ -42,6 +42,8 @@ static NSString *const kUploadStudentFace = @"api/student/uploadFace";
 static NSString *const kUploadFaceImage = @"https://api.imgur.com/3/upload";
 static NSString *const kGetQuizResults = @"api/quiz/quizMobileResults";
 static NSString *const kSubmitFaceDetection = @"api/check-attendance/verify-face";
+static NSString *const kGetStudentSchedule = @"api/schedule/schedules-and-courses-by-student";
+static NSString *const kGetTeacherSchedule = @"api/schedule/schedules-and-courses-by-teacher";
 
 //Header
 static NSString *kHeaderSourceHostKey = @"X-SOURCE-HOST";
@@ -1026,6 +1028,55 @@ NSString *linkService(NSString *subLink) {
          [self handleResponseData:responseObject andSuccess:success];
      }
                       failure:
+     ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         [self handleResponseError:error andFailure:failure];
+     }];
+    
+}
+
+- (void)getStudentScheduleWithId:(NSString*)studentId success:(ConnectionComplete)success andFailure:(ConnectionFailure)failure {
+    NSString* url = linkService(kGetStudentSchedule);
+    NSLog(@"url : %@" ,url);
+    
+    NSString* token = [[UserManager userCenter] getCurrentUserToken];
+    NSDictionary *parameter = @{@"token": token ? token : @""
+                                    };
+    NSLog(@"parameter : %@" , parameter);
+    
+    
+    [self.sessionManager GET:url
+                   parameters:parameter
+                     progress:nil
+                      success:
+     ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         [self handleResponseData:responseObject andSuccess:success];
+     }
+                      failure:
+     ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         [self handleResponseError:error andFailure:failure];
+     }];
+    
+}
+
+- (void)getTeacherScheduleWithId:(NSString *)studentId success:(ConnectionComplete)success andFailure:(ConnectionFailure)failure {
+    
+    NSString* url = linkService(kGetTeacherSchedule);
+    NSLog(@"url : %@" ,url);
+    
+    NSString* token = [[UserManager userCenter] getCurrentUserToken];
+    NSDictionary *parameter = @{@"token": token ? token : @""
+                                };
+    NSLog(@"parameter : %@" , parameter);
+    
+    
+    [self.sessionManager GET:url
+                  parameters:parameter
+                    progress:nil
+                     success:
+     ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         [self handleResponseData:responseObject andSuccess:success];
+     }
+                     failure:
      ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
          [self handleResponseError:error andFailure:failure];
      }];
