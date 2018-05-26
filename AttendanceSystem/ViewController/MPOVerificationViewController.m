@@ -47,8 +47,8 @@ typedef enum {
 }SESSION_TYPE;
 
 @interface MPOVerificationViewController () <UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,
-    UITableViewDelegate,UITableViewDataSource> {
-//    UICollectionView * _imageContainer0;
+UITableViewDelegate,UITableViewDataSource> {
+    //    UICollectionView * _imageContainer0;
     UIView * _imageContainer1;
     UIButton * _verifyBtn;
     UILabel * _personNameLabel;
@@ -59,20 +59,20 @@ typedef enum {
     
     NSInteger _selectedFaceIndex0;
     NSInteger _selectedFaceIndex1;
-        
+    
     NSMutableArray * faceArray;
-        
+    
     NSMutableArray * personList;
     
     NSMutableArray * studentList;
     
     PersonGroup * _selectedGroup;
     GroupPerson * _selectedPerson;
-        
-        NSData *dataImage;
-        
-        BOOL hasVerifiedStudent ;
-        NSMutableArray * imageArray;
+    
+    NSData *dataImage;
+    
+    BOOL hasVerifiedStudent ;
+    NSMutableArray * imageArray;
 }
 
 @property (weak, nonatomic) IBOutlet UICollectionView *_imageContainer;
@@ -121,7 +121,7 @@ typedef enum {
     _selectedGroup = nil;
     _selectedPerson = nil;
     
-//    [self buildMainUI];
+    //    [self buildMainUI];
     
     self.tableSession.dataSource = self;
     self.tableSession.delegate = self;
@@ -186,26 +186,26 @@ typedef enum {
     [selectImgBtn0 setBackgroundImage:btnBackImage forState:UIControlStateNormal];
     
     UICollectionViewFlowLayout *flowLayout =[[UICollectionViewFlowLayout alloc] init];
-//    _imageContainer0 = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
-//    _imageContainer0.width = SCREEN_WIDTH - selectImgBtn0.width - 20 - 10 - 20;
-//    _imageContainer0.height = _imageContainer0.width * 4 / 5;
-//    _imageContainer0.top = label.top;
-//    _imageContainer0.right = SCREEN_WIDTH - 20;
-//    _imageContainer0.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1];
-//    [_imageContainer0 registerNib:[UINib nibWithNibName:@"MPOSimpleFaceCell" bundle:nil] forCellWithReuseIdentifier:@"faceCell"];
-//    _imageContainer0.dataSource = self;
-//    _imageContainer0.delegate = self;
+    //    _imageContainer0 = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
+    //    _imageContainer0.width = SCREEN_WIDTH - selectImgBtn0.width - 20 - 10 - 20;
+    //    _imageContainer0.height = _imageContainer0.width * 4 / 5;
+    //    _imageContainer0.top = label.top;
+    //    _imageContainer0.right = SCREEN_WIDTH - 20;
+    //    _imageContainer0.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1];
+    //    [_imageContainer0 registerNib:[UINib nibWithNibName:@"MPOSimpleFaceCell" bundle:nil] forCellWithReuseIdentifier:@"faceCell"];
+    //    _imageContainer0.dataSource = self;
+    //    _imageContainer0.delegate = self;
     
-//    selectImgBtn0.center = _imageContainer0.center;
+    //    selectImgBtn0.center = _imageContainer0.center;
     selectImgBtn0.left = 20;
     [scrollView addSubview:selectImgBtn0];
-//    [scrollView addSubview:_imageContainer0];
+    //    [scrollView addSubview:_imageContainer0];
     
     label = [[UILabel alloc] init];
     label.text = (_verificationType == VerificationTypeFaceAndFace) ? @"Face2:" : @"Person2:";
     [label sizeToFit];
     label.left = 20;
-//    label.top = _imageContainer0.bottom + 10;
+    //    label.top = _imageContainer0.bottom + 10;
     [scrollView addSubview:label];
     
     UIButton * selectImgBtn1 = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -266,7 +266,7 @@ typedef enum {
     [_verifyBtn addTarget:self action:@selector(verify:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:_verifyBtn];
     
-    _verifyBtn.top = _imageContainer1.bottom + 30;    
+    _verifyBtn.top = _imageContainer1.bottom + 30;
     
     scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, _verifyBtn.bottom + 20);
     [self.view addSubview:scrollView];
@@ -283,9 +283,9 @@ typedef enum {
 }
 
 - (void)choosePerson: (id)sender {
-//    MPOPersonGroupListController * controller = [[MPOPersonGroupListController alloc] init];
-//    controller.isForVarification = YES;
-//    [self.navigationController pushViewController:controller animated:YES];
+    //    MPOPersonGroupListController * controller = [[MPOPersonGroupListController alloc] init];
+    //    controller.isForVarification = YES;
+    //    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)chooseImage: (id)sender {
@@ -524,7 +524,7 @@ typedef enum {
     static NSString *cellID = @"StudentSessionCell";
     StudentSessionCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     cell.course = self.course;
-//    cell.delegate = self;
+    //    cell.delegate = self;
     [cell loadDataForCell:[self.sessionList objectAtIndex:indexPath.row] withAttendanceType:FACE_DETECTION];
     
     return cell;
@@ -588,24 +588,22 @@ typedef enum {
     [self.presentList removeAllObjects];
     [self.absenceList removeAllObjects];
     
-    [[ConnectionManager connectionDefault] getStudentCourseWithAttendance:self.course.attendance_id success:^(id  _Nonnull responseObject) {
+    [[ConnectionManager connectionDefault] getStudentFaceRecognitionWithAttendance:self.course.attendance_id success:^(id  _Nonnull responseObject) {
         [self hideLoadingView];
         studentList = [StudentModel arrayOfModelsFromDictionaries:responseObject[@"check_attendance_list"] error:nil];
         hasVerifiedStudent = FALSE;
         
         for(StudentModel* student in studentList) {
             NSString* personId = student.person_id ;
-              student.face = nil;
+            student.face = nil;
             for(GroupPerson* person in personList) {
-              
+                
                 if([personId isEqualToString:person.personId])
                 {
                     student.face = ((PersonFace*)[person.faces objectAtIndex:0]).image;
                     break;
                 }
             }
-            
-        
             
             if(student.face) {
                 if(![self.presentList containsObject:student]){
@@ -615,42 +613,15 @@ typedef enum {
             }
             else {
                 if(![self.absenceList containsObject:student])
-                [self.absenceList addObject:student];
+                    [self.absenceList addObject:student];
             }
             
         }
         
         [self loadSessionListWithType:self.session_type];
         
+        
        
-        if(hasVerifiedStudent ) {
-            
-            [self.btnVerify setEnabled:FALSE];
-            
-            if(dataImage) {
-            [self showLoadingView];
-            [[ConnectionManager connectionDefault] uploadImageToAPI:dataImage
-                                                            success:^(id  _Nonnull responseObject) {
-                                                                //response[@"data"];
-                                                                // link -> image url
-                                                                [self hideLoadingView];
-                                                                
-                                                                if(!responseObject) {
-//                                                                    [self updatePersonWithLargePersonGroupId];
-                                                                    return;
-                                                                }
-                                                                
-                                                                NSString* imageUrl = [responseObject[@"data"] objectForKey:@"link"];
-                                                             
-                                                                if(![imageArray containsObject:imageUrl])
-                                                                    [imageArray addObject:imageUrl];
-                                                            }
-                                                         andFailure:^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject)
-             {
-                  [self hideLoadingView];
-             }];
-            }
-        }
         
     } andFailure:^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject) {
         [self hideLoadingView];
@@ -669,7 +640,7 @@ typedef enum {
         for(PersonFace* face in faceArray)
         {
             if(![faceIds containsObject:face.face.faceId])
-            [faceIds addObject:face.face.faceId];
+                [faceIds addObject:face.face.faceId];
         }
     
     MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
@@ -678,7 +649,7 @@ typedef enum {
     [HUD show: YES];
     MPOFaceServiceClient *client = [[MPOFaceServiceClient alloc] initWithEndpointAndSubscriptionKey:ProjectOxfordFaceEndpoint key:ProjectOxfordFaceSubscriptionKey];
     [client identifyWithLargePersonGroupId:self.group.groupId faceIds:faceIds
-                     maxNumberOfCandidates:1 
+                     maxNumberOfCandidates:1
                            completionBlock:^(NSArray<MPOIdentifyResult *> *collection, NSError *error) {
                                [HUD removeFromSuperview];
                                if (error) {
@@ -691,14 +662,14 @@ typedef enum {
                                    PersonFace * face = [self getFaceByFaceId:idRestult.faceId];
                                    
                                    for (MPOCandidate * candidate in idRestult.candidates) {
-//                                       GroupPerson * person = [self getPersonInGroup:group withPersonId:candidate.personId];
-//                                       [_results addObject:@{@"face" : face, @"personName": person.personName, @"confidence" : candidate.confidence}];
+                                       //                                       GroupPerson * person = [self getPersonInGroup:group withPersonId:candidate.personId];
+                                       //                                       [_results addObject:@{@"face" : face, @"personName": person.personName, @"confidence" : candidate.confidence}];
                                        GroupPerson * person = [[GroupPerson alloc] init];
                                        person.personId = candidate.personId;
                                        [person.faces addObject:face];
                                        
                                        if(![personList containsObject:person])
-                                       [personList addObject:person];
+                                           [personList addObject:person];
                                    }
                                }
                                
@@ -709,7 +680,7 @@ typedef enum {
                                if (collection.count == 0) {
                                    [CommonUtil showSimpleHUD:@"No result." forController:self.navigationController];
                                }
-
+                               
                            }];
 }
 
@@ -733,6 +704,43 @@ typedef enum {
 
 - (void)submitFaceDetectionData {
     
+    if(hasVerifiedStudent ) {
+        
+        //            [self.btnVerify setEnabled:FALSE];
+        
+        if(dataImage) {
+            [self showLoadingView];
+            [[ConnectionManager connectionDefault] uploadImageToAPI:dataImage
+                                                            success:^(id  _Nonnull responseObject) {
+                                                                //response[@"data"];
+                                                                // link -> image url
+                                                                [self hideLoadingView];
+                                                                
+                                                                if(!responseObject) {
+                                                                    //                                                                    [self updatePersonWithLargePersonGroupId];
+                                                                    return;
+                                                                }
+                                                                
+                                                                NSString* imageUrl = [responseObject[@"data"] objectForKey:@"link"];
+                                                                
+                                                                if(![imageArray containsObject:imageUrl])
+                                                                    [imageArray addObject:imageUrl];
+                                                                
+                                                                [self submitData];
+                                                            }
+                                                         andFailure:^(ErrorType errorType, NSString * _Nonnull errorMessage, id  _Nullable responseObject)
+             {
+                 [self hideLoadingView];
+                  [self showAlertNoticeWithMessage:errorMessage completion:nil];
+             }];
+        }
+    }
+    
+    
+    
+}
+
+- (void) submitData {
     [self showLoadingView];
     
     NSString* token = [[UserManager userCenter] getCurrentUserToken];
@@ -749,8 +757,8 @@ typedef enum {
                                 @"students":studentIdList,
                                 @"attendance_id": self.course.attendance_id,
                                 @"attendance_type": @4,
-                                @"attendance_img": imageArray
-                                    };
+                                @"attendance_img": [imageArray lastObject]
+                                };
     
     [[ConnectionManager connectionDefault] submitFaceDetectionData:parameter success:^(id  _Nonnull responseObject) {
         [self hideLoadingView];
@@ -760,7 +768,6 @@ typedef enum {
         
         [self showAlertNoticeWithMessage:errorMessage completion:nil];
     }];
-    
 }
 
 
@@ -768,11 +775,40 @@ typedef enum {
     
     if(hasVerifiedStudent) {
     
-    [self showAlertQuestionWithMessage:@"Are you sure to submit face detection datas ?"   completion:^(NSInteger buttonIndex) {
-     if(buttonIndex == 1)
-         [self submitFaceDetectionData];
-     }];
+        if(self.presentList && self.presentList.count > 0)
+        [self showAlertQuestionWithMessage:@"Are you sure to submit face detection datas ?"   completion:^(NSInteger buttonIndex) {
+            if(buttonIndex == 1)
+                [self submitFaceDetectionData];
+        }];
+        else
+            [self showAlertNoticeWithMessage:@"Please verify students before submitting" completion:nil];
         
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    if(self.session_type == PRESENT)
+        return YES;
+    return NO;
+}
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(self.session_type == PRESENT) {
+        if (editingStyle == UITableViewCellEditingStyleDelete) {
+            //add code here for when you hit delete
+            StudentModel* student = [self.sessionList objectAtIndex:indexPath.row];
+            student.face = nil;
+            
+            if([self.presentList containsObject:student])
+                [self.presentList removeObject:student];
+            
+            if(![self.absenceList containsObject:student])
+                [self.absenceList addObject:student];
+            
+            [self loadSessionListWithType:PRESENT];
+        }
     }
 }
 

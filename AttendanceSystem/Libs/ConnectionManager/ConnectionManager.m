@@ -44,6 +44,7 @@ static NSString *const kGetQuizResults = @"api/quiz/quizMobileResults";
 static NSString *const kSubmitFaceDetection = @"api/check-attendance/verify-face";
 static NSString *const kGetStudentSchedule = @"api/schedule/schedules-and-courses-by-student";
 static NSString *const kGetTeacherSchedule = @"api/schedule/schedules-and-courses-by-teacher";
+static NSString *const kFaceRecognition = @"api/attendance/check-attendance-face-recognition";
 
 //Header
 static NSString *kHeaderSourceHostKey = @"X-SOURCE-HOST";
@@ -373,6 +374,29 @@ NSString *linkService(NSString *subLink) {
                                 };
     
     NSString* url = linkService(kRetrieveStudent);
+    NSLog(@"url : %@" ,url);
+    NSLog(@"parameter : %@" , parameter);
+    
+    [self.sessionManager POST:url
+                   parameters:parameter
+                     progress:nil
+                      success:
+     ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         [self handleResponseData:responseObject andSuccess:success];
+     }
+                      failure:
+     ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         [self handleResponseError:error andFailure:failure];
+     }];
+}
+
+- (void)getStudentFaceRecognitionWithAttendance:(NSString *)attendanceId success:(ConnectionComplete)success andFailure:(ConnectionFailure)failure {
+    NSString* token = [[UserManager userCenter] getCurrentUserToken];
+    NSDictionary *parameter = @{@"token": token ? token : @"",
+                                @"attendance_id": attendanceId
+                                };
+    
+    NSString* url = linkService(kFaceRecognition);
     NSLog(@"url : %@" ,url);
     NSLog(@"parameter : %@" , parameter);
     

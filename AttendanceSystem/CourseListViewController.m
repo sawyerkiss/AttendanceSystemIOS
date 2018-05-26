@@ -40,6 +40,10 @@
     
     self.courseList = [[NSArray alloc] init];
     
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refreshAtTopWith:) forControlEvents:UIControlEventValueChanged];
+    [self.tableCourse addSubview:refreshControl];
+    
 //    [self getCourseList];
 //    
 //    [self setSocket];
@@ -48,9 +52,37 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self getCourseList];
-    
+    double delayInSeconds = 0.5;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+     [self showLoadingView];
+    double delayInSeconds = 0.5;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+         [self getCourseList];
+    });
+   
+    });
     [self setSocket];
+}
+
+- (void)refreshAtTopWith:(UIRefreshControl *)refreshControl {
+    [self refreshData:refreshControl];
+    double delayInSeconds = 0.5;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self showLoadingView];
+        double delayInSeconds = 0.5;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [self getCourseList];
+        });
+        
+    });
+}
+
+- (void)refreshData:(UIRefreshControl *)refreshControl {
+    [refreshControl endRefreshing];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -59,7 +91,7 @@
 }
 
 - (void)getCourseList {
-    [self showLoadingView];
+   
     
     if([[[UserManager userCenter] getCurrentUser].role_id integerValue] == STUDENT) {
         [[ConnectionManager connectionDefault] getTeachingCourseList:^(id  _Nonnull responseObject) {
@@ -78,7 +110,7 @@
     }
     else if([[[UserManager userCenter] getCurrentUser].role_id integerValue] == TEACHER){
         [[ConnectionManager connectionDefault] getTeachingCourseList:^(id  _Nonnull responseObject) {
-            [self hideLoadingView];
+//            [self hideLoadingView];
             self.courseList = [CourseModel arrayOfModelsFromDictionaries:responseObject[@"courses"] error:nil];
             
             [self getOpeningCourse];
@@ -180,11 +212,13 @@
     }];
     
     [self.socket on:@"checkAttendanceCreated" callback:^(NSArray * _Nonnull data, SocketAckEmitter * _Nonnull ack) {
+       NSLog(@"checkAttendanceCreated");
         [self getOpeningCourse];
     }];
     
     [self.socket on:@"checkAttendanceStopped" callback:^(NSArray * _Nonnull data, SocketAckEmitter * _Nonnull ack) {
-        [self getOpeningCourse];
+       NSLog(@"checkAttendanceStopped");
+//        [self getOpeningCourse];
     }];
     
     [self.socket on:@"disconnect" callback:^(NSArray * _Nonnull data, SocketAckEmitter * _Nonnull ack) {
@@ -207,7 +241,7 @@
 
 
 - (void)getOpeningCourse {
-    [self showLoadingView];
+//    [self showLoadingView];
     
     [[ConnectionManager connectionDefault] getOpeningCourseByTeacher:^(id  _Nonnull responseObject) {
         [self hideLoadingView];

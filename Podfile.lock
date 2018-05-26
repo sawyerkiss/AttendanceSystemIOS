@@ -43,7 +43,7 @@ DEPENDENCIES:
   - ZXingObjC (~> 3.2.2)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - AFNetworking
     - BEMCheckBox
     - DGActivityIndicatorView
@@ -73,4 +73,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 96f7b2bc74b7f8f5ff4ea35b42ee6416d178098c
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.2
