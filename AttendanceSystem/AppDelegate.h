@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
-static NSString *const ProjectOxfordFaceSubscriptionKey = @"18db52d47bc5483f92d687a957c40c98";
+static NSString *const ProjectOxfordFaceSubscriptionKey = @"6c929030cf454ee2b1eb0dac91c388f8"; //@"18db52d47bc5483f92d687a957c40c98";
 static NSString *const ProjectOxfordFaceEndpoint = @"https://westcentralus.api.cognitive.microsoft.com/face/v1.0/";
 //@"https://westus.api.cognitive.microsoft.com/face/v1.0/";
 
